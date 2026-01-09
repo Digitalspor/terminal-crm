@@ -267,7 +267,7 @@ const economyMenu = blessed.list({
   top: 1,
   left: '20%',
   width: '60%',
-  height: 10,
+  height: 12,
   label: ' {bold}{yellow-fg}💰 ØKONOMI{/yellow-fg}{/bold} (↑↓: navigér │ Enter: velg │ ESC: tilbake) ',
   tags: true,
   border: {
