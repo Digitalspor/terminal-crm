@@ -173,6 +173,7 @@ const mainMenu = blessed.list({
   items: [
     '{center}👥  KUNDER{/center}',
     '{center}💰  ØKONOMI{/center}',
+    '{center}🧾  FAKTURA{/center}',
     '{center}📁  PROSJEKTER{/center}',
     '{center}📊  OVERSIKT{/center}',
     '{center}📝  NOTATER{/center}',
@@ -378,6 +379,8 @@ mainMenu.on('select', (item, index) => {
   if (text.includes('Kunder')) {
     showCustomers();
   } else if (text.includes('Økonomi')) {
+    showInvoices();
+  } else if (text.includes('Faktura')) {
     showInvoices();
   } else if (text.includes('Prosjekter')) {
     showProjects();
