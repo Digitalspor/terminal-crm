@@ -542,15 +542,53 @@ function showCustomerDetail(customer) {
   }
   content += `  {bold}{magenta-fg}└─{/magenta-fg}{/bold}\n\n`;
 
-  content += `  {bold}{yellow-fg}┌─ FAKTURAER ({${invoices.length}}){/yellow-fg}{/bold}\n`;
+  // Group invoices by year and month
+  const invoicesByYear = {};
+  invoices.forEach(inv => {
+    const date = new Date(inv.date);
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    if (!invoicesByYear[year]) {
+      invoicesByYear[year] = {};
+    }
+    if (!invoicesByYear[year][month]) {
+      invoicesByYear[year][month] = [];
+    }
+    invoicesByYear[year][month].push(inv);
+  });
+
+  const totalAmount = invoices.reduce((sum, inv) => sum + inv.total, 0);
+  content += `  {bold}{yellow-fg}┌─ FAKTURA-HISTORIKK ({${invoices.length}} · ${totalAmount.toLocaleString('nb-NO')} kr totalt){/yellow-fg}{/bold}\n`;
+
   if (invoices.length === 0) {
     content += `  │ {gray-fg}Ingen fakturaer enda{/gray-fg}\n`;
   } else {
-    invoices.forEach(inv => {
-      const statusIcon = inv.status === 'draft' ? '📝' : inv.status === 'sent' ? '📤' : '✅';
-      const statusColor = inv.status === 'draft' ? 'white' : inv.status === 'sent' ? 'yellow' : 'green';
-      content += `  │ ${statusIcon} {bold}${inv.invoiceNumber}{/bold} - {${statusColor}-fg}${inv.total.toLocaleString('nb-NO')} kr{/${statusColor}-fg}\n`;
-      content += `  │    Forfaller: ${inv.dueDate}\n`;
+    const years = Object.keys(invoicesByYear).sort((a, b) => b - a);
+
+    years.forEach((year, yearIdx) => {
+      const yearInvoices = Object.values(invoicesByYear[year]).flat();
+      const yearTotal = yearInvoices.reduce((sum, inv) => sum + inv.total, 0);
+
+      content += `  │\n`;
+      content += `  │ {bold}{cyan-fg}${year}:{/cyan-fg}{/bold} ${yearTotal.toLocaleString('nb-NO')} kr (${yearInvoices.length} fakturaer)\n`;
+      content += `  │ {cyan-fg}${'─'.repeat(50)}{/cyan-fg}\n`;
+
+      const months = Object.keys(invoicesByYear[year]).sort((a, b) => b - a);
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'];
+
+      months.forEach(month => {
+        const monthInvoices = invoicesByYear[year][month];
+        const monthTotal = monthInvoices.reduce((sum, inv) => sum + inv.total, 0);
+
+        content += `  │   {bold}${monthNames[month]}:{/bold} ${monthTotal.toLocaleString('nb-NO')} kr\n`;
+
+        monthInvoices.forEach(inv => {
+          const statusIcon = inv.status === 'draft' ? '📝' : inv.status === 'sent' ? '📤' : '✅';
+          const statusColor = inv.status === 'draft' ? 'white' : inv.status === 'sent' ? 'yellow' : 'green';
+          content += `  │     ${statusIcon} {bold}${inv.invoiceNumber}{/bold} │ {${statusColor}-fg}${inv.total.toLocaleString('nb-NO')} kr{/${statusColor}-fg} │ ${inv.dueDate}\n`;
+        });
+      });
     });
   }
   content += `  {bold}{yellow-fg}└─{/yellow-fg}{/bold}\n`;

@@ -11,6 +11,7 @@
     "dashboard:dev": "nodemon src/index.js dashboard",
     "dashboard:watch": "node --watch src/index.js dashboard",
     "dev": "node --watch src/index.js",
+    "fiken:auto-sync": "node src/fiken-auto-sync.js",
     "commit": "git add . && git commit",
     "sync": "git pull --rebase && git push",
     "pull": "git pull --rebase"
