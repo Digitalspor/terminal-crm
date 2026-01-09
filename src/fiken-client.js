@@ -191,6 +191,25 @@ class FikenClient {
     }
   }
 
+  // Get bank balances
+  async getBankBalances(date = null) {
+    if (!this.isConfigured()) {
+      throw new Error('Fiken API ikke konfigurert');
+    }
+
+    try {
+      const params = date ? { date } : {};
+      const response = await this.client.get(
+        this.companyEndpoint('/bankBalances'),
+        { params }
+      );
+      return response.data;
+    } catch (error) {
+      console.error(chalk.red(error.response?.data?.message || error.message));
+      throw error;
+    }
+  }
+
   // Helper: Convert Fiken contact to our customer format
   fikenContactToCustomer(fikenContact) {
     return {

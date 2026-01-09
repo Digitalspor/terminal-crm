@@ -244,6 +244,43 @@ const customerDetail = blessed.box({
   hidden: true
 });
 
+// Economy submenu
+const economyMenu = blessed.list({
+  top: 1,
+  left: '20%',
+  width: '60%',
+  height: 10,
+  label: ' {bold}{yellow-fg}💰 ØKONOMI{/yellow-fg}{/bold} (↑↓: navigér │ Enter: velg │ ESC: tilbake) ',
+  tags: true,
+  border: {
+    type: 'double',
+    fg: 'yellow'
+  },
+  style: {
+    fg: 'white',
+    border: {
+      fg: 'yellow'
+    },
+    selected: {
+      bg: 'yellow',
+      fg: 'black',
+      bold: true
+    },
+    item: {
+      fg: 'white'
+    }
+  },
+  keys: true,
+  vi: true,
+  mouse: true,
+  interactive: true,
+  items: [
+    '{center}💰  FAKTURAER{/center}',
+    '{center}🏦  KONTOER & SALDO{/center}'
+  ],
+  hidden: true
+});
+
 // Project list view with table
 const projectTable = contrib.table({
   top: 1,
@@ -318,6 +355,43 @@ const invoiceTable = contrib.table({
   hidden: true
 });
 
+// Accounts list view with table
+const accountsTable = contrib.table({
+  top: 1,
+  left: 0,
+  width: '100%',
+  height: '100%-2',
+  label: ' {bold}{yellow-fg}🏦 ØKONOMI - KONTOER & SALDO{/yellow-fg}{/bold} (↑↓: navigér │ ESC: tilbake) ',
+  tags: true,
+  border: {
+    type: 'line',
+    fg: 'yellow'
+  },
+  style: {
+    fg: 'white',
+    border: {
+      fg: 'yellow'
+    },
+    header: {
+      fg: 'yellow',
+      bold: true
+    },
+    cell: {
+      fg: 'white',
+      selected: {
+        bg: 'yellow',
+        fg: 'black'
+      }
+    }
+  },
+  keys: true,
+  vi: true,
+  mouse: true,
+  columnSpacing: 5,
+  columnWidth: [30, 30, 30, 30],
+  hidden: true
+});
+
 // Overview box
 const overviewBox = blessed.box({
   top: 1,
@@ -352,8 +426,10 @@ screen.append(statsBox);
 screen.append(mainMenu);
 screen.append(customerList);
 screen.append(customerDetail);
+screen.append(economyMenu);
 screen.append(projectTable);
 screen.append(invoiceTable);
+screen.append(accountsTable);
 screen.append(overviewBox);
 screen.append(promptBox);
 
@@ -387,7 +463,7 @@ function handleMenuSelection() {
   if (text.includes('KUNDER')) {
     showCustomers();
   } else if (text.includes('ØKONOMI')) {
-    showInvoices();
+    showEconomy();
   } else if (text.includes('PROSJEKTER')) {
     showProjects();
   } else if (text.includes('OVERSIKT')) {
@@ -528,6 +604,57 @@ function showProjects() {
   screen.render();
 }
 
+// Show economy submenu
+function showEconomy() {
+  currentView = 'economy';
+  statsBox.hide();
+  mainMenu.hide();
+  economyMenu.show();
+  economyMenu.focus();
+  screen.render();
+}
+
+// Show accounts and balances
+async function showAccounts() {
+  currentView = 'accounts';
+
+  try {
+    // Import Fiken client
+    const { fikenClient } = await import('./fiken-client.js');
+
+    // Fetch bank accounts and balances
+    const accounts = await fikenClient.getBankAccounts();
+    const balances = await fikenClient.getBankBalances();
+
+    const data = [
+      ['KONTO', 'TYPE', 'SALDO', 'KONTONUMMER']
+    ];
+
+    accounts.forEach(acc => {
+      const balance = balances.find(b => b.bankAccountId === acc.bankAccountId);
+      const saldo = balance ? `${balance.balance.toLocaleString('nb-NO')} kr` : 'N/A';
+
+      data.push([
+        acc.name || 'Ukjent',
+        acc.type || 'normal',
+        saldo,
+        acc.accountNumber || 'N/A'
+      ]);
+    });
+
+    accountsTable.setData(data);
+
+    economyMenu.hide();
+    accountsTable.show();
+    accountsTable.focus();
+    screen.render();
+  } catch (error) {
+    showMessage('⚠️ Feil', `Kunne ikke hente kontoer: ${error.message}`);
+    economyMenu.focus();
+    screen.render();
+  }
+}
+
 // Show invoices
 function showInvoices() {
   currentView = 'invoices';
@@ -653,10 +780,52 @@ projectTable.key(['escape', 'q'], () => {
 
 invoiceTable.key(['escape', 'q'], () => {
   invoiceTable.hide();
+  economyMenu.show();
+  economyMenu.focus();
+  currentView = 'economy';
+  screen.render();
+});
+
+economyMenu.on('select', (item, index) => {
+  const text = item.getText().trim().toUpperCase();
+
+  if (text.includes('FAKTURAER')) {
+    economyMenu.hide();
+    showInvoices();
+  } else if (text.includes('KONTOER')) {
+    showAccounts();
+  }
+});
+
+economyMenu.key(['enter', 'return'], () => {
+  const selected = economyMenu.selected;
+  const item = economyMenu.items[selected];
+  if (!item) return;
+
+  const text = item.getText().trim().toUpperCase();
+
+  if (text.includes('FAKTURAER')) {
+    economyMenu.hide();
+    showInvoices();
+  } else if (text.includes('KONTOER')) {
+    showAccounts();
+  }
+});
+
+economyMenu.key(['escape', 'q'], () => {
+  economyMenu.hide();
   statsBox.show();
   mainMenu.show();
   mainMenu.focus();
   currentView = 'main';
+  screen.render();
+});
+
+accountsTable.key(['escape', 'q'], () => {
+  accountsTable.hide();
+  economyMenu.show();
+  economyMenu.focus();
+  currentView = 'economy';
   screen.render();
 });
 
@@ -685,6 +854,8 @@ screen.key(['C-r'], () => {
     showProjects();
   } else if (currentView === 'invoices') {
     showInvoices();
+  } else if (currentView === 'accounts') {
+    showAccounts();
   } else if (currentView === 'overview') {
     showOverview();
   }
@@ -704,10 +875,14 @@ screen.key(['C-p'], () => {
       mainMenu.focus();
     } else if (currentView === 'customers') {
       customerList.focus();
+    } else if (currentView === 'economy') {
+      economyMenu.focus();
     } else if (currentView === 'projects') {
       projectTable.focus();
     } else if (currentView === 'invoices') {
       invoiceTable.focus();
+    } else if (currentView === 'accounts') {
+      accountsTable.focus();
     }
     screen.render();
   });
