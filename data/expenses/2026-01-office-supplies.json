@@ -1,0 +1,11 @@
+{
+  "id": "2026-01-office-supplies",
+  "date": "2026-01-05",
+  "description": "Kontorrekvisita - papir, penn, mapper",
+  "category": "Kontorrekvisita",
+  "amount": 1250,
+  "receiptFile": "receipt-2026-01-05.pdf",
+  "vendor": "Clas Ohlson",
+  "notes": "Innkjøp for nytt år",
+  "created": "2026-01-05T10:30:00.000Z"
+}

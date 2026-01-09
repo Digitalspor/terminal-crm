@@ -1,0 +1,11 @@
+{
+  "id": "2025-12-hosting",
+  "date": "2025-12-15",
+  "description": "DigitalOcean hosting",
+  "category": "Hosting",
+  "amount": 850,
+  "receiptNumber": "DO-2025-12-001",
+  "vendor": "DigitalOcean",
+  "notes": "Server hosting desember",
+  "created": "2025-12-15T09:15:00.000Z"
+}

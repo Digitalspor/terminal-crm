@@ -31,6 +31,10 @@ function getInvoices() {
   return readJsonFiles(path.join(dataDir, 'invoices'));
 }
 
+function getExpenses() {
+  return readJsonFiles(path.join(dataDir, 'expenses'));
+}
+
 // Create progress bar
 function createProgressBar(percent) {
   const width = 20;
@@ -291,7 +295,8 @@ const economyMenu = blessed.list({
   items: [
     '{center}💰  FAKTURAER{/center}',
     '{center}🏦  KONTOER & SALDO{/center}',
-    '{center}{red-fg}🔔  PURRING{/red-fg}{/center}'
+    '{center}{red-fg}🔔  PURRING{/red-fg}{/center}',
+    '{center}📊  KOSTNADER{/center}'
   ],
   hidden: true
 });
@@ -444,6 +449,43 @@ const overdueTable = contrib.table({
   hidden: true
 });
 
+// Expenses table
+const expensesTable = contrib.table({
+  top: 1,
+  left: 0,
+  width: '100%',
+  height: '100%-2',
+  label: ' {bold}{magenta-fg}📊 KOSTNADER - MÅNEDLIG OVERSIKT{/magenta-fg}{/bold} (↑↓: navigér │ ESC: tilbake) ',
+  tags: true,
+  border: {
+    type: 'line',
+    fg: 'magenta'
+  },
+  style: {
+    fg: 'white',
+    border: {
+      fg: 'magenta'
+    },
+    header: {
+      fg: 'magenta',
+      bold: true
+    },
+    cell: {
+      fg: 'white',
+      selected: {
+        bg: 'magenta',
+        fg: 'white'
+      }
+    }
+  },
+  keys: true,
+  vi: true,
+  mouse: true,
+  columnSpacing: 3,
+  columnWidth: [12, 30, 15, 12, 20],
+  hidden: true
+});
+
 // Overview box
 const overviewBox = blessed.box({
   top: 1,
@@ -483,6 +525,7 @@ screen.append(projectTable);
 screen.append(invoiceTable);
 screen.append(accountsTable);
 screen.append(overdueTable);
+screen.append(expensesTable);
 screen.append(overviewBox);
 screen.append(promptBox);
 
@@ -843,6 +886,82 @@ function showOverdueInvoices() {
   screen.render();
 }
 
+// Show expenses (Kostnader)
+function showExpenses() {
+  currentView = 'expenses';
+  const expenses = getExpenses();
+
+  const data = [
+    ['DATO', 'BESKRIVELSE', 'KATEGORI', 'BELØP', 'BILAG/KVITTERING']
+  ];
+
+  // Group by month and sort by date (newest first)
+  const expensesByMonth = {};
+  expenses.forEach(exp => {
+    const date = new Date(exp.date);
+    const yearMonth = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+
+    if (!expensesByMonth[yearMonth]) {
+      expensesByMonth[yearMonth] = [];
+    }
+    expensesByMonth[yearMonth].push(exp);
+  });
+
+  // Sort months descending
+  const months = Object.keys(expensesByMonth).sort((a, b) => b.localeCompare(a));
+
+  const monthNames = ['Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Desember'];
+
+  months.forEach(yearMonth => {
+    const [year, month] = yearMonth.split('-');
+    const monthName = monthNames[parseInt(month) - 1];
+    const monthExpenses = expensesByMonth[yearMonth];
+
+    // Sort by date within month
+    monthExpenses.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Calculate month total
+    const monthTotal = monthExpenses.reduce((sum, exp) => sum + exp.amount, 0);
+
+    // Add month header
+    data.push([
+      '',
+      `{bold}{cyan-fg}${monthName} ${year} - TOTAL: ${monthTotal.toLocaleString('nb-NO')} kr{/cyan-fg}{/bold}`,
+      '',
+      '',
+      ''
+    ]);
+
+    // Add expenses for this month
+    monthExpenses.forEach(exp => {
+      const expAmount = exp.amount.toLocaleString('nb-NO');
+      const receipt = exp.receiptFile || exp.receiptNumber || '-';
+
+      data.push([
+        exp.date,
+        exp.description,
+        exp.category || '-',
+        `${expAmount} kr`,
+        receipt
+      ]);
+    });
+
+    // Add separator
+    data.push(['', '', '', '', '']);
+  });
+
+  if (expenses.length === 0) {
+    data.push(['', '{gray-fg}Ingen kostnader registrert enda{/gray-fg}', '', '', '']);
+  }
+
+  expensesTable.setData(data);
+
+  economyMenu.hide();
+  expensesTable.show();
+  expensesTable.focus();
+  screen.render();
+}
+
 // Show overview
 function showOverview() {
   currentView = 'overview';
@@ -954,6 +1073,9 @@ economyMenu.on('select', async (item, index) => {
   } else if (text.includes('PURRING')) {
     economyMenu.hide();
     showOverdueInvoices();
+  } else if (text.includes('KOSTNADER')) {
+    economyMenu.hide();
+    showExpenses();
   }
 });
 
@@ -972,6 +1094,9 @@ economyMenu.key(['enter', 'return'], async () => {
   } else if (text.includes('PURRING')) {
     economyMenu.hide();
     showOverdueInvoices();
+  } else if (text.includes('KOSTNADER')) {
+    economyMenu.hide();
+    showExpenses();
   }
 });
 
@@ -994,6 +1119,14 @@ accountsTable.key(['escape', 'q'], () => {
 
 overdueTable.key(['escape', 'q'], () => {
   overdueTable.hide();
+  economyMenu.show();
+  economyMenu.focus();
+  currentView = 'economy';
+  screen.render();
+});
+
+expensesTable.key(['escape', 'q'], () => {
+  expensesTable.hide();
   economyMenu.show();
   economyMenu.focus();
   currentView = 'economy';
@@ -1029,6 +1162,8 @@ screen.key(['C-r'], async () => {
     await showAccounts();
   } else if (currentView === 'overdue') {
     showOverdueInvoices();
+  } else if (currentView === 'expenses') {
+    showExpenses();
   } else if (currentView === 'overview') {
     showOverview();
   }
@@ -1058,6 +1193,8 @@ screen.key(['C-p'], () => {
       accountsTable.focus();
     } else if (currentView === 'overdue') {
       overdueTable.focus();
+    } else if (currentView === 'expenses') {
+      expensesTable.focus();
     }
     screen.render();
   });
