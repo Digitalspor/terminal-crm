@@ -170,6 +170,7 @@ const mainMenu = blessed.list({
   keys: true,
   vi: true,
   mouse: true,
+  interactive: true,
   items: [
     '{center}👥  KUNDER{/center}',
     '{center}💰  ØKONOMI{/center}',
@@ -370,6 +371,10 @@ mainMenu.focus();
 // Main menu selection
 mainMenu.on('select', (item, index) => {
   const text = item.getText().trim();
+
+  // Debug: Log what we're getting
+  const fs = require('fs');
+  fs.appendFileSync('/tmp/dashboard-debug.log', `Select event: index=${index}, text="${text}"\n`);
 
   if (text.includes('Avslutt')) {
     return process.exit(0);
