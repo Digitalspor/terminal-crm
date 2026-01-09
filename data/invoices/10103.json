@@ -1,0 +1,24 @@
+{
+  "id": 10103,
+  "customerId": "varebil-no-as",
+  "invoiceNumber": 10103,
+  "date": "2025-07-01",
+  "dueDate": "2025-07-06",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 30000,
+      "amount": 30000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9216100417,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.187Z",
+  "updated": "2026-01-09T23:24:54.187Z"
+}

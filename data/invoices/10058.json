@@ -1,0 +1,36 @@
+{
+  "id": 10058,
+  "customerId": "lysholm-bil-as",
+  "invoiceNumber": 10058,
+  "date": "2025-03-14",
+  "dueDate": "2025-03-24",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 100000,
+      "amount": 100000
+    },
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 2,
+      "rate": 100000,
+      "amount": 200000
+    },
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 4,
+      "rate": 100000,
+      "amount": 400000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8589586326,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.179Z",
+  "updated": "2026-01-09T23:24:54.179Z"
+}

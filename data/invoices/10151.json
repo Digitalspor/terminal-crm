@@ -1,0 +1,24 @@
+{
+  "id": 10151,
+  "customerId": "jemo-entreprenor-as",
+  "invoiceNumber": 10151,
+  "date": "2025-10-07",
+  "dueDate": "2025-10-17",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 1500000,
+      "amount": 1500000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 10645504135,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.194Z",
+  "updated": "2026-01-09T23:24:54.194Z"
+}

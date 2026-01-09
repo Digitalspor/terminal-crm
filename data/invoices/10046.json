@@ -1,0 +1,30 @@
+{
+  "id": 10046,
+  "customerId": "arendal-bil-as",
+  "invoiceNumber": 10046,
+  "date": "2025-02-13",
+  "dueDate": "2025-02-23",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 3000000,
+      "amount": 3000000
+    },
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 800000,
+      "amount": 800000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8440894631,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.177Z",
+  "updated": "2026-01-09T23:24:54.177Z"
+}

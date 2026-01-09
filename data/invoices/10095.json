@@ -1,0 +1,24 @@
+{
+  "id": 10095,
+  "customerId": "olderstad-formidling-as",
+  "invoiceNumber": 10095,
+  "date": "2025-06-15",
+  "dueDate": "2025-06-20",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 24900,
+      "amount": 24900
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9120114450,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.185Z",
+  "updated": "2026-01-09T23:24:54.185Z"
+}

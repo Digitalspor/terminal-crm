@@ -1,0 +1,24 @@
+{
+  "id": 10085,
+  "customerId": "auto-v-as",
+  "invoiceNumber": 10085,
+  "date": "2025-05-21",
+  "dueDate": "2025-05-26",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Nettside",
+      "hours": 1,
+      "rate": 500000,
+      "amount": 500000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8959699483,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.184Z",
+  "updated": "2026-01-09T23:24:54.184Z"
+}

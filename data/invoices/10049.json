@@ -1,0 +1,24 @@
+{
+  "id": 10049,
+  "customerId": "automotor-as",
+  "invoiceNumber": 10049,
+  "date": "2025-02-18",
+  "dueDate": "2025-02-23",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 1600000,
+      "amount": 1600000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8462118902,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.178Z",
+  "updated": "2026-01-09T23:24:54.178Z"
+}

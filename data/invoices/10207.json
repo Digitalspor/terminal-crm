@@ -1,0 +1,24 @@
+{
+  "id": 10207,
+  "customerId": "bilgatti-as",
+  "invoiceNumber": 10207,
+  "date": "2026-01-08",
+  "dueDate": "2026-01-18",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 1500000,
+      "amount": 1500000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11325399996,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.201Z",
+  "updated": "2026-01-09T23:24:54.201Z"
+}

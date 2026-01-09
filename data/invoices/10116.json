@@ -1,0 +1,24 @@
+{
+  "id": 10116,
+  "customerId": "viken-bruktbil-as",
+  "invoiceNumber": 10116,
+  "date": "2025-07-26",
+  "dueDate": "2025-07-31",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 800000,
+      "amount": 800000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9319091592,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.189Z",
+  "updated": "2026-01-09T23:24:54.189Z"
+}

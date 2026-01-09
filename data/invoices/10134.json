@@ -1,0 +1,24 @@
+{
+  "id": 10134,
+  "customerId": "autoama-as",
+  "invoiceNumber": 10134,
+  "date": "2025-09-06",
+  "dueDate": "2025-09-16",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 45000,
+      "amount": 45000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9535111565,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.192Z",
+  "updated": "2026-01-09T23:24:54.192Z"
+}

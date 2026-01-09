@@ -1,0 +1,24 @@
+{
+  "id": 10200,
+  "customerId": "bilsalong-1-as",
+  "invoiceNumber": 10200,
+  "date": "2026-01-01",
+  "dueDate": "2026-01-11",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 54900,
+      "amount": 54900
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11274511996,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.200Z",
+  "updated": "2026-01-09T23:24:54.200Z"
+}

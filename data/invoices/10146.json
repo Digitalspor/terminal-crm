@@ -1,0 +1,24 @@
+{
+  "id": 10146,
+  "customerId": "canal-boats-telemark-as",
+  "invoiceNumber": 10146,
+  "date": "2025-09-30",
+  "dueDate": "2025-11-21",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Etablering av tracking",
+      "hours": 1,
+      "rate": 500000,
+      "amount": 500000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 10601510123,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.193Z",
+  "updated": "2026-01-09T23:24:54.193Z"
+}

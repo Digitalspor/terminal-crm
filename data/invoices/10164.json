@@ -1,0 +1,48 @@
+{
+  "id": 10164,
+  "customerId": "oslo-glow-as",
+  "invoiceNumber": 10164,
+  "date": "2025-11-04",
+  "dueDate": "2025-11-14",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Nettside - Design, SEO, mobiltilpasning, CookieBot og kontaktskjema",
+      "hours": 1,
+      "rate": 2500000,
+      "amount": 2500000
+    },
+    {
+      "description": "Oppsett av kontoer - GA4, GTM, Google Ads, Meta Ads, Facebook-side, TikTok Ads m/pixel og events",
+      "hours": 1,
+      "rate": 500000,
+      "amount": 500000
+    },
+    {
+      "description": "Tracking og konverteringssporing - Inkl. booking-events, Consent Mode v2, testing og validering",
+      "hours": 1,
+      "rate": 500000,
+      "amount": 500000
+    },
+    {
+      "description": "Kampanjesider - 6 stk inkl. kampanjebilder",
+      "hours": 6,
+      "rate": 250000,
+      "amount": 1500000
+    },
+    {
+      "description": "Justering av ny logo-fil til nettsiden og lage favicon",
+      "hours": 1,
+      "rate": 100000,
+      "amount": 100000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 10805148842,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.195Z",
+  "updated": "2026-01-09T23:24:54.195Z"
+}

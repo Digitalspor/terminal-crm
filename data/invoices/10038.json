@@ -1,0 +1,24 @@
+{
+  "id": 10038,
+  "customerId": "klinikk-skien-as",
+  "invoiceNumber": 10038,
+  "date": "2025-01-28",
+  "dueDate": "2025-01-31",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Google Ads",
+      "hours": 1,
+      "rate": 2000000,
+      "amount": 2000000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8351041440,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.176Z",
+  "updated": "2026-01-09T23:24:54.176Z"
+}

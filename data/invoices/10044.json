@@ -1,0 +1,36 @@
+{
+  "id": 10044,
+  "customerId": "lysholm-bil-drammen-as",
+  "invoiceNumber": 10044,
+  "date": "2025-02-12",
+  "dueDate": "2025-02-17",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 360000,
+      "amount": 360000
+    },
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 300000,
+      "amount": 300000
+    },
+    {
+      "description": "Konsulent arbeid",
+      "hours": 2,
+      "rate": 100000,
+      "amount": 200000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8436230080,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.177Z",
+  "updated": "2026-01-09T23:24:54.177Z"
+}

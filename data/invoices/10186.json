@@ -1,0 +1,24 @@
+{
+  "id": 10186,
+  "customerId": "oslo-glow-as",
+  "invoiceNumber": 10186,
+  "date": "2025-12-15",
+  "dueDate": "2025-12-25",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Hosting (server for nettside / lagring)",
+      "hours": 1,
+      "rate": 35000,
+      "amount": 35000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11057345763,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.198Z",
+  "updated": "2026-01-09T23:24:54.198Z"
+}

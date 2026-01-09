@@ -1,0 +1,24 @@
+{
+  "id": 10067,
+  "customerId": "biloppkjoper-rogaland-as",
+  "invoiceNumber": 10067,
+  "date": "2025-03-24",
+  "dueDate": "2025-03-28",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 800000,
+      "amount": 800000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8640931170,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.181Z",
+  "updated": "2026-01-09T23:24:54.181Z"
+}

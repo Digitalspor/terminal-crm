@@ -1,0 +1,30 @@
+{
+  "id": 10060,
+  "customerId": "h-a-s-auto-as",
+  "invoiceNumber": 10060,
+  "date": "2025-03-14",
+  "dueDate": "2025-03-24",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 1000000,
+      "amount": 1000000
+    },
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 800000,
+      "amount": 800000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8589704094,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.180Z",
+  "updated": "2026-01-09T23:24:54.180Z"
+}

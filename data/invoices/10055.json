@@ -1,0 +1,24 @@
+{
+  "id": 10055,
+  "customerId": "blikkenslager-kvelland-as",
+  "invoiceNumber": 10055,
+  "date": "2025-03-10",
+  "dueDate": "2025-03-15",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 2,
+      "rate": 34900,
+      "amount": 69800
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8563298768,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.179Z",
+  "updated": "2026-01-09T23:24:54.179Z"
+}

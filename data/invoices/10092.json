@@ -1,0 +1,24 @@
+{
+  "id": 10092,
+  "customerId": "canal-boats-telemark-as",
+  "invoiceNumber": 10092,
+  "date": "2025-06-01",
+  "dueDate": "2025-06-11",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 1022000,
+      "amount": 1022000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9033904835,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.185Z",
+  "updated": "2026-01-09T23:24:54.185Z"
+}

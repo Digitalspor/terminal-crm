@@ -1,0 +1,24 @@
+{
+  "id": 10143,
+  "customerId": "grounding-as",
+  "invoiceNumber": 10143,
+  "date": "2025-09-20",
+  "dueDate": "2025-09-25",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 240000,
+      "amount": 240000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9623127536,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.193Z",
+  "updated": "2026-01-09T23:24:54.193Z"
+}

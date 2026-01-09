@@ -1,0 +1,24 @@
+{
+  "id": 10180,
+  "customerId": "rawdah-mohamed",
+  "invoiceNumber": 10180,
+  "date": "2025-12-04",
+  "dueDate": "2025-12-14",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 1490000,
+      "amount": 1490000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 10986144786,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.197Z",
+  "updated": "2026-01-09T23:24:54.197Z"
+}

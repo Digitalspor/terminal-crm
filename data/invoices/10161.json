@@ -1,0 +1,24 @@
+{
+  "id": 10161,
+  "customerId": "meivcore-norway-as",
+  "invoiceNumber": 10161,
+  "date": "2025-11-01",
+  "dueDate": "2025-11-11",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Drift, vedlikehold og backup – WordPress-nettside",
+      "hours": 2,
+      "rate": 80000,
+      "amount": 160000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 10787706564,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.195Z",
+  "updated": "2026-01-09T23:24:54.195Z"
+}

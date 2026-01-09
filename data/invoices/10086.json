@@ -1,0 +1,24 @@
+{
+  "id": 10086,
+  "customerId": "stathelle-auto-as",
+  "invoiceNumber": 10086,
+  "date": "2025-05-21",
+  "dueDate": "2025-05-31",
+  "status": "draft",
+  "items": [
+    {
+      "description": "DNS-oppdatering og kommunikasjon med Provendo / Cloudflare",
+      "hours": 3,
+      "rate": 120000,
+      "amount": 360000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8962047416,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.184Z",
+  "updated": "2026-01-09T23:24:54.184Z"
+}

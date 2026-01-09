@@ -1,0 +1,24 @@
+{
+  "id": 10050,
+  "customerId": "erik-arnesen-helsfyr-as",
+  "invoiceNumber": 10050,
+  "date": "2025-03-01",
+  "dueDate": "2025-03-04",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Nettside Direkte Abonnent - Avtalepris",
+      "hours": 1,
+      "rate": 149000,
+      "amount": 149000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8516591676,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.178Z",
+  "updated": "2026-01-09T23:24:54.178Z"
+}

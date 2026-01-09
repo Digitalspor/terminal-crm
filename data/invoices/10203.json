@@ -1,0 +1,24 @@
+{
+  "id": 10203,
+  "customerId": "skien-bilskade-verksted-as",
+  "invoiceNumber": 10203,
+  "date": "2026-01-01",
+  "dueDate": "2026-01-11",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulent arbeid",
+      "hours": 1,
+      "rate": 1000000,
+      "amount": 1000000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11274511999,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.200Z",
+  "updated": "2026-01-09T23:24:54.200Z"
+}

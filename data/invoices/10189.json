@@ -1,0 +1,42 @@
+{
+  "id": 10189,
+  "customerId": "vodacom-as",
+  "invoiceNumber": 10189,
+  "date": "2025-12-19",
+  "dueDate": "2025-12-29",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 4500000,
+      "amount": 4500000
+    },
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 2000000,
+      "amount": 2000000
+    },
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 397024,
+      "amount": 397024
+    },
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 159900,
+      "amount": 159900
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11227199392,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.198Z",
+  "updated": "2026-01-09T23:24:54.198Z"
+}

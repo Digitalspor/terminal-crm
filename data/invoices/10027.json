@@ -1,0 +1,24 @@
+{
+  "id": 10027,
+  "customerId": "first-auto-as",
+  "invoiceNumber": 10027,
+  "date": "2024-12-15",
+  "dueDate": "2024-12-20",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Drift",
+      "hours": 1,
+      "rate": 34900,
+      "amount": 34900
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8148253007,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.174Z",
+  "updated": "2026-01-09T23:24:54.174Z"
+}

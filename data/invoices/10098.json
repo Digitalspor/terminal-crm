@@ -1,0 +1,24 @@
+{
+  "id": 10098,
+  "customerId": "grounding-as",
+  "invoiceNumber": 10098,
+  "date": "2025-06-17",
+  "dueDate": "2025-06-22",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 204100,
+      "amount": 204100
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9130774445,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.186Z",
+  "updated": "2026-01-09T23:24:54.186Z"
+}

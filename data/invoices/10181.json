@@ -1,0 +1,24 @@
+{
+  "id": 10181,
+  "customerId": "t-a-auto-as",
+  "invoiceNumber": 10181,
+  "date": "2025-12-09",
+  "dueDate": "2025-12-19",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 1900000,
+      "amount": 1900000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11021367906,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.197Z",
+  "updated": "2026-01-09T23:24:54.197Z"
+}

@@ -1,0 +1,24 @@
+{
+  "id": 10087,
+  "customerId": "canal-boats-telemark-as",
+  "invoiceNumber": 10087,
+  "date": "2025-05-22",
+  "dueDate": "2025-05-29",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 12,
+      "rate": 100000,
+      "amount": 1200000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8968167188,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.184Z",
+  "updated": "2026-01-09T23:24:54.184Z"
+}

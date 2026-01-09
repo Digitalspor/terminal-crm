@@ -1,0 +1,30 @@
+{
+  "id": 10052,
+  "customerId": "s-k-motor-senter-as",
+  "invoiceNumber": 10052,
+  "date": "2025-03-04",
+  "dueDate": "2025-03-09",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 2350000,
+      "amount": 2350000
+    },
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 800000,
+      "amount": 800000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8535467543,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.178Z",
+  "updated": "2026-01-09T23:24:54.178Z"
+}

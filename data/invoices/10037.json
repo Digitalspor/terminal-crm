@@ -1,0 +1,24 @@
+{
+  "id": 10037,
+  "customerId": "skien-bilskade-verksted-as",
+  "invoiceNumber": 10037,
+  "date": "2025-01-28",
+  "dueDate": "2025-02-02",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Nettside",
+      "hours": 1,
+      "rate": 2500000,
+      "amount": 2500000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8351041413,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.175Z",
+  "updated": "2026-01-09T23:24:54.175Z"
+}

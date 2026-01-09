@@ -1,0 +1,24 @@
+{
+  "id": 10183,
+  "customerId": "bengtson-automarin-as",
+  "invoiceNumber": 10183,
+  "date": "2025-12-10",
+  "dueDate": "2025-12-20",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 50000,
+      "amount": 50000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11027018130,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.198Z",
+  "updated": "2026-01-09T23:24:54.198Z"
+}

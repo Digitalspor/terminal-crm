@@ -1,0 +1,24 @@
+{
+  "id": 10113,
+  "customerId": "rs-autosport",
+  "invoiceNumber": 10113,
+  "date": "2025-07-15",
+  "dueDate": "2025-07-25",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 34900,
+      "amount": 34900
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9281624554,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.188Z",
+  "updated": "2026-01-09T23:24:54.188Z"
+}

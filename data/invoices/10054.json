@@ -1,0 +1,24 @@
+{
+  "id": 10054,
+  "customerId": "fagbo-prosjekt-as",
+  "invoiceNumber": 10054,
+  "date": "2025-03-05",
+  "dueDate": "2025-03-10",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 2.25,
+      "rate": 100000,
+      "amount": 225000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8539658471,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.179Z",
+  "updated": "2026-01-09T23:24:54.179Z"
+}

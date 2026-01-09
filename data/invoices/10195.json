@@ -1,0 +1,24 @@
+{
+  "id": 10195,
+  "customerId": "auto-vest-as",
+  "invoiceNumber": 10195,
+  "date": "2025-12-22",
+  "dueDate": "2025-12-27",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 800000,
+      "amount": 800000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11238794363,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.199Z",
+  "updated": "2026-01-09T23:24:54.199Z"
+}

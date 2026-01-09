@@ -1,0 +1,24 @@
+{
+  "id": 10206,
+  "customerId": "oslo-glow-as",
+  "invoiceNumber": 10206,
+  "date": "2026-01-05",
+  "dueDate": "2026-01-15",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Retainer (annonsering, rapportering og oppfølging)",
+      "hours": 1,
+      "rate": 1000000,
+      "amount": 1000000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11303032437,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.200Z",
+  "updated": "2026-01-09T23:24:54.200Z"
+}

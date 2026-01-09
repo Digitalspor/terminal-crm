@@ -1,0 +1,24 @@
+{
+  "id": 10132,
+  "customerId": "lysholm-bil-as",
+  "invoiceNumber": 10132,
+  "date": "2025-09-03",
+  "dueDate": "2025-09-13",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 100000,
+      "amount": 100000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9517317732,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.191Z",
+  "updated": "2026-01-09T23:24:54.191Z"
+}

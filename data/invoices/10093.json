@@ -1,0 +1,24 @@
+{
+  "id": 10093,
+  "customerId": "outletsenteret-as",
+  "invoiceNumber": 10093,
+  "date": "2025-06-05",
+  "dueDate": "2025-06-15",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 700000,
+      "amount": 700000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9064344015,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.185Z",
+  "updated": "2026-01-09T23:24:54.185Z"
+}

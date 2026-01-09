@@ -1,0 +1,24 @@
+{
+  "id": 10197,
+  "customerId": "allcare-solutions-as",
+  "invoiceNumber": 10197,
+  "date": "2026-01-01",
+  "dueDate": "2026-01-06",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 179400,
+      "amount": 179400
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11274511992,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.199Z",
+  "updated": "2026-01-09T23:24:54.199Z"
+}

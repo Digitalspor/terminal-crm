@@ -1,0 +1,24 @@
+{
+  "id": 10144,
+  "customerId": "autoswap-as",
+  "invoiceNumber": 10144,
+  "date": "2025-09-24",
+  "dueDate": "2025-09-29",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 400000,
+      "amount": 400000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 9644055636,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.193Z",
+  "updated": "2026-01-09T23:24:54.193Z"
+}

@@ -1,0 +1,24 @@
+{
+  "id": 10056,
+  "customerId": "skien-bilskade-verksted-as",
+  "invoiceNumber": 10056,
+  "date": "2025-03-14",
+  "dueDate": "2025-03-17",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 1000000,
+      "amount": 1000000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8589586186,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.179Z",
+  "updated": "2026-01-09T23:24:54.179Z"
+}

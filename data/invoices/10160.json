@@ -1,0 +1,24 @@
+{
+  "id": 10160,
+  "customerId": "night-day-security-as",
+  "invoiceNumber": 10160,
+  "date": "2025-10-24",
+  "dueDate": "2025-10-29",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 50000,
+      "amount": 50000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 10745001770,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.195Z",
+  "updated": "2026-01-09T23:24:54.195Z"
+}

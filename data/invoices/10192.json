@@ -1,0 +1,30 @@
+{
+  "id": 10192,
+  "customerId": "meivcore-norway-as",
+  "invoiceNumber": 10192,
+  "date": "2025-12-19",
+  "dueDate": "2025-12-29",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 3000000,
+      "amount": 3000000
+    },
+    {
+      "description": "Webutvikling – Konsulentarbeid",
+      "hours": 1,
+      "rate": 3000000,
+      "amount": 3000000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 11227199548,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.199Z",
+  "updated": "2026-01-09T23:24:54.199Z"
+}

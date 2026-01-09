@@ -1,0 +1,24 @@
+{
+  "id": 10177,
+  "customerId": "night-day-security-as",
+  "invoiceNumber": 10177,
+  "date": "2025-12-01",
+  "dueDate": "2025-12-06",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Konsulentarbeid innen webutvikling, inkludert tilpasning, feilretting og videreutvikling av nettsider.",
+      "hours": 1,
+      "rate": 250000,
+      "amount": 250000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 10963510559,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.197Z",
+  "updated": "2026-01-09T23:24:54.197Z"
+}

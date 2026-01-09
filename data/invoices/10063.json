@@ -1,0 +1,24 @@
+{
+  "id": 10063,
+  "customerId": "grounding-as",
+  "invoiceNumber": 10063,
+  "date": "2025-03-15",
+  "dueDate": "2025-03-20",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Service & Drift",
+      "hours": 1,
+      "rate": 220000,
+      "amount": 220000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8593149880,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:24:54.180Z",
+  "updated": "2026-01-09T23:24:54.180Z"
+}
