@@ -80,12 +80,10 @@ class FikenSync {
       // Debug: Log first invoice structure
       if (fikenInvoices.length > 0) {
         const firstInvoice = fikenInvoices[0];
-        console.log(chalk.yellow(`  Debug - Første faktura contactId: ${firstInvoice.contactId}`));
-
-        if (Object.keys(customersByFikenId).length > 0) {
-          const firstCustomerId = Object.keys(customersByFikenId)[0];
-          console.log(chalk.yellow(`  Debug - Første kunde fikenId: ${firstCustomerId}`));
-        }
+        console.log(chalk.yellow(`  Debug - Faktura felt: ${Object.keys(firstInvoice).join(', ')}`));
+        console.log(chalk.yellow(`  Debug - customer: ${JSON.stringify(firstInvoice.customer)}`));
+        console.log(chalk.yellow(`  Debug - customerId: ${firstInvoice.customerId}`));
+        console.log(chalk.yellow(`  Debug - contactId: ${firstInvoice.contactId}`));
       }
 
       spinner.start('Mapper og lagrer fakturaer...');
