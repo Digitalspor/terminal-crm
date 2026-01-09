@@ -182,8 +182,8 @@ const mainMenu = blessed.list({
   ]
 });
 
-// Customer list view with table
-const customerTable = contrib.table({
+// Customer list view - using blessed.list for better interactivity
+const customerList = blessed.list({
   top: 1,
   left: 0,
   width: '100%',
@@ -199,23 +199,19 @@ const customerTable = contrib.table({
     border: {
       fg: 'green'
     },
-    header: {
-      fg: 'green',
+    selected: {
+      bg: 'green',
+      fg: 'white',
       bold: true
     },
-    cell: {
-      fg: 'white',
-      selected: {
-        bg: 'green',
-        fg: 'black'
-      }
+    item: {
+      fg: 'white'
     }
   },
   keys: true,
   vi: true,
   mouse: true,
-  columnSpacing: 3,
-  columnWidth: [30, 25, 30, 15],
+  interactive: true,
   hidden: true
 });
 
@@ -353,7 +349,7 @@ const overviewBox = blessed.box({
 screen.append(statusBar);
 screen.append(statsBox);
 screen.append(mainMenu);
-screen.append(customerTable);
+screen.append(customerList);
 screen.append(customerDetail);
 screen.append(projectTable);
 screen.append(invoiceTable);
@@ -402,27 +398,19 @@ function showCustomers() {
   const projects = getProjects();
   const invoices = getInvoices();
 
-  const data = [
-    ['NAVN', 'KONTAKT', 'E-POST', 'PROSJEKTER']
-  ];
-
-  customers.forEach(c => {
+  const items = customers.map(c => {
     const customerProjects = projects.filter(p => p.customerId === c.id).length;
     const customerInvoices = invoices.filter(i => i.customerId === c.id).length;
-    data.push([
-      c.name,
-      c.contact.name,
-      c.contact.email,
-      `${customerProjects}p / ${customerInvoices}f`
-    ]);
+    return `{cyan-fg}${c.name}{/cyan-fg} - ${c.contact.name} (${c.contact.email}) - ${customerProjects}p / ${customerInvoices}f`;
   });
 
-  customerTable.setData(data);
+  customerList.setItems(items);
+  customerList.select(0);
 
   statsBox.hide();
   mainMenu.hide();
-  customerTable.show();
-  customerTable.focus();
+  customerList.show();
+  customerList.focus();
   screen.render();
 }
 
@@ -479,19 +467,18 @@ function showCustomerDetail(customer) {
   content += `  {bold}{yellow-fg}└─{/yellow-fg}{/bold}\n`;
 
   customerDetail.setContent(content);
-  customerTable.hide();
+  customerList.hide();
   customerDetail.show();
   customerDetail.focus();
   screen.render();
 }
 
-// Customer table selection with Enter key
+// Customer list selection - much simpler with blessed.list!
 let customersCache = [];
-customerTable.key(['enter', 'space'], () => {
-  const selected = customerTable.rows.selected;
-  // selected is the row index (0-based), but row 0 is the header
-  if (selected >= 1 && customersCache[selected - 1]) {
-    selectedCustomer = customersCache[selected - 1];
+
+customerList.on('select', (item, index) => {
+  if (customersCache[index]) {
+    selectedCustomer = customersCache[index];
     showCustomerDetail(selectedCustomer);
   }
 });
@@ -625,8 +612,8 @@ function showMessage(title, message) {
 }
 
 // ESC key handling for going back
-customerTable.key(['escape', 'q'], () => {
-  customerTable.hide();
+customerList.key(['escape', 'q'], () => {
+  customerList.hide();
   statsBox.show();
   mainMenu.show();
   mainMenu.focus();
@@ -636,8 +623,8 @@ customerTable.key(['escape', 'q'], () => {
 
 customerDetail.key(['escape', 'q'], () => {
   customerDetail.hide();
-  customerTable.show();
-  customerTable.focus();
+  customerList.show();
+  customerList.focus();
   currentView = 'customers';
   screen.render();
 });
@@ -686,7 +673,7 @@ screen.key(['C-p'], () => {
     if (currentView === 'main') {
       mainMenu.focus();
     } else if (currentView === 'customers') {
-      customerTable.focus();
+      customerList.focus();
     } else if (currentView === 'projects') {
       projectTable.focus();
     } else if (currentView === 'invoices') {
