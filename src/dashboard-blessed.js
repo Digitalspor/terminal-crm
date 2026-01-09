@@ -79,15 +79,9 @@ function updateStatusBar() {
       const invDate = new Date(i.date);
       return invDate.getMonth() === thisMonth && invDate.getFullYear() === thisYear && i.status !== 'draft';
     })
-    .reduce((sum, i) => sum + i.total, 0);
+    .reduce((sum, i) => sum + i.total, 0) / 100; // Convert from øre to kr
 
-  // Dummy data for notifications and goal
-  const notifications = 3; // Dummy: 3 new messages
-  const monthlyGoal = 200000;
-  const goalProgress = Math.round((monthRevenue / monthlyGoal) * 100);
-  const goalBar = `${'▓'.repeat(Math.round(goalProgress/10))}${'░'.repeat(10-Math.round(goalProgress/10))}`;
-
-  const content = ` 🕐 ${time} │ 📅 ${date} │ 💰 ${monthRevenue.toLocaleString('nb-NO')} kr │ 🎯 ${goalBar} ${goalProgress}% (${monthlyGoal.toLocaleString('nb-NO')} kr) │ 📬 ${notifications} nye`;
+  const content = ` 🕐 ${time} │ 📅 ${date} │ 💰 ${monthRevenue.toLocaleString('nb-NO')} kr denne måneden`;
 
   statusBar.setContent(content);
 }
@@ -126,17 +120,37 @@ const statsBox = blessed.box({
   }
 });
 
+// Get overdue invoices
+function getOverdueInvoices() {
+  const invoices = getInvoices();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return invoices.filter(i => {
+    if (i.status === 'paid') return false;
+    if (!i.dueDate) return false;
+
+    const dueDate = new Date(i.dueDate);
+    dueDate.setHours(0, 0, 0, 0);
+
+    return dueDate < today;
+  });
+}
+
 // Update stats
 function updateStats() {
   const customers = getCustomers();
   const projects = getProjects();
   const invoices = getInvoices();
   const activeProjects = projects.filter(p => p.status === 'in-progress').length;
-  const draftInvoices = invoices.filter(i => i.status === 'draft');
-  const outstanding = draftInvoices.reduce((sum, i) => sum + i.total, 0);
+
+  // Calculate overdue invoices
+  const overdueInvoices = getOverdueInvoices();
+  const overdueAmount = overdueInvoices.reduce((sum, i) => sum + i.total, 0) / 100; // Convert from øre to kr
+  const overdueCount = overdueInvoices.length;
 
   const content = `{center}{bold}{cyan-fg}📊 QUICK STATS{/cyan-fg}{/bold}{/center}
-{center}👥 {bold}${customers.length}{/bold} kunder  │  📁 {bold}${activeProjects}{/bold} aktive prosjekter  │  💰 {bold}${outstanding.toLocaleString('nb-NO')} kr{/bold} utestående{/center}`;
+{center}👥 {bold}${customers.length}{/bold} kunder  │  📁 {bold}${activeProjects}{/bold} aktive prosjekter  │  {red-fg}🔔 {bold}${overdueCount}{/bold} forfalte fakturaer ({bold}${overdueAmount.toLocaleString('nb-NO')} kr{/bold}){/red-fg}{/center}`;
 
   statsBox.setContent(content);
 }
@@ -276,7 +290,8 @@ const economyMenu = blessed.list({
   interactive: true,
   items: [
     '{center}💰  FAKTURAER{/center}',
-    '{center}🏦  KONTOER & SALDO{/center}'
+    '{center}🏦  KONTOER & SALDO{/center}',
+    '{center}{red-fg}🔔  PURRING{/red-fg}{/center}'
   ],
   hidden: true
 });
@@ -392,6 +407,43 @@ const accountsTable = contrib.table({
   hidden: true
 });
 
+// Overdue invoices table for purring
+const overdueTable = contrib.table({
+  top: 1,
+  left: 0,
+  width: '100%',
+  height: '100%-2',
+  label: ' {bold}{red-fg}🔔 PURRING - FORFALTE FAKTURAER{/red-fg}{/bold} (↑↓: navigér │ ESC: tilbake) ',
+  tags: true,
+  border: {
+    type: 'line',
+    fg: 'red'
+  },
+  style: {
+    fg: 'white',
+    border: {
+      fg: 'red'
+    },
+    header: {
+      fg: 'red',
+      bold: true
+    },
+    cell: {
+      fg: 'white',
+      selected: {
+        bg: 'red',
+        fg: 'white'
+      }
+    }
+  },
+  keys: true,
+  vi: true,
+  mouse: true,
+  columnSpacing: 3,
+  columnWidth: [12, 25, 12, 15, 12, 12],
+  hidden: true
+});
+
 // Overview box
 const overviewBox = blessed.box({
   top: 1,
@@ -430,6 +482,7 @@ screen.append(economyMenu);
 screen.append(projectTable);
 screen.append(invoiceTable);
 screen.append(accountsTable);
+screen.append(overdueTable);
 screen.append(overviewBox);
 screen.append(promptBox);
 
@@ -558,7 +611,7 @@ function showCustomerDetail(customer) {
     invoicesByYear[year][month].push(inv);
   });
 
-  const totalAmount = invoices.reduce((sum, inv) => sum + inv.total, 0);
+  const totalAmount = invoices.reduce((sum, inv) => sum + inv.total, 0) / 100; // Convert from øre to kr
   content += `  {bold}{yellow-fg}┌─ FAKTURA-HISTORIKK ({${invoices.length}} · ${totalAmount.toLocaleString('nb-NO')} kr totalt){/yellow-fg}{/bold}\n`;
 
   if (invoices.length === 0) {
@@ -568,7 +621,7 @@ function showCustomerDetail(customer) {
 
     years.forEach((year, yearIdx) => {
       const yearInvoices = Object.values(invoicesByYear[year]).flat();
-      const yearTotal = yearInvoices.reduce((sum, inv) => sum + inv.total, 0);
+      const yearTotal = yearInvoices.reduce((sum, inv) => sum + inv.total, 0) / 100; // Convert from øre to kr
 
       content += `  │\n`;
       content += `  │ {bold}{cyan-fg}${year}:{/cyan-fg}{/bold} ${yearTotal.toLocaleString('nb-NO')} kr (${yearInvoices.length} fakturaer)\n`;
@@ -579,14 +632,15 @@ function showCustomerDetail(customer) {
 
       months.forEach(month => {
         const monthInvoices = invoicesByYear[year][month];
-        const monthTotal = monthInvoices.reduce((sum, inv) => sum + inv.total, 0);
+        const monthTotal = monthInvoices.reduce((sum, inv) => sum + inv.total, 0) / 100; // Convert from øre to kr
 
         content += `  │   {bold}${monthNames[month]}:{/bold} ${monthTotal.toLocaleString('nb-NO')} kr\n`;
 
         monthInvoices.forEach(inv => {
           const statusIcon = inv.status === 'draft' ? '📝' : inv.status === 'sent' ? '📤' : '✅';
           const statusColor = inv.status === 'draft' ? 'white' : inv.status === 'sent' ? 'yellow' : 'green';
-          content += `  │     ${statusIcon} {bold}${inv.invoiceNumber}{/bold} │ {${statusColor}-fg}${inv.total.toLocaleString('nb-NO')} kr{/${statusColor}-fg} │ ${inv.dueDate}\n`;
+          const invTotal = (inv.total / 100).toLocaleString('nb-NO'); // Convert from øre to kr
+          content += `  │     ${statusIcon} {bold}${inv.invoiceNumber}{/bold} │ {${statusColor}-fg}${invTotal} kr{/${statusColor}-fg} │ ${inv.dueDate}\n`;
         });
       });
     });
@@ -726,10 +780,11 @@ function showInvoices() {
   invoices.forEach(inv => {
     const customer = customers.find(c => c.id === inv.customerId);
     const statusIcon = inv.status === 'draft' ? '📝' : inv.status === 'sent' ? '📤' : '✅';
+    const invTotal = (inv.total / 100).toLocaleString('nb-NO'); // Convert from øre to kr
     data.push([
       inv.invoiceNumber,
       customer?.name || inv.customerId,
-      `${inv.total.toLocaleString('nb-NO')} kr`,
+      `${invTotal} kr`,
       inv.dueDate,
       `${statusIcon} ${inv.status}`
     ]);
@@ -741,6 +796,50 @@ function showInvoices() {
   mainMenu.hide();
   invoiceTable.show();
   invoiceTable.focus();
+  screen.render();
+}
+
+// Show overdue invoices (Purring)
+function showOverdueInvoices() {
+  currentView = 'overdue';
+  const overdueInvs = getOverdueInvoices();
+  const customers = getCustomers();
+
+  const data = [
+    ['FAKTURA', 'KUNDE', 'BELØP', 'FORFALT', 'DAGER', 'STATUS']
+  ];
+
+  // Sort by due date (oldest first)
+  overdueInvs.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
+  overdueInvs.forEach(inv => {
+    const customer = customers.find(c => c.id === inv.customerId);
+    const invTotal = (inv.total / 100).toLocaleString('nb-NO'); // Convert from øre to kr
+
+    // Calculate days overdue
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dueDate = new Date(inv.dueDate);
+    dueDate.setHours(0, 0, 0, 0);
+    const daysOverdue = Math.floor((today - dueDate) / (1000 * 60 * 60 * 24));
+
+    const statusIcon = inv.status === 'sent' ? '📤' : '📝';
+
+    data.push([
+      inv.invoiceNumber,
+      customer?.name || inv.customerId,
+      `${invTotal} kr`,
+      inv.dueDate,
+      `${daysOverdue}d`,
+      `${statusIcon} ${inv.status}`
+    ]);
+  });
+
+  overdueTable.setData(data);
+
+  economyMenu.hide();
+  overdueTable.show();
+  overdueTable.focus();
   screen.render();
 }
 
@@ -852,6 +951,9 @@ economyMenu.on('select', async (item, index) => {
     showInvoices();
   } else if (text.includes('KONTOER')) {
     await showAccounts();
+  } else if (text.includes('PURRING')) {
+    economyMenu.hide();
+    showOverdueInvoices();
   }
 });
 
@@ -867,6 +969,9 @@ economyMenu.key(['enter', 'return'], async () => {
     showInvoices();
   } else if (text.includes('KONTOER')) {
     await showAccounts();
+  } else if (text.includes('PURRING')) {
+    economyMenu.hide();
+    showOverdueInvoices();
   }
 });
 
@@ -881,6 +986,14 @@ economyMenu.key(['escape', 'q'], () => {
 
 accountsTable.key(['escape', 'q'], () => {
   accountsTable.hide();
+  economyMenu.show();
+  economyMenu.focus();
+  currentView = 'economy';
+  screen.render();
+});
+
+overdueTable.key(['escape', 'q'], () => {
+  overdueTable.hide();
   economyMenu.show();
   economyMenu.focus();
   currentView = 'economy';
@@ -914,6 +1027,8 @@ screen.key(['C-r'], async () => {
     showInvoices();
   } else if (currentView === 'accounts') {
     await showAccounts();
+  } else if (currentView === 'overdue') {
+    showOverdueInvoices();
   } else if (currentView === 'overview') {
     showOverview();
   }
@@ -941,6 +1056,8 @@ screen.key(['C-p'], () => {
       invoiceTable.focus();
     } else if (currentView === 'accounts') {
       accountsTable.focus();
+    } else if (currentView === 'overdue') {
+      overdueTable.focus();
     }
     screen.render();
   });
