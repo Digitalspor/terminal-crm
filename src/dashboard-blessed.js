@@ -368,13 +368,13 @@ updateStats();
 updateStatusBar();
 mainMenu.focus();
 
-// Main menu selection
-mainMenu.on('select', (item, index) => {
-  const text = item.getText().trim();
+// Main menu selection handler function
+function handleMenuSelection() {
+  const selected = mainMenu.selected;
+  const item = mainMenu.items[selected];
+  if (!item) return;
 
-  // Debug: Log what we're getting
-  const fs = require('fs');
-  fs.appendFileSync('/tmp/dashboard-debug.log', `Select event: index=${index}, text="${text}"\n`);
+  const text = item.getText().trim();
 
   if (text.includes('Avslutt')) {
     return process.exit(0);
@@ -393,7 +393,11 @@ mainMenu.on('select', (item, index) => {
   } else if (text.includes('Kalender')) {
     showMessage('📅 Kalender', 'Kalender-funksjonen kommer snart!');
   }
-});
+}
+
+// Try both select event and enter key
+mainMenu.on('select', handleMenuSelection);
+mainMenu.key(['enter', 'return'], handleMenuSelection);
 
 // Show customers
 function showCustomers() {
