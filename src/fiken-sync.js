@@ -75,14 +75,17 @@ class FikenSync {
         }
       });
 
-      spinner.text = `Fant ${customers.length} kunder med ${Object.keys(customersByFikenId).length} Fiken IDs`;
+      console.log(chalk.gray(`  Fant ${customers.length} kunder med ${Object.keys(customersByFikenId).length} Fiken IDs`));
 
       // Debug: Log first invoice structure
-      if (fikenInvoices.length > 0 && Object.keys(customersByFikenId).length > 0) {
+      if (fikenInvoices.length > 0) {
         const firstInvoice = fikenInvoices[0];
-        const firstCustomerId = Object.keys(customersByFikenId)[0];
-        spinner.text = `Debug: Faktura contactId: ${firstInvoice.contactId}, Kunde fikenId eksempel: ${firstCustomerId}`;
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Pause so user can see
+        console.log(chalk.yellow(`  Debug - Første faktura contactId: ${firstInvoice.contactId}`));
+
+        if (Object.keys(customersByFikenId).length > 0) {
+          const firstCustomerId = Object.keys(customersByFikenId)[0];
+          console.log(chalk.yellow(`  Debug - Første kunde fikenId: ${firstCustomerId}`));
+        }
       }
 
       spinner.start('Mapper og lagrer fakturaer...');
