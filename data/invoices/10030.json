@@ -13,12 +13,12 @@
       "amount": 2000000
     }
   ],
-  "subtotal": 0,
-  "vat": 0,
-  "total": 0,
+  "subtotal": 2000000,
+  "vat": 500000,
+  "total": 2500000,
   "fikenId": 8168023353,
   "fikenSynced": true,
   "notes": null,
   "created": "2026-01-09T23:24:54.174Z",
-  "updated": "2026-01-09T23:24:54.174Z"
+  "updated": "2026-01-09T23:25:55.515Z"
 }
