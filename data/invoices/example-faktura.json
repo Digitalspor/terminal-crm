@@ -1,0 +1,30 @@
+{
+  "id": "2024-001",
+  "customerId": "example-kunde",
+  "invoiceNumber": "2024-001",
+  "date": "2024-01-15",
+  "dueDate": "2024-02-14",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Webdesign og utvikling",
+      "hours": 40,
+      "rate": 1200,
+      "amount": 48000
+    },
+    {
+      "description": "Prosjektledelse og møter",
+      "hours": 8,
+      "rate": 1200,
+      "amount": 9600
+    }
+  ],
+  "subtotal": 57600,
+  "vat": 14400,
+  "total": 72000,
+  "fikenId": null,
+  "fikenSynced": false,
+  "notes": "Vennligst betal innen forfallsdato",
+  "created": "2024-01-15T10:30:00Z",
+  "updated": "2024-01-15T10:30:00Z"
+}

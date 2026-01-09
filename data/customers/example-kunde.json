@@ -1,0 +1,19 @@
+{
+  "id": "example-kunde",
+  "name": "Eksempel AS",
+  "orgNr": "123456789",
+  "contact": {
+    "name": "Ola Nordmann",
+    "email": "ola@eksempel.no",
+    "phone": "+47 12345678"
+  },
+  "address": {
+    "street": "Eksempelveien 1",
+    "postalCode": "0123",
+    "city": "Oslo"
+  },
+  "fikenId": null,
+  "created": "2024-01-15T10:30:00Z",
+  "updated": "2024-01-15T10:30:00Z",
+  "notes": "Dette er en eksempelkunde for å vise strukturen"
+}

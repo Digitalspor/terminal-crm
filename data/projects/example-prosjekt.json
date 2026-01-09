@@ -1,0 +1,18 @@
+{
+  "id": "example-prosjekt",
+  "name": "Eksempel Nettside Redesign",
+  "customerId": "example-kunde",
+  "status": "in-progress",
+  "startDate": "2024-01-15",
+  "deadline": "2024-03-01",
+  "estimatedHours": 80,
+  "spentHours": 48,
+  "hourlyRate": 1200,
+  "budget": 96000,
+  "description": "Fullstendig redesign av nettside med fokus på UX og moderne design",
+  "team": ["Andre", "Kollega"],
+  "tags": ["web", "design", "frontend"],
+  "created": "2024-01-15T10:30:00Z",
+  "updated": "2024-01-20T14:30:00Z",
+  "notes": "Kunde ønsker monthly status updates"
+}
