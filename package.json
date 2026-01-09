@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node src/index.js",
     "crm": "node src/index.js",
+    "dashboard": "node src/dashboard.js",
     "dev": "node --watch src/index.js",
     "commit": "git add . && git commit",
     "sync": "git pull --rebase && git push",

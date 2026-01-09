@@ -296,9 +296,28 @@ program
     }
   });
 
+// Dashboard
+program
+  .command('dashboard')
+  .alias('oversikt')
+  .description('Vis visuelt dashboard i Canvas')
+  .action(async () => {
+    console.log(chalk.cyan('\n🎯 Åpner dashboard i Canvas...\n'));
+    try {
+      const { showDashboard } = await import('./dashboard.js');
+      await showDashboard();
+    } catch (error) {
+      console.error(chalk.red('Feil:', error.message));
+    }
+  });
+
 // Interactive mode
 if (process.argv.length === 2) {
   console.log(chalk.bold.cyan('\n🎯 CRM Terminal\n'));
+  console.log(chalk.bold('Dashboard:'));
+  console.log('  npm run dashboard           - 📊 Visuelt dashboard i Canvas');
+  console.log('  npm run crm oversikt        - Samme som over');
+  console.log('');
   console.log(chalk.bold('Data:'));
   console.log('  npm run crm kunder            - List kunder');
   console.log('  npm run crm fakturaer         - List fakturaer');
