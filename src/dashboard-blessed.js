@@ -398,6 +398,7 @@ mainMenu.on('select', (item, index) => {
 function showCustomers() {
   currentView = 'customers';
   const customers = getCustomers();
+  customersCache = customers; // Store for selection handler
   const projects = getProjects();
   const invoices = getInvoices();
 
@@ -484,11 +485,13 @@ function showCustomerDetail(customer) {
   screen.render();
 }
 
-// Customer table selection (row index - 1 because of header)
-customerTable.rows.on('select', (item, index) => {
-  const customers = getCustomers();
-  if (customers[index - 1]) {
-    selectedCustomer = customers[index - 1];
+// Customer table selection with Enter key
+let customersCache = [];
+customerTable.key(['enter', 'space'], () => {
+  const selected = customerTable.rows.selected;
+  // selected is the row index (0-based), but row 0 is the header
+  if (selected >= 1 && customersCache[selected - 1]) {
+    selectedCustomer = customersCache[selected - 1];
     showCustomerDetail(selectedCustomer);
   }
 });
