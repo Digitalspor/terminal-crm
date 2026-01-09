@@ -75,6 +75,16 @@ class FikenSync {
         }
       });
 
+      spinner.text = `Fant ${customers.length} kunder med ${Object.keys(customersByFikenId).length} Fiken IDs`;
+
+      // Debug: Log first invoice structure
+      if (fikenInvoices.length > 0 && Object.keys(customersByFikenId).length > 0) {
+        const firstInvoice = fikenInvoices[0];
+        const firstCustomerId = Object.keys(customersByFikenId)[0];
+        spinner.text = `Debug: Faktura contactId: ${firstInvoice.contactId}, Kunde fikenId eksempel: ${firstCustomerId}`;
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Pause so user can see
+      }
+
       spinner.start('Mapper og lagrer fakturaer...');
 
       let newCount = 0;
@@ -86,6 +96,10 @@ class FikenSync {
         const customer = customersByFikenId[fikenInv.contactId];
 
         if (!customer) {
+          if (skippedCount < 3) {
+            // Log first 3 skipped invoices for debugging
+            spinner.text = `⚠️  Faktura ${fikenInv.invoiceNumber}: kunde ${fikenInv.contactId} ikke funnet`;
+          }
           skippedCount++;
           continue; // Skip if customer not found
         }
