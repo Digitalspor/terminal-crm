@@ -93,13 +93,14 @@ class FikenSync {
       let skippedCount = 0;
 
       for (const fikenInv of fikenInvoices) {
-        // Find customer by Fiken contact ID
-        const customer = customersByFikenId[fikenInv.contactId];
+        // Find customer by Fiken contact ID (nested in customer object)
+        const contactId = fikenInv.customer?.contactId;
+        const customer = customersByFikenId[contactId];
 
         if (!customer) {
           if (skippedCount < 3) {
             // Log first 3 skipped invoices for debugging
-            spinner.text = `⚠️  Faktura ${fikenInv.invoiceNumber}: kunde ${fikenInv.contactId} ikke funnet`;
+            console.log(chalk.gray(`    ⚠️  Hopper over faktura ${fikenInv.invoiceNumber}: kunde ${contactId} ikke funnet`));
           }
           skippedCount++;
           continue; // Skip if customer not found
