@@ -8,7 +8,7 @@
     "start": "node src/index.js",
     "crm": "node src/index.js",
     "dashboard": "node src/index.js dashboard",
-    "dashboard:dev": "nodemon --stdin src/index.js dashboard",
+    "dashboard:dev": "nodemon src/index.js dashboard",
     "dashboard:watch": "node --watch src/index.js dashboard",
     "dev": "node --watch src/index.js",
     "commit": "git add . && git commit",
