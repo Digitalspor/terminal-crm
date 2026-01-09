@@ -268,7 +268,7 @@ const economyMenu = blessed.list({
   left: '20%',
   width: '60%',
   height: 11,
-  label: ' {bold}{yellow-fg}💰 ØKONOMI{/yellow-fg}{/bold} (↑↓: navigér │ Enter: velg │ ESC: tilbake) ',
+  label: ' {bold}{yellow-fg}ØKONOMI{/yellow-fg}{/bold} (↑↓: navigér │ Enter: velg │ ESC: tilbake) ',
   tags: true,
   border: {
     type: 'double',
@@ -295,10 +295,10 @@ const economyMenu = blessed.list({
   scrollable: true,
   alwaysScroll: true,
   items: [
-    '{center}💰  FAKTURAER{/center}',
-    '{center}🏦  KONTOER & SALDO{/center}',
-    '{center}{red-fg}🔔  PURRING{/red-fg}{/center}',
-    '{center}💵  KOSTNADER{/center}'
+    '{center}FAKTURAER{/center}',
+    '{center}KONTOER & SALDO{/center}',
+    '{center}{red-fg}PURRING{/red-fg}{/center}',
+    '{center}KOSTNADER{/center}'
   ],
   hidden: true
 });
