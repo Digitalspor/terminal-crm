@@ -178,6 +178,7 @@ const mainMenu = blessed.list({
     '{center}📊  OVERSIKT{/center}',
     '{center}📝  NOTATER{/center}',
     '{center}📅  KALENDER{/center}',
+    '{center}🧪  TEST-KATEGORI{/center}',
     '',
     '{center}{red-fg}❌  AVSLUTT{/red-fg}{/center}'
   ]
