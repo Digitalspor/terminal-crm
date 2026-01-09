@@ -300,14 +300,23 @@ program
 program
   .command('dashboard')
   .alias('oversikt')
-  .description('Vis visuelt dashboard i Canvas')
-  .action(async () => {
-    console.log(chalk.cyan('\n🎯 Åpner dashboard i Canvas...\n'));
-    try {
-      const { showDashboard } = await import('./dashboard.js');
-      await showDashboard();
-    } catch (error) {
-      console.error(chalk.red('Feil:', error.message));
+  .description('Vis interaktivt dashboard')
+  .option('--canvas', 'Bruk Canvas i stedet for blessed')
+  .action(async (options) => {
+    if (options.canvas) {
+      console.log(chalk.cyan('\n🎯 Åpner dashboard i Canvas...\n'));
+      try {
+        const { showDashboard } = await import('./dashboard.js');
+        await showDashboard();
+      } catch (error) {
+        console.error(chalk.red('Feil:', error.message));
+      }
+    } else {
+      try {
+        await import('./dashboard-blessed.js');
+      } catch (error) {
+        console.error(chalk.red('Feil:', error.message));
+      }
     }
   });
 
@@ -315,8 +324,9 @@ program
 if (process.argv.length === 2) {
   console.log(chalk.bold.cyan('\n🎯 CRM Terminal\n'));
   console.log(chalk.bold('Dashboard:'));
-  console.log('  npm run dashboard           - 📊 Visuelt dashboard i Canvas');
+  console.log('  npm run crm dashboard       - 📊 Interaktivt dashboard (blessed)');
   console.log('  npm run crm oversikt        - Samme som over');
+  console.log('  npm run crm dashboard --canvas - 📊 Canvas dashboard (krever tmux)');
   console.log('');
   console.log(chalk.bold('Data:'));
   console.log('  npm run crm kunder            - List kunder');
