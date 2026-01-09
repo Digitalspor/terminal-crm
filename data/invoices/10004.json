@@ -1,0 +1,24 @@
+{
+  "id": 10004,
+  "customerId": "olderstad-formidling-as",
+  "invoiceNumber": 10004,
+  "date": "2024-09-25",
+  "dueDate": "2024-10-03",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Integrasjon",
+      "hours": 1,
+      "rate": 1599600,
+      "amount": 1599600
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 7768677893,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.569Z",
+  "updated": "2026-01-09T23:19:54.569Z"
+}

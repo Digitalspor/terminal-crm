@@ -1,0 +1,24 @@
+{
+  "id": 10002,
+  "customerId": "bad-moo-sune-jakobsen",
+  "invoiceNumber": 10002,
+  "date": "2024-08-31",
+  "dueDate": "2024-09-01",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Markedsføringstjenester",
+      "hours": 1,
+      "rate": 980000,
+      "amount": 980000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 7710195788,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.569Z",
+  "updated": "2026-01-09T23:19:54.569Z"
+}

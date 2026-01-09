@@ -1,0 +1,24 @@
+{
+  "id": 10003,
+  "customerId": "arendal-hjemmebakeri-as",
+  "invoiceNumber": 10003,
+  "date": "2024-09-19",
+  "dueDate": "2024-09-24",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Nettside til hjemmebakeriet AS",
+      "hours": 1,
+      "rate": 618000,
+      "amount": 618000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 7742032934,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.569Z",
+  "updated": "2026-01-09T23:19:54.569Z"
+}

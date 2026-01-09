@@ -1,0 +1,36 @@
+{
+  "id": 10010,
+  "customerId": "stjordal-autosalg-as",
+  "invoiceNumber": 10010,
+  "date": "2024-10-21",
+  "dueDate": "2024-10-26",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Fast timepris",
+      "hours": 1,
+      "rate": 400000,
+      "amount": 400000
+    },
+    {
+      "description": "Kampanje-kort på bilersiden",
+      "hours": 1,
+      "rate": 500000,
+      "amount": 500000
+    },
+    {
+      "description": "Popup Kontaktskjema",
+      "hours": 1,
+      "rate": 240000,
+      "amount": 240000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 7891109070,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.571Z",
+  "updated": "2026-01-09T23:19:54.571Z"
+}

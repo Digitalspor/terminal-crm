@@ -1,0 +1,24 @@
+{
+  "id": 10005,
+  "customerId": "t-a-auto-as",
+  "invoiceNumber": 10005,
+  "date": "2024-10-01",
+  "dueDate": "2024-10-06",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Annonse",
+      "hours": 1,
+      "rate": 500000,
+      "amount": 500000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 7795945069,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.569Z",
+  "updated": "2026-01-09T23:19:54.569Z"
+}

@@ -1,0 +1,24 @@
+{
+  "id": 10023,
+  "customerId": "strand-autosalg-as",
+  "invoiceNumber": 10023,
+  "date": "2024-12-02",
+  "dueDate": "2024-12-07",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Nettside",
+      "hours": 1,
+      "rate": 1000000,
+      "amount": 1000000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8078294963,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.577Z",
+  "updated": "2026-01-09T23:19:54.577Z"
+}

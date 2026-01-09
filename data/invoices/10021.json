@@ -1,0 +1,24 @@
+{
+  "id": 10021,
+  "customerId": "nissen-bil",
+  "invoiceNumber": 10021,
+  "date": "2024-11-29",
+  "dueDate": "2024-12-04",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Popup Kontaktskjema",
+      "hours": 1,
+      "rate": 168000,
+      "amount": 168000
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 8064683536,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.575Z",
+  "updated": "2026-01-09T23:19:54.575Z"
+}

@@ -1,0 +1,30 @@
+{
+  "id": 10001,
+  "customerId": "reserver-meg-as",
+  "invoiceNumber": 10001,
+  "date": "2024-04-16",
+  "dueDate": "2024-04-16",
+  "status": "draft",
+  "items": [
+    {
+      "description": "Salg av domene \"Reververmeg.no\"",
+      "hours": 1,
+      "rate": 3500,
+      "amount": 3500
+    },
+    {
+      "description": "Gebyr for bytte av domeneeier",
+      "hours": 1,
+      "rate": 36875,
+      "amount": 36875
+    }
+  ],
+  "subtotal": 0,
+  "vat": 0,
+  "total": 0,
+  "fikenId": 7700456320,
+  "fikenSynced": true,
+  "notes": null,
+  "created": "2026-01-09T23:19:54.567Z",
+  "updated": "2026-01-09T23:19:54.568Z"
+}
