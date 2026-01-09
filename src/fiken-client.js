@@ -33,7 +33,7 @@ class FikenClient {
     return `/companies/${this.companySlug}${path}`;
   }
 
-  // Get all contacts (customers)
+  // Get all contacts (customers) with pagination
   async getContacts() {
     if (!this.isConfigured()) {
       throw new Error('Fiken API ikke konfigurert');
@@ -42,12 +42,32 @@ class FikenClient {
     const spinner = ora('Henter kontakter fra Fiken...').start();
 
     try {
-      const response = await this.client.get(
-        this.companyEndpoint('/contacts')
-      );
+      let allContacts = [];
+      let page = 0;
+      let hasMore = true;
 
-      spinner.succeed(`Hentet ${response.data.length} kontakter fra Fiken`);
-      return response.data;
+      // Fetch all pages
+      while (hasMore) {
+        const response = await this.client.get(
+          this.companyEndpoint('/contacts'),
+          { params: { page, pageSize: 100 } }
+        );
+
+        const contacts = response.data;
+        allContacts = allContacts.concat(contacts);
+
+        spinner.text = `Henter kontakter fra Fiken... (${allContacts.length} så langt)`;
+
+        // Check if there are more pages
+        if (contacts.length < 100) {
+          hasMore = false;
+        } else {
+          page++;
+        }
+      }
+
+      spinner.succeed(`Hentet ${allContacts.length} kontakter fra Fiken`);
+      return allContacts;
     } catch (error) {
       spinner.fail('Feil ved henting av kontakter');
       console.error(chalk.red(error.response?.data?.message || error.message));
