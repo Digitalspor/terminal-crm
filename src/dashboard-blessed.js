@@ -267,7 +267,7 @@ const economyMenu = blessed.list({
   top: 1,
   left: '20%',
   width: '60%',
-  height: 12,
+  height: 11,
   label: ' {bold}{yellow-fg}💰 ØKONOMI{/yellow-fg}{/bold} (↑↓: navigér │ Enter: velg │ ESC: tilbake) ',
   tags: true,
   border: {
@@ -292,11 +292,13 @@ const economyMenu = blessed.list({
   vi: true,
   mouse: true,
   interactive: true,
+  scrollable: true,
+  alwaysScroll: true,
   items: [
     '{center}💰  FAKTURAER{/center}',
     '{center}🏦  KONTOER & SALDO{/center}',
     '{center}{red-fg}🔔  PURRING{/red-fg}{/center}',
-    '{center}📊  KOSTNADER{/center}'
+    '{center}💵  KOSTNADER{/center}'
   ],
   hidden: true
 });
@@ -455,7 +457,7 @@ const expensesTable = contrib.table({
   left: 0,
   width: '100%',
   height: '100%-2',
-  label: ' {bold}{magenta-fg}📊 KOSTNADER - MÅNEDLIG OVERSIKT{/magenta-fg}{/bold} (↑↓: navigér │ ESC: tilbake) ',
+  label: ' {bold}{magenta-fg}💵 KOSTNADER - MÅNEDLIG OVERSIKT{/magenta-fg}{/bold} (↑↓: navigér │ ESC: tilbake) ',
   tags: true,
   border: {
     type: 'line',
