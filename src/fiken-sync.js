@@ -77,15 +77,6 @@ class FikenSync {
 
       console.log(chalk.gray(`  Fant ${customers.length} kunder med ${Object.keys(customersByFikenId).length} Fiken IDs`));
 
-      // Debug: Log first invoice structure
-      if (fikenInvoices.length > 0) {
-        const firstInvoice = fikenInvoices[0];
-        console.log(chalk.yellow(`  Debug - Faktura felt: ${Object.keys(firstInvoice).join(', ')}`));
-        console.log(chalk.yellow(`  Debug - customer: ${JSON.stringify(firstInvoice.customer)}`));
-        console.log(chalk.yellow(`  Debug - customerId: ${firstInvoice.customerId}`));
-        console.log(chalk.yellow(`  Debug - contactId: ${firstInvoice.contactId}`));
-      }
-
       spinner.start('Mapper og lagrer fakturaer...');
 
       let newCount = 0;
@@ -121,11 +112,11 @@ class FikenSync {
             description: line.description || line.productName || 'Tjeneste',
             hours: line.quantity || 0,
             rate: line.unitPrice || 0,
-            amount: line.netAmount || (line.quantity * line.unitPrice) || 0
+            amount: line.net || (line.quantity * line.unitPrice) || 0
           })),
-          subtotal: fikenInv.netAmount || 0,
-          vat: fikenInv.vatAmount || 0,
-          total: fikenInv.grossAmount || fikenInv.totalAmount || 0,
+          subtotal: fikenInv.net || 0,
+          vat: fikenInv.vat || 0,
+          total: fikenInv.gross || 0,
           fikenId: fikenInv.invoiceId,
           fikenSynced: true,
           notes: fikenInv.comment || null,
