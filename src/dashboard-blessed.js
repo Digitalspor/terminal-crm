@@ -267,7 +267,7 @@ const economyMenu = blessed.list({
   top: 1,
   left: '20%',
   width: '60%',
-  height: 11,
+  height: 10,
   label: ' {bold}{yellow-fg}ØKONOMI{/yellow-fg}{/bold} (↑↓: navigér │ Enter: velg │ ESC: tilbake) ',
   tags: true,
   border: {
@@ -292,13 +292,10 @@ const economyMenu = blessed.list({
   vi: true,
   mouse: true,
   interactive: true,
-  scrollable: true,
-  alwaysScroll: true,
   items: [
     '{center}FAKTURAER{/center}',
     '{center}KONTOER & SALDO{/center}',
-    '{center}{red-fg}PURRING{/red-fg}{/center}',
-    '{center}KOSTNADER{/center}'
+    '{center}{red-fg}PURRING{/red-fg}{/center}'
   ],
   hidden: true
 });
@@ -1075,9 +1072,6 @@ economyMenu.on('select', async (item, index) => {
   } else if (text.includes('PURRING')) {
     economyMenu.hide();
     showOverdueInvoices();
-  } else if (text.includes('KOSTNADER')) {
-    economyMenu.hide();
-    showExpenses();
   }
 });
 
@@ -1096,9 +1090,6 @@ economyMenu.key(['enter', 'return'], async () => {
   } else if (text.includes('PURRING')) {
     economyMenu.hide();
     showOverdueInvoices();
-  } else if (text.includes('KOSTNADER')) {
-    economyMenu.hide();
-    showExpenses();
   }
 });
 
