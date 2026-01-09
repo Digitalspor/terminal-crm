@@ -11,6 +11,8 @@
   "delay": 500,
   "verbose": false,
   "restartable": "rs",
+  "stdin": true,
+  "legacyWatch": false,
   "env": {
     "NODE_ENV": "development"
   }
