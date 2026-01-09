@@ -371,10 +371,18 @@ mainMenu.focus();
 // Main menu selection handler function
 function handleMenuSelection() {
   const selected = mainMenu.selected;
-  const item = mainMenu.items[selected];
-  if (!item) return;
+  const item = mainMenu.getItem(selected);
+  if (!item) {
+    promptBox.setContent(' ⚠️ DEBUG: No item found at index ' + selected);
+    screen.render();
+    return;
+  }
 
   const text = item.getText().trim();
+
+  // Debug output
+  promptBox.setContent(' 🔍 DEBUG: Selected "' + text + '" at index ' + selected);
+  screen.render();
 
   if (text.includes('Avslutt')) {
     return process.exit(0);
