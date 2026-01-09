@@ -1,0 +1,19 @@
+{
+  "id": "falkum-sport-as",
+  "name": "Falkum Sport AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Falkum Sport AS",
+    "email": "post@falkumsport.no",
+    "phone": "406 97 100"
+  },
+  "address": {
+    "street": "Odds plass 3",
+    "postalCode": "3722",
+    "city": "SKIEN"
+  },
+  "fikenId": 8017238149,
+  "created": "2024-11-18",
+  "updated": "2026-01-09T22:51:28.690Z",
+  "notes": ""
+}

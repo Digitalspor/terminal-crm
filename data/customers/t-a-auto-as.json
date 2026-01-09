@@ -1,0 +1,19 @@
+{
+  "id": "t-a-auto-as",
+  "name": "T.A Auto AS",
+  "orgNr": null,
+  "contact": {
+    "name": "T.A Auto AS",
+    "email": "post@taauto.no",
+    "phone": "95335053"
+  },
+  "address": {
+    "street": "Hoveveien 34",
+    "postalCode": "4306",
+    "city": "SANDNES"
+  },
+  "fikenId": 7796191101,
+  "created": "2024-10-01",
+  "updated": "2026-01-09T22:51:28.688Z",
+  "notes": ""
+}

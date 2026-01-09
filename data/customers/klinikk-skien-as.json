@@ -1,0 +1,19 @@
+{
+  "id": "klinikk-skien-as",
+  "name": "Klinikk Skien AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Klinikk Skien AS",
+    "email": "",
+    "phone": "90846630"
+  },
+  "address": {
+    "street": "Bølevegen 79",
+    "postalCode": "3724",
+    "city": "SKIEN"
+  },
+  "fikenId": 7967900552,
+  "created": "2024-11-07",
+  "updated": "2026-01-09T22:51:28.689Z",
+  "notes": ""
+}

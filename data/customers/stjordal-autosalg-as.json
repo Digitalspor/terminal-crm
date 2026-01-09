@@ -1,0 +1,19 @@
+{
+  "id": "stjordal-autosalg-as",
+  "name": "Stjørdal Autosalg AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Stjørdal Autosalg AS",
+    "email": "987013168@autoinvoice.no",
+    "phone": "92628317"
+  },
+  "address": {
+    "street": "Industrivegen 2",
+    "postalCode": "7502",
+    "city": "STJØRDAL"
+  },
+  "fikenId": 7869322789,
+  "created": "2024-10-15",
+  "updated": "2026-01-09T22:51:28.689Z",
+  "notes": ""
+}

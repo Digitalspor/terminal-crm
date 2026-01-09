@@ -1,0 +1,19 @@
+{
+  "id": "europakaffe-as",
+  "name": "EUROPAKAFFE AS",
+  "orgNr": null,
+  "contact": {
+    "name": "EUROPAKAFFE AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "c/o Erine Amundal",
+    "postalCode": "3717",
+    "city": "SKIEN"
+  },
+  "fikenId": 7862854100,
+  "created": "2024-10-14",
+  "updated": "2026-01-09T22:51:28.688Z",
+  "notes": ""
+}

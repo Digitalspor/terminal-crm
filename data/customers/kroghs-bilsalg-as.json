@@ -1,0 +1,19 @@
+{
+  "id": "kroghs-bilsalg-as",
+  "name": "Kroghs Bilsalg AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Kroghs Bilsalg AS",
+    "email": "harald@sachweh.no",
+    "phone": "22 16 40 40"
+  },
+  "address": {
+    "street": "Bedriftsveien 6",
+    "postalCode": "0950",
+    "city": "OSLO"
+  },
+  "fikenId": 8159588028,
+  "created": "2024-12-17",
+  "updated": "2026-01-09T22:51:28.692Z",
+  "notes": ""
+}

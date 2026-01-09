@@ -1,0 +1,19 @@
+{
+  "id": "skien-bilskade-verksted-as",
+  "name": "Skien Bilskade & Verksted AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Skien Bilskade & Verksted AS",
+    "email": "aleksander@skienbilskade.no",
+    "phone": "92435568"
+  },
+  "address": {
+    "street": "Bølevegen 79",
+    "postalCode": "3724",
+    "city": "SKIEN"
+  },
+  "fikenId": 7967900464,
+  "created": "2024-11-07",
+  "updated": "2026-01-09T22:51:28.689Z",
+  "notes": ""
+}

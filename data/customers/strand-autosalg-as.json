@@ -1,0 +1,19 @@
+{
+  "id": "strand-autosalg-as",
+  "name": "Strand Autosalg AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Strand Autosalg AS",
+    "email": "magnus@strandautosalg.no",
+    "phone": "974 88 107"
+  },
+  "address": {
+    "street": "Postboks 49",
+    "postalCode": "4124",
+    "city": "TAU"
+  },
+  "fikenId": 8078248492,
+  "created": "2024-12-02",
+  "updated": "2026-01-09T22:51:28.691Z",
+  "notes": ""
+}

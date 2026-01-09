@@ -1,0 +1,19 @@
+{
+  "id": "first-auto-as",
+  "name": "First Auto AS",
+  "orgNr": null,
+  "contact": {
+    "name": "First Auto AS",
+    "email": "marius@firstauto.no",
+    "phone": "481 28 391"
+  },
+  "address": {
+    "street": "Olav Brunborgs vei 6",
+    "postalCode": "1396",
+    "city": "BILLINGSTAD"
+  },
+  "fikenId": 8051418784,
+  "created": "2024-11-26",
+  "updated": "2026-01-09T22:51:28.691Z",
+  "notes": ""
+}

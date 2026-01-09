@@ -1,0 +1,19 @@
+{
+  "id": "new-agra-skien-as",
+  "name": "NEW AGRA SKIEN AS",
+  "orgNr": null,
+  "contact": {
+    "name": "NEW AGRA SKIEN AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Kverndalsgata 3A",
+    "postalCode": "3717",
+    "city": "SKIEN"
+  },
+  "fikenId": 7854209974,
+  "created": "2024-10-11",
+  "updated": "2026-01-09T22:51:28.688Z",
+  "notes": ""
+}

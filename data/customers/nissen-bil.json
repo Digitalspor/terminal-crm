@@ -1,0 +1,19 @@
+{
+  "id": "nissen-bil",
+  "name": "Nissen Bil",
+  "orgNr": null,
+  "contact": {
+    "name": "Nissen Bil",
+    "email": "post@nissenbil.no",
+    "phone": "91826444"
+  },
+  "address": {
+    "street": "Breiliveien 41",
+    "postalCode": "3217",
+    "city": "SANDEFJORD"
+  },
+  "fikenId": 8064635348,
+  "created": "2024-11-29",
+  "updated": "2026-01-09T22:51:28.691Z",
+  "notes": ""
+}

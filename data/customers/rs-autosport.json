@@ -1,0 +1,19 @@
+{
+  "id": "rs-autosport",
+  "name": "Rs Autosport",
+  "orgNr": null,
+  "contact": {
+    "name": "Rs Autosport",
+    "email": "or@rsautosport.no",
+    "phone": "94 44 94 55"
+  },
+  "address": {
+    "street": "Sliperivegen 22",
+    "postalCode": "3718",
+    "city": "SKIEN"
+  },
+  "fikenId": 7882272600,
+  "created": "2024-10-18",
+  "updated": "2026-01-09T22:51:28.689Z",
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "id": "al-auto-as",
+  "name": "AL Auto AS",
+  "orgNr": null,
+  "contact": {
+    "name": "AL Auto AS",
+    "email": "salg@alauto.no",
+    "phone": "45807077"
+  },
+  "address": {
+    "street": "Syretårnet 21",
+    "postalCode": "3048",
+    "city": "DRAMMEN"
+  },
+  "fikenId": 8030412598,
+  "created": "2024-11-20",
+  "updated": "2026-01-09T22:51:28.690Z",
+  "notes": ""
+}

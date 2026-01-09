@@ -1,0 +1,19 @@
+{
+  "id": "auto-lakk-as",
+  "name": "Auto Lakk AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Auto Lakk AS",
+    "email": "juul@autolakkaalesund.no",
+    "phone": "93005069"
+  },
+  "address": {
+    "street": "Breivika industriveg 61",
+    "postalCode": "6018",
+    "city": "ÅLESUND"
+  },
+  "fikenId": 7839192094,
+  "created": "2024-10-09",
+  "updated": "2026-01-09T22:51:28.688Z",
+  "notes": ""
+}

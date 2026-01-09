@@ -1,0 +1,19 @@
+{
+  "id": "olderstad-formidling-as",
+  "name": "Olderstad Formidling AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Olderstad Formidling AS",
+    "email": "greger@olderstad.no",
+    "phone": "90 47 48 48"
+  },
+  "address": {
+    "street": "c/o Greger Samuelsen",
+    "postalCode": "7805",
+    "city": "NAMSOS"
+  },
+  "fikenId": 7763489496,
+  "created": "2024-09-24",
+  "updated": "2026-01-09T22:51:28.687Z",
+  "notes": ""
+}

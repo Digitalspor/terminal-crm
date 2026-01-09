@@ -1,0 +1,19 @@
+{
+  "id": "allcare-solutions-as",
+  "name": "Allcare Solutions AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Allcare Solutions AS",
+    "email": "post@allcaresolutions.no",
+    "phone": "413 90 180"
+  },
+  "address": {
+    "street": "Norddalsheia 26",
+    "postalCode": "4641",
+    "city": "SØGNE"
+  },
+  "fikenId": 8001951478,
+  "created": "2024-11-14",
+  "updated": "2026-01-09T22:51:28.690Z",
+  "notes": ""
+}

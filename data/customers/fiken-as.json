@@ -1,0 +1,19 @@
+{
+  "id": "fiken-as",
+  "name": "Fiken AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Fiken AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Karl Johans gate 37B",
+    "postalCode": "0162",
+    "city": "OSLO"
+  },
+  "fikenId": 7695993105,
+  "created": "2024-09-09",
+  "updated": "2026-01-09T22:51:28.682Z",
+  "notes": ""
+}

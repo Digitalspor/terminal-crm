@@ -1,0 +1,19 @@
+{
+  "id": "blikkenslager-kvelland-as",
+  "name": "Blikkenslager Kvelland AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Blikkenslager Kvelland AS",
+    "email": "oivind@kvelland.net",
+    "phone": "91725914"
+  },
+  "address": {
+    "street": "Rødmyrjordet 6",
+    "postalCode": "3735",
+    "city": "SKIEN"
+  },
+  "fikenId": 8168015271,
+  "created": "2024-12-18",
+  "updated": "2026-01-09T22:51:28.692Z",
+  "notes": ""
+}

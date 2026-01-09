@@ -1,0 +1,19 @@
+{
+  "id": "nr-1-trafikkskole-stathelle-kragero-as",
+  "name": "Nr 1 Trafikkskole Stathelle - Kragerø AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Nr 1 Trafikkskole Stathelle - Kragerø AS",
+    "email": "stathelle@nr1-trafikkskole.no",
+    "phone": "92049566"
+  },
+  "address": {
+    "street": "Thomesheiveien 20A",
+    "postalCode": "3770",
+    "city": "KRAGERØ"
+  },
+  "fikenId": 8032557990,
+  "created": "2024-11-21",
+  "updated": "2026-01-09T22:51:28.691Z",
+  "notes": ""
+}

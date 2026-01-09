@@ -1,0 +1,19 @@
+{
+  "id": "norges-auto-as",
+  "name": "Norges Auto AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Norges Auto AS",
+    "email": "norgesauto@hotmail.com",
+    "phone": "93620729"
+  },
+  "address": {
+    "street": "Idrettsveien 4",
+    "postalCode": "1640",
+    "city": "RÅDE"
+  },
+  "fikenId": 8006119194,
+  "created": "2024-11-15",
+  "updated": "2026-01-09T22:51:28.690Z",
+  "notes": ""
+}

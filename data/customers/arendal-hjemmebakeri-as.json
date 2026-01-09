@@ -1,0 +1,19 @@
+{
+  "id": "arendal-hjemmebakeri-as",
+  "name": "Arendal Hjemmebakeri AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Arendal Hjemmebakeri AS",
+    "email": "bjorn@autotrade.no",
+    "phone": "91697300"
+  },
+  "address": {
+    "street": "Postboks 1860",
+    "postalCode": "4858",
+    "city": "ARENDAL"
+  },
+  "fikenId": 7741889755,
+  "created": "2024-09-19",
+  "updated": "2026-01-09T22:51:28.687Z",
+  "notes": ""
+}

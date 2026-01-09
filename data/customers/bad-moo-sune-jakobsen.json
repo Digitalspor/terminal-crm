@@ -1,0 +1,19 @@
+{
+  "id": "bad-moo-sune-jakobsen",
+  "name": "Bad Moo Sune Jakobsen",
+  "orgNr": null,
+  "contact": {
+    "name": "Bad Moo Sune Jakobsen",
+    "email": "sune.j@badmoo.no",
+    "phone": "48143023"
+  },
+  "address": {
+    "street": "Moldegata 6",
+    "postalCode": "0468",
+    "city": "OSLO"
+  },
+  "fikenId": 7710079702,
+  "created": "2024-09-11",
+  "updated": "2026-01-09T22:51:28.687Z",
+  "notes": ""
+}
