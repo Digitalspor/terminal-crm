@@ -378,27 +378,23 @@ function handleMenuSelection() {
     return;
   }
 
-  const text = item.getText().trim();
+  const text = item.getText().trim().toUpperCase();
 
-  // Debug output
-  promptBox.setContent(' 🔍 DEBUG: Selected "' + text + '" at index ' + selected);
-  screen.render();
-
-  if (text.includes('Avslutt')) {
+  if (text.includes('AVSLUTT')) {
     return process.exit(0);
   }
 
-  if (text.includes('Kunder')) {
+  if (text.includes('KUNDER')) {
     showCustomers();
-  } else if (text.includes('Økonomi')) {
+  } else if (text.includes('ØKONOMI')) {
     showInvoices();
-  } else if (text.includes('Prosjekter')) {
+  } else if (text.includes('PROSJEKTER')) {
     showProjects();
-  } else if (text.includes('Oversikt')) {
+  } else if (text.includes('OVERSIKT')) {
     showOverview();
-  } else if (text.includes('Notater')) {
+  } else if (text.includes('NOTATER')) {
     showMessage('📝 Notater', 'Notater-funksjonen kommer snart!');
-  } else if (text.includes('Kalender')) {
+  } else if (text.includes('KALENDER')) {
     showMessage('📅 Kalender', 'Kalender-funksjonen kommer snart!');
   }
 }
