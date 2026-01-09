@@ -618,9 +618,24 @@ function showEconomy() {
 async function showAccounts() {
   currentView = 'accounts';
 
+  // Show loading message
+  promptBox.setContent(' ⏳ Henter kontoer fra Fiken...');
+  screen.render();
+
   try {
     // Import Fiken client
     const { fikenClient } = await import('./fiken-client.js');
+
+    // Check if configured
+    if (!fikenClient.isConfigured()) {
+      promptBox.setContent(' ⚠️ Fiken API ikke konfigurert - se .env fil');
+      screen.render();
+      setTimeout(() => {
+        promptBox.setContent(' 💬 Skriv kommando... (Ctrl+P for prompt)');
+        screen.render();
+      }, 3000);
+      return;
+    }
 
     // Fetch bank accounts and balances
     const accounts = await fikenClient.getBankAccounts();
@@ -647,11 +662,16 @@ async function showAccounts() {
     economyMenu.hide();
     accountsTable.show();
     accountsTable.focus();
+    promptBox.setContent(' ✅ Kontoer hentet fra Fiken');
     screen.render();
   } catch (error) {
-    showMessage('⚠️ Feil', `Kunne ikke hente kontoer: ${error.message}`);
-    economyMenu.focus();
+    promptBox.setContent(` ⚠️ Feil: ${error.message}`);
     screen.render();
+    setTimeout(() => {
+      promptBox.setContent(' 💬 Skriv kommando... (Ctrl+P for prompt)');
+      economyMenu.focus();
+      screen.render();
+    }, 3000);
   }
 }
 
@@ -786,18 +806,18 @@ invoiceTable.key(['escape', 'q'], () => {
   screen.render();
 });
 
-economyMenu.on('select', (item, index) => {
+economyMenu.on('select', async (item, index) => {
   const text = item.getText().trim().toUpperCase();
 
   if (text.includes('FAKTURAER')) {
     economyMenu.hide();
     showInvoices();
   } else if (text.includes('KONTOER')) {
-    showAccounts();
+    await showAccounts();
   }
 });
 
-economyMenu.key(['enter', 'return'], () => {
+economyMenu.key(['enter', 'return'], async () => {
   const selected = economyMenu.selected;
   const item = economyMenu.items[selected];
   if (!item) return;
@@ -808,7 +828,7 @@ economyMenu.key(['enter', 'return'], () => {
     economyMenu.hide();
     showInvoices();
   } else if (text.includes('KONTOER')) {
-    showAccounts();
+    await showAccounts();
   }
 });
 
@@ -844,7 +864,7 @@ screen.key(['C-c'], () => {
 });
 
 // Refresh data (Ctrl+R)
-screen.key(['C-r'], () => {
+screen.key(['C-r'], async () => {
   if (currentView === 'main') {
     updateStats();
     updateStatusBar();
@@ -855,7 +875,7 @@ screen.key(['C-r'], () => {
   } else if (currentView === 'invoices') {
     showInvoices();
   } else if (currentView === 'accounts') {
-    showAccounts();
+    await showAccounts();
   } else if (currentView === 'overview') {
     showOverview();
   }
