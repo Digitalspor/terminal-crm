@@ -1,0 +1,18 @@
+{
+  "id": "beta-landing",
+  "name": "Beta Landing Page",
+  "customerId": "beta-startup",
+  "status": "completed",
+  "startDate": "2026-01-05",
+  "deadline": "2026-01-10",
+  "estimatedHours": 16,
+  "spentHours": 16,
+  "hourlyRate": 1200,
+  "budget": 19200,
+  "description": "Moderne landing page med Tailwind CSS",
+  "team": ["Andre"],
+  "tags": ["landing", "tailwind", "nextjs"],
+  "created": "2026-01-05T14:30:00Z",
+  "updated": "2026-01-09T17:00:00Z",
+  "notes": "Ferdig og levert - kunde fornøyd!"
+}

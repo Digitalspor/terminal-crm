@@ -1,0 +1,24 @@
+{
+  "id": "2026-002",
+  "customerId": "beta-startup",
+  "invoiceNumber": "2026-002",
+  "date": "2026-01-09",
+  "dueDate": "2026-02-08",
+  "status": "sent",
+  "items": [
+    {
+      "description": "Landing page - Design og utvikling",
+      "hours": 16,
+      "rate": 1200,
+      "amount": 19200
+    }
+  ],
+  "subtotal": 19200,
+  "vat": 4800,
+  "total": 24000,
+  "fikenId": null,
+  "fikenSynced": false,
+  "notes": "Betaling innen 30 dager",
+  "created": "2026-01-09T17:00:00Z",
+  "updated": "2026-01-09T17:00:00Z"
+}

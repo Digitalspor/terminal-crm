@@ -1,0 +1,19 @@
+{
+  "id": "beta-startup",
+  "name": "Beta Startup AS",
+  "orgNr": "555123456",
+  "contact": {
+    "name": "Erik Hansen",
+    "email": "erik@beta.no",
+    "phone": "+47 45612345"
+  },
+  "address": {
+    "street": "Startupgata 7",
+    "postalCode": "0456",
+    "city": "Oslo"
+  },
+  "fikenId": null,
+  "created": "2026-01-05T14:30:00Z",
+  "updated": "2026-01-09T17:00:00Z",
+  "notes": "Ny startup, begrenset budsjett men stor ambisjon"
+}

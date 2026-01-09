@@ -1,0 +1,19 @@
+{
+  "id": "acme-corp",
+  "name": "Acme Corporation",
+  "orgNr": "987654321",
+  "contact": {
+    "name": "Jane Smith",
+    "email": "jane@acme.com",
+    "phone": "+47 98765432"
+  },
+  "address": {
+    "street": "Innovasjonsveien 42",
+    "postalCode": "0150",
+    "city": "Oslo"
+  },
+  "fikenId": null,
+  "created": "2025-12-01T10:00:00Z",
+  "updated": "2026-01-09T17:00:00Z",
+  "notes": "Stor kunde med høyt potensial. Foretrekker rask kommunikasjon."
+}

@@ -1,0 +1,30 @@
+{
+  "id": "2026-001",
+  "customerId": "acme-corp",
+  "invoiceNumber": "2026-001",
+  "date": "2026-01-09",
+  "dueDate": "2026-02-08",
+  "status": "draft",
+  "items": [
+    {
+      "description": "E-commerce platform - Design fase",
+      "hours": 20,
+      "rate": 1200,
+      "amount": 24000
+    },
+    {
+      "description": "E-commerce platform - Backend setup",
+      "hours": 15,
+      "rate": 1200,
+      "amount": 18000
+    }
+  ],
+  "subtotal": 42000,
+  "vat": 10500,
+  "total": 52500,
+  "fikenId": null,
+  "fikenSynced": false,
+  "notes": "Første deloppgjør for e-commerce prosjekt",
+  "created": "2026-01-09T17:00:00Z",
+  "updated": "2026-01-09T17:00:00Z"
+}
