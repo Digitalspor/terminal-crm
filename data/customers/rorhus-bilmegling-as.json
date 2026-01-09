@@ -1,0 +1,19 @@
+{
+  "id": "rorhus-bilmegling-as",
+  "name": "Rørhus Bilmegling AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Rørhus Bilmegling AS",
+    "email": "frode@rorhus.no",
+    "phone": "97778060"
+  },
+  "address": {
+    "street": "Fortlia 1B",
+    "postalCode": "1860",
+    "city": "TRØGSTAD"
+  },
+  "fikenId": 11226816325,
+  "created": "2025-12-19",
+  "updated": "2026-01-09T23:05:22.451Z",
+  "notes": ""
+}

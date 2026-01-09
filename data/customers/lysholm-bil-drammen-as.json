@@ -1,0 +1,19 @@
+{
+  "id": "lysholm-bil-drammen-as",
+  "name": "Lysholm Bil Drammen AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Lysholm Bil Drammen AS",
+    "email": "Simen@LysholmBil.no",
+    "phone": "412 687 05"
+  },
+  "address": {
+    "street": "C O Lunds gate 16",
+    "postalCode": "3043",
+    "city": "DRAMMEN"
+  },
+  "fikenId": 8429247170,
+  "created": "2025-02-11",
+  "updated": "2026-01-09T23:05:22.445Z",
+  "notes": ""
+}

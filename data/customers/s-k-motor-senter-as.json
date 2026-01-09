@@ -1,0 +1,19 @@
+{
+  "id": "s-k-motor-senter-as",
+  "name": "S.K Motor Senter AS",
+  "orgNr": null,
+  "contact": {
+    "name": "S.K Motor Senter AS",
+    "email": "skmotorsenteras@gmail.com",
+    "phone": "41444463"
+  },
+  "address": {
+    "street": "Gjellebekkstubben 19",
+    "postalCode": "3420",
+    "city": "LIERSKOGEN"
+  },
+  "fikenId": 8534668912,
+  "created": "2025-03-04",
+  "updated": "2026-01-09T23:05:22.445Z",
+  "notes": ""
+}

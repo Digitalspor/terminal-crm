@@ -1,0 +1,19 @@
+{
+  "id": "coded-as",
+  "name": "Coded AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Coded AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Vikingvegen 23B",
+    "postalCode": "3946",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 9225363386,
+  "created": "2025-07-02",
+  "updated": "2026-01-09T23:05:22.448Z",
+  "notes": ""
+}

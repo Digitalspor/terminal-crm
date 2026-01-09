@@ -1,0 +1,19 @@
+{
+  "id": "viva-skin-clinic-as",
+  "name": "Viva Skin Clinic AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Viva Skin Clinic AS",
+    "email": "liv.alice@vivaskinclinic.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Solheimsgaten 78",
+    "postalCode": "5054",
+    "city": "BERGEN"
+  },
+  "fikenId": 10663953181,
+  "created": "2025-10-09",
+  "updated": "2026-01-09T23:05:22.450Z",
+  "notes": ""
+}

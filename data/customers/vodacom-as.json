@@ -1,0 +1,19 @@
+{
+  "id": "vodacom-as",
+  "name": "Vodacom AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Vodacom AS",
+    "email": "bestilling@vodacom.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Hvamsvingen 9",
+    "postalCode": "2013",
+    "city": "SKJETTEN"
+  },
+  "fikenId": 11226816349,
+  "created": "2025-12-19",
+  "updated": "2026-01-09T23:05:22.451Z",
+  "notes": ""
+}

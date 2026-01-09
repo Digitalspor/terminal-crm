@@ -1,0 +1,19 @@
+{
+  "id": "varebil-no-as",
+  "name": "Varebil No AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Varebil No AS",
+    "email": "post@varebil.no",
+    "phone": "46 88 99 14"
+  },
+  "address": {
+    "street": "Sam Eydes vei 5B",
+    "postalCode": "1412",
+    "city": "SOFIEMYR"
+  },
+  "fikenId": 9148943247,
+  "created": "2025-06-20",
+  "updated": "2026-01-09T23:05:22.447Z",
+  "notes": ""
+}

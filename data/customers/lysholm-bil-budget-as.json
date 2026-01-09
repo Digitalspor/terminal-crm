@@ -1,0 +1,19 @@
+{
+  "id": "lysholm-bil-budget-as",
+  "name": "Lysholm Bil Budget AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Lysholm Bil Budget AS",
+    "email": "outlet@lysholmbil.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Tungavegen 26",
+    "postalCode": "7047",
+    "city": "TRONDHEIM"
+  },
+  "fikenId": 8589091008,
+  "created": "2025-03-14",
+  "updated": "2026-01-09T23:05:22.446Z",
+  "notes": ""
+}

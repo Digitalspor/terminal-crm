@@ -1,0 +1,19 @@
+{
+  "id": "jemo-entreprenor-as",
+  "name": "Jemo Entreprenør AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Jemo Entreprenør AS",
+    "email": "knut.t@jemo.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Langbrygga 10",
+    "postalCode": "3724",
+    "city": "SKIEN"
+  },
+  "fikenId": 10607235577,
+  "created": "2025-10-01",
+  "updated": "2026-01-09T23:05:22.450Z",
+  "notes": ""
+}

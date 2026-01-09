@@ -1,0 +1,19 @@
+{
+  "id": "autotrade-as",
+  "name": "Autotrade AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Autotrade AS",
+    "email": "post.autotrade@outlook.com",
+    "phone": "41 15 40 40"
+  },
+  "address": {
+    "street": "Industrivegen 21",
+    "postalCode": "3940",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 8361281169,
+  "created": "2025-01-30",
+  "updated": "2026-01-09T23:05:22.444Z",
+  "notes": ""
+}

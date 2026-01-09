@@ -1,0 +1,19 @@
+{
+  "id": "schibsted-media-as",
+  "name": "Schibsted Media AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Schibsted Media AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Postboks 490 Sentrum",
+    "postalCode": "0105",
+    "city": "OSLO"
+  },
+  "fikenId": 8380103332,
+  "created": "2025-02-03",
+  "updated": "2026-01-09T23:05:22.444Z",
+  "notes": ""
+}

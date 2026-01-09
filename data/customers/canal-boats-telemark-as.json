@@ -1,0 +1,19 @@
+{
+  "id": "canal-boats-telemark-as",
+  "name": "Canal Boats Telemark AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Canal Boats Telemark AS",
+    "email": "post@canalboats.no",
+    "phone": "47250053"
+  },
+  "address": {
+    "street": "Stangsgate 1",
+    "postalCode": "3915",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 8530738077,
+  "created": "2025-03-04",
+  "updated": "2026-01-09T23:05:22.445Z",
+  "notes": ""
+}

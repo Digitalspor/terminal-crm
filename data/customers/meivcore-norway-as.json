@@ -1,0 +1,19 @@
+{
+  "id": "meivcore-norway-as",
+  "name": "Meivcore Norway AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Meivcore Norway AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Røraskogen 16",
+    "postalCode": "3739",
+    "city": "SKIEN"
+  },
+  "fikenId": 9325268785,
+  "created": "2025-07-28",
+  "updated": "2026-01-09T23:05:22.448Z",
+  "notes": ""
+}

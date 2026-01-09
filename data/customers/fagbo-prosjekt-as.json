@@ -1,0 +1,19 @@
+{
+  "id": "fagbo-prosjekt-as",
+  "name": "Fagbo Prosjekt AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Fagbo Prosjekt AS",
+    "email": "kenneth@fagbo.no",
+    "phone": "905 42 823"
+  },
+  "address": {
+    "street": "Fidalen 10",
+    "postalCode": "4985",
+    "city": "VEGÅRSHEI"
+  },
+  "fikenId": 8429247211,
+  "created": "2025-02-11",
+  "updated": "2026-01-09T23:05:22.445Z",
+  "notes": ""
+}

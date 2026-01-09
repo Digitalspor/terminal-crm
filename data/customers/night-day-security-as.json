@@ -1,0 +1,19 @@
+{
+  "id": "night-day-security-as",
+  "name": "Night & Day Security AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Night & Day Security AS",
+    "email": "post@nightday-security.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Vipevegen 51C",
+    "postalCode": "3917",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 9640341144,
+  "created": "2025-09-23",
+  "updated": "2026-01-09T23:05:22.449Z",
+  "notes": ""
+}

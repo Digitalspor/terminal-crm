@@ -1,0 +1,19 @@
+{
+  "id": "automotor-as",
+  "name": "Automotor AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Automotor AS",
+    "email": "post@automotor1.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Deichmansgate 57",
+    "postalCode": "3924",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 8461996729,
+  "created": "2025-02-18",
+  "updated": "2026-01-09T23:05:22.445Z",
+  "notes": ""
+}

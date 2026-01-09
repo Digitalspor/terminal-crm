@@ -1,0 +1,19 @@
+{
+  "id": "power-skien",
+  "name": "power skien",
+  "orgNr": null,
+  "contact": {
+    "name": "power skien",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "",
+    "postalCode": "",
+    "city": ""
+  },
+  "fikenId": 8380103309,
+  "created": "2025-02-03",
+  "updated": "2026-01-09T23:05:22.444Z",
+  "notes": ""
+}

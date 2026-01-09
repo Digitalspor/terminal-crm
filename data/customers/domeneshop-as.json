@@ -1,0 +1,19 @@
+{
+  "id": "domeneshop-as",
+  "name": "Domeneshop AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Domeneshop AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Christian Krohgs gate 16",
+    "postalCode": "0186",
+    "city": "OSLO"
+  },
+  "fikenId": 9061835651,
+  "created": "2025-06-04",
+  "updated": "2026-01-09T23:05:22.447Z",
+  "notes": ""
+}

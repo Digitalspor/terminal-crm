@@ -1,0 +1,19 @@
+{
+  "id": "auto-v-as",
+  "name": "Auto-V AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Auto-V AS",
+    "email": "faktura@auto-v.no",
+    "phone": "45084776"
+  },
+  "address": {
+    "street": "Kyrkjeberget 4",
+    "postalCode": "4330",
+    "city": "ÅLGÅRD"
+  },
+  "fikenId": 8958497065,
+  "created": "2025-05-21",
+  "updated": "2026-01-09T23:05:22.447Z",
+  "notes": ""
+}

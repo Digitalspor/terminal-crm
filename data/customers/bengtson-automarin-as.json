@@ -1,0 +1,19 @@
+{
+  "id": "bengtson-automarin-as",
+  "name": "Bengtson Automarin AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Bengtson Automarin AS",
+    "email": "Karl-Christian@bengtson.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Østre Aker vei 210",
+    "postalCode": "0975",
+    "city": "OSLO"
+  },
+  "fikenId": 9550698418,
+  "created": "2025-09-09",
+  "updated": "2026-01-09T23:05:22.449Z",
+  "notes": ""
+}

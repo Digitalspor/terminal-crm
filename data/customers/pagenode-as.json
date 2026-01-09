@@ -1,0 +1,19 @@
+{
+  "id": "pagenode-as",
+  "name": "Pagenode AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Pagenode AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Vikingvegen 23B",
+    "postalCode": "3946",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 10891365814,
+  "created": "2025-11-19",
+  "updated": "2026-01-09T23:05:22.450Z",
+  "notes": ""
+}

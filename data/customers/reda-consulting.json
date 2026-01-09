@@ -1,0 +1,19 @@
+{
+  "id": "reda-consulting",
+  "name": "Reda Consulting",
+  "orgNr": null,
+  "contact": {
+    "name": "Reda Consulting",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Larkollveien 28A",
+    "postalCode": "1570",
+    "city": "DILLING"
+  },
+  "fikenId": 9521084000,
+  "created": "2025-09-04",
+  "updated": "2026-01-09T23:05:22.449Z",
+  "notes": ""
+}

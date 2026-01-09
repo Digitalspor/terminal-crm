@@ -1,0 +1,19 @@
+{
+  "id": "outletsenteret-as",
+  "name": "Outletsenteret AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Outletsenteret AS",
+    "email": "Post@outletsenteret.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Industrivegen 21",
+    "postalCode": "3940",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 9061277324,
+  "created": "2025-06-04",
+  "updated": "2026-01-09T23:05:22.447Z",
+  "notes": ""
+}

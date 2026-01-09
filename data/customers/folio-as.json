@@ -1,0 +1,19 @@
+{
+  "id": "folio-as",
+  "name": "Folio AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Folio AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Youngstorget 3",
+    "postalCode": "0181",
+    "city": "OSLO"
+  },
+  "fikenId": 8238572074,
+  "created": "2025-01-05",
+  "updated": "2026-01-09T23:05:22.443Z",
+  "notes": ""
+}

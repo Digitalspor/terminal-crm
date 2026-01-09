@@ -1,0 +1,19 @@
+{
+  "id": "bruktbilhallen-as",
+  "name": "Bruktbilhallen AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Bruktbilhallen AS",
+    "email": "post@bruktbilhallen.no",
+    "phone": "91144761"
+  },
+  "address": {
+    "street": "Brynaskogen 27",
+    "postalCode": "5705",
+    "city": "VOSS"
+  },
+  "fikenId": 8364455310,
+  "created": "2025-01-31",
+  "updated": "2026-01-09T23:05:22.444Z",
+  "notes": ""
+}

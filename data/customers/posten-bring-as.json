@@ -1,0 +1,19 @@
+{
+  "id": "posten-bring-as",
+  "name": "Posten Bring AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Posten Bring AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Postboks 1500 Sentrum",
+    "postalCode": "0001",
+    "city": "OSLO"
+  },
+  "fikenId": 9227144171,
+  "created": "2025-07-02",
+  "updated": "2026-01-09T23:05:22.448Z",
+  "notes": ""
+}

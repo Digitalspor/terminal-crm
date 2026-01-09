@@ -1,0 +1,19 @@
+{
+  "id": "google-commerce-limited",
+  "name": "Google Commerce Limited",
+  "orgNr": null,
+  "contact": {
+    "name": "Google Commerce Limited",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "c/o PwC Tax Services AS",
+    "postalCode": "0106",
+    "city": "OSLO"
+  },
+  "fikenId": 8380103173,
+  "created": "2025-02-03",
+  "updated": "2026-01-09T23:05:22.444Z",
+  "notes": ""
+}

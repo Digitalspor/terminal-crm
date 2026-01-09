@@ -1,0 +1,19 @@
+{
+  "id": "d-r-auto-invest-as",
+  "name": "D-R Auto Invest AS",
+  "orgNr": null,
+  "contact": {
+    "name": "D-R Auto Invest AS",
+    "email": "dennis@drautoinvest.no",
+    "phone": "91 79 24 39"
+  },
+  "address": {
+    "street": "Ullerålsgata 50",
+    "postalCode": "3513",
+    "city": "HØNEFOSS"
+  },
+  "fikenId": 8364455238,
+  "created": "2025-01-31",
+  "updated": "2026-01-09T23:05:22.444Z",
+  "notes": ""
+}

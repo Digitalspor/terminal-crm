@@ -1,0 +1,19 @@
+{
+  "id": "bergius-tveit-marketing",
+  "name": "Bergius-Tveit Marketing",
+  "orgNr": null,
+  "contact": {
+    "name": "Bergius-Tveit Marketing",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Vallermyrvegen 139",
+    "postalCode": "3917",
+    "city": "PORSGRUNN"
+  },
+  "fikenId": 9061835681,
+  "created": "2025-06-04",
+  "updated": "2026-01-09T23:05:22.447Z",
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "id": "autoama-as",
+  "name": "Autoama AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Autoama AS",
+    "email": "autoamabil@gmail.com",
+    "phone": ""
+  },
+  "address": {
+    "street": "Rødmyrlia 18B",
+    "postalCode": "3735",
+    "city": "SKIEN"
+  },
+  "fikenId": 9530463430,
+  "created": "2025-09-05",
+  "updated": "2026-01-09T23:05:22.449Z",
+  "notes": ""
+}

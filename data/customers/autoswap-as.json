@@ -1,0 +1,19 @@
+{
+  "id": "autoswap-as",
+  "name": "Autoswap AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Autoswap AS",
+    "email": "eirik@autoswap.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Spelhaugen 8A",
+    "postalCode": "5147",
+    "city": "FYLLINGSDALEN"
+  },
+  "fikenId": 9643969695,
+  "created": "2025-09-24",
+  "updated": "2026-01-09T23:05:22.449Z",
+  "notes": ""
+}

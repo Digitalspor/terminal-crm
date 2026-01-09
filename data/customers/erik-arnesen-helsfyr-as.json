@@ -1,0 +1,19 @@
+{
+  "id": "erik-arnesen-helsfyr-as",
+  "name": "Erik Arnesen Helsfyr AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Erik Arnesen Helsfyr AS",
+    "email": "post@erikarnesen.no",
+    "phone": "91 55 86 42"
+  },
+  "address": {
+    "street": "Postboks 6358 Etterstad",
+    "postalCode": "0604",
+    "city": "OSLO"
+  },
+  "fikenId": 8290495044,
+  "created": "2025-01-15",
+  "updated": "2026-01-09T23:05:22.443Z",
+  "notes": ""
+}

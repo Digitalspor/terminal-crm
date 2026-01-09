@@ -1,0 +1,19 @@
+{
+  "id": "auto-vest-as",
+  "name": "Auto Vest AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Auto Vest AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Raglamyrvegen 10",
+    "postalCode": "5536",
+    "city": "HAUGESUND"
+  },
+  "fikenId": 11238749017,
+  "created": "2025-12-22",
+  "updated": "2026-01-09T23:05:22.451Z",
+  "notes": ""
+}

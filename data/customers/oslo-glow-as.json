@@ -1,0 +1,19 @@
+{
+  "id": "oslo-glow-as",
+  "name": "Oslo Glow AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Oslo Glow AS",
+    "email": "post@osloglow.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Pilestredet Park 7",
+    "postalCode": "0176",
+    "city": "OSLO"
+  },
+  "fikenId": 10805202213,
+  "created": "2025-11-04",
+  "updated": "2026-01-09T23:05:22.450Z",
+  "notes": ""
+}

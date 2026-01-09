@@ -1,0 +1,19 @@
+{
+  "id": "lysholm-bil-as",
+  "name": "Lysholm Bil AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Lysholm Bil AS",
+    "email": "anders@lysholmbil.no",
+    "phone": "97680499"
+  },
+  "address": {
+    "street": "Øvre Flatåsveg 14",
+    "postalCode": "7079",
+    "city": "FLATÅSEN"
+  },
+  "fikenId": 8428957450,
+  "created": "2025-02-11",
+  "updated": "2026-01-09T23:05:22.444Z",
+  "notes": ""
+}

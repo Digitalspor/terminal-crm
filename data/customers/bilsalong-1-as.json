@@ -1,0 +1,19 @@
+{
+  "id": "bilsalong-1-as",
+  "name": "Bilsalong 1 AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Bilsalong 1 AS",
+    "email": "hans@bilsalong1.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Svaneveien 2",
+    "postalCode": "1661",
+    "city": "ROLVSØY"
+  },
+  "fikenId": 10962978429,
+  "created": "2025-12-01",
+  "updated": "2026-01-09T23:05:22.451Z",
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "id": "stathelle-auto-as",
+  "name": "Stathelle Auto AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Stathelle Auto AS",
+    "email": "post@stathelleauto.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Dronning Margrethes vei 3",
+    "postalCode": "3961",
+    "city": "STATHELLE"
+  },
+  "fikenId": 8875537791,
+  "created": "2025-05-06",
+  "updated": "2026-01-09T23:05:22.446Z",
+  "notes": ""
+}

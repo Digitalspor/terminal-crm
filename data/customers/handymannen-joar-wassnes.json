@@ -1,0 +1,19 @@
+{
+  "id": "handymannen-joar-wassnes",
+  "name": "Handymannen Joar Wassnes",
+  "orgNr": null,
+  "contact": {
+    "name": "Handymannen Joar Wassnes",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Langbergveien 18",
+    "postalCode": "9161",
+    "city": "BURFJORD"
+  },
+  "fikenId": 10663953357,
+  "created": "2025-10-09",
+  "updated": "2026-01-09T23:05:22.450Z",
+  "notes": ""
+}

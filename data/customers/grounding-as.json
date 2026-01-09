@@ -1,0 +1,19 @@
+{
+  "id": "grounding-as",
+  "name": "Grounding AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Grounding AS",
+    "email": "post@grounding.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "c/o Petter Meier Nilsen",
+    "postalCode": "3722",
+    "city": "SKIEN"
+  },
+  "fikenId": 8552517295,
+  "created": "2025-03-07",
+  "updated": "2026-01-09T23:05:22.446Z",
+  "notes": ""
+}

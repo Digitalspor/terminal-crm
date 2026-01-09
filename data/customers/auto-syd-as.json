@@ -1,0 +1,19 @@
+{
+  "id": "auto-syd-as",
+  "name": "Auto Syd AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Auto Syd AS",
+    "email": "post@autosyd.as",
+    "phone": "906 57 000"
+  },
+  "address": {
+    "street": "Sørenga 3",
+    "postalCode": "7032",
+    "city": "TRONDHEIM"
+  },
+  "fikenId": 8170255355,
+  "created": "2024-12-19",
+  "updated": "2026-01-09T23:05:22.443Z",
+  "notes": ""
+}

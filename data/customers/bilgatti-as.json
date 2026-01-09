@@ -1,0 +1,19 @@
+{
+  "id": "bilgatti-as",
+  "name": "Bilgatti AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Bilgatti AS",
+    "email": "Bilgattisalg@gmail.com",
+    "phone": ""
+  },
+  "address": {
+    "street": "Olavs gate 39",
+    "postalCode": "3612",
+    "city": "KONGSBERG"
+  },
+  "fikenId": 9521673449,
+  "created": "2025-09-04",
+  "updated": "2026-01-09T23:05:22.449Z",
+  "notes": ""
+}

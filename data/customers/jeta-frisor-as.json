@@ -1,0 +1,19 @@
+{
+  "id": "jeta-frisor-as",
+  "name": "Jeta Frisør AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Jeta Frisør AS",
+    "email": "shkurte-v@hotmail.com",
+    "phone": "90740455"
+  },
+  "address": {
+    "street": "Kongerødvegen 1",
+    "postalCode": "3737",
+    "city": "SKIEN"
+  },
+  "fikenId": 10986038526,
+  "created": "2025-12-04",
+  "updated": "2026-01-09T23:05:22.451Z",
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "id": "lyse-tele-as",
+  "name": "Lyse Tele AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Lyse Tele AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Postboks 8124",
+    "postalCode": "4068",
+    "city": "STAVANGER"
+  },
+  "fikenId": 8238120039,
+  "created": "2025-01-05",
+  "updated": "2026-01-09T23:05:22.443Z",
+  "notes": ""
+}

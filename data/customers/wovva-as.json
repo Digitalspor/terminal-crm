@@ -1,0 +1,19 @@
+{
+  "id": "wovva-as",
+  "name": "Wovva AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Wovva AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "c/o Sune Jakobsen",
+    "postalCode": "0468",
+    "city": "OSLO"
+  },
+  "fikenId": 8260484878,
+  "created": "2025-01-08",
+  "updated": "2026-01-09T23:05:22.443Z",
+  "notes": ""
+}

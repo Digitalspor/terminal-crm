@@ -1,0 +1,19 @@
+{
+  "id": "viken-bruktbil-as",
+  "name": "Viken Bruktbil AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Viken Bruktbil AS",
+    "email": "post@viken-bruktbil.no",
+    "phone": ""
+  },
+  "address": {
+    "street": "Stabburveien 2A",
+    "postalCode": "1617",
+    "city": "FREDRIKSTAD"
+  },
+  "fikenId": 9317359205,
+  "created": "2025-07-25",
+  "updated": "2026-01-09T23:05:22.448Z",
+  "notes": ""
+}

@@ -1,0 +1,19 @@
+{
+  "id": "skien-mobler-as",
+  "name": "Skien Møbler AS",
+  "orgNr": null,
+  "contact": {
+    "name": "Skien Møbler AS",
+    "email": "",
+    "phone": ""
+  },
+  "address": {
+    "street": "Melumvegen 8",
+    "postalCode": "3730",
+    "city": "SKIEN"
+  },
+  "fikenId": 9062309013,
+  "created": "2025-06-04",
+  "updated": "2026-01-09T23:05:22.447Z",
+  "notes": ""
+}
