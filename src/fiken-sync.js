@@ -58,20 +58,92 @@ class FikenSync {
 
     console.log(chalk.bold.cyan('\n🔄 Synkroniserer fakturaer fra Fiken...\n'));
 
+    const spinner = ora('Henter fakturaer fra Fiken...').start();
+
     try {
       const params = year ? { issuedDateFrom: `${year}-01-01`, issuedDateTo: `${year}-12-31` } : {};
       const fikenInvoices = await fikenClient.getInvoices(params);
 
-      console.log(chalk.gray(`Hentet ${fikenInvoices.length} fakturaer fra Fiken`));
-      console.log(chalk.yellow('⚠️  Manuell mapping av fakturaer kreves (WIP)'));
+      spinner.succeed(`Hentet ${fikenInvoices.length} fakturaer fra Fiken`);
 
-      // TODO: Implement full invoice sync
-      // Fakturaer i Fiken har annen struktur enn vårt format
-      // Vi må mappe mellom formatene
+      // Load all customers to map contactId -> customerId
+      const customers = await dataManager.listCustomers();
+      const customersByFikenId = {};
+      customers.forEach(c => {
+        if (c.fikenId) {
+          customersByFikenId[c.fikenId] = c;
+        }
+      });
 
-      console.log(chalk.green('\n✓ Faktura-sync fullført (preview)!\n'));
+      spinner.start('Mapper og lagrer fakturaer...');
+
+      let newCount = 0;
+      let updatedCount = 0;
+      let skippedCount = 0;
+
+      for (const fikenInv of fikenInvoices) {
+        // Find customer by Fiken contact ID
+        const customer = customersByFikenId[fikenInv.contactId];
+
+        if (!customer) {
+          skippedCount++;
+          continue; // Skip if customer not found
+        }
+
+        // Map Fiken invoice to CRM format
+        const invoiceId = fikenInv.invoiceNumber || `fiken-${fikenInv.invoiceId}`;
+        const existingInvoice = await dataManager.getInvoice(invoiceId);
+
+        const invoice = {
+          id: invoiceId,
+          customerId: customer.id,
+          invoiceNumber: fikenInv.invoiceNumber,
+          date: fikenInv.issueDate || fikenInv.date,
+          dueDate: fikenInv.dueDate,
+          status: fikenInv.settled ? 'paid' : (fikenInv.sent ? 'sent' : 'draft'),
+          items: (fikenInv.lines || []).map(line => ({
+            description: line.description || line.productName || 'Tjeneste',
+            hours: line.quantity || 0,
+            rate: line.unitPrice || 0,
+            amount: line.netAmount || (line.quantity * line.unitPrice) || 0
+          })),
+          subtotal: fikenInv.netAmount || 0,
+          vat: fikenInv.vatAmount || 0,
+          total: fikenInv.grossAmount || fikenInv.totalAmount || 0,
+          fikenId: fikenInv.invoiceId,
+          fikenSynced: true,
+          notes: fikenInv.comment || null,
+          created: existingInvoice?.created || new Date().toISOString(),
+          updated: new Date().toISOString()
+        };
+
+        await dataManager.saveInvoice(invoice);
+
+        if (existingInvoice) {
+          updatedCount++;
+        } else {
+          newCount++;
+        }
+      }
+
+      spinner.succeed(`Lagret ${fikenInvoices.length} fakturaer (${newCount} nye, ${updatedCount} oppdatert, ${skippedCount} hoppet over)`);
+
+      // Commit changes
+      spinner.start('Committer endringer...');
+      await gitSync.commitAndPush(
+        `invoice: Sync ${fikenInvoices.length} fakturaer fra Fiken (${newCount} nye, ${updatedCount} oppdatert)`
+      );
+      spinner.succeed('Committed og pushet til Git');
+
+      console.log(chalk.green('\n✓ Faktura-sync fullført!\n'));
+
+      if (skippedCount > 0) {
+        console.log(chalk.yellow(`⚠️  ${skippedCount} fakturaer hoppet over (kunde ikke funnet i CRM)`));
+        console.log(chalk.gray('Kjør: npm run crm fiken:sync-customers først\n'));
+      }
     } catch (error) {
-      console.error(chalk.red('\n✗ Faktura-sync feilet:', error.message, '\n'));
+      spinner.fail('Faktura-sync feilet');
+      console.error(chalk.red('\n✗ Feil:', error.message, '\n'));
     }
   }
 
