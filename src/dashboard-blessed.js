@@ -661,6 +661,23 @@ screen.key(['C-c'], () => {
   return process.exit(0);
 });
 
+// Refresh data (Ctrl+R)
+screen.key(['C-r'], () => {
+  if (currentView === 'main') {
+    updateStats();
+    updateStatusBar();
+  } else if (currentView === 'customers') {
+    showCustomers();
+  } else if (currentView === 'projects') {
+    showProjects();
+  } else if (currentView === 'invoices') {
+    showInvoices();
+  } else if (currentView === 'overview') {
+    showOverview();
+  }
+  screen.render();
+});
+
 // Prompt handler (Ctrl+P)
 screen.key(['C-p'], () => {
   promptBox.focus();
@@ -689,7 +706,7 @@ const helpText = blessed.text({
   left: 'center',
   width: 'shrink',
   height: 1,
-  content: ' ↑↓: Navigér │ Enter: Velg │ ESC: Tilbake │ Ctrl+P: Prompt │ Ctrl+C: Avslutt ',
+  content: ' ↑↓: Navigér │ Enter: Velg │ ESC: Tilbake │ Ctrl+R: Refresh │ Ctrl+P: Prompt │ Ctrl+C: Avslutt ',
   style: {
     fg: 'black',
     bg: 'white'
