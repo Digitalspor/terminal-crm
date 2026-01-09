@@ -101,13 +101,32 @@ class FikenClient {
     const spinner = ora('Henter fakturaer fra Fiken...').start();
 
     try {
-      const response = await this.client.get(
-        this.companyEndpoint('/invoices'),
-        { params }
-      );
+      let allInvoices = [];
+      let page = 0;
+      let hasMore = true;
 
-      spinner.succeed(`Hentet ${response.data.length} fakturaer fra Fiken`);
-      return response.data;
+      // Fetch all pages
+      while (hasMore) {
+        const response = await this.client.get(
+          this.companyEndpoint('/invoices'),
+          { params: { ...params, page, pageSize: 100 } }
+        );
+
+        const invoices = response.data;
+        allInvoices = allInvoices.concat(invoices);
+
+        spinner.text = `Henter fakturaer fra Fiken... (${allInvoices.length} så langt)`;
+
+        // Check if there are more pages
+        if (invoices.length < 100) {
+          hasMore = false;
+        } else {
+          page++;
+        }
+      }
+
+      spinner.succeed(`Hentet ${allInvoices.length} fakturaer fra Fiken`);
+      return allInvoices;
     } catch (error) {
       spinner.fail('Feil ved henting av fakturaer');
       console.error(chalk.red(error.response?.data?.message || error.message));
