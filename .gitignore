@@ -7,3 +7,13 @@ node_modules/
 .idea/
 credentials/google-*.json
 credentials/*token*.json
+
+# SQLite database files
+data/crm.db*
+*.db
+*.db-*
+
+# Test files
+debug-*.js
+test-*.js
+find-*.js
