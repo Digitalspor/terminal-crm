@@ -335,6 +335,6 @@ Start med å hente nye e-poster.`;
 }
 
 // Run if executed directly
-if (require.main === module) {
+if (process.argv[1]?.includes("bilagshenter/agent")) {
   runBilagshenterAgent().catch(console.error);
 }
