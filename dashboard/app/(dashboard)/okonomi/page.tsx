@@ -37,9 +37,16 @@ interface Expense {
   amount: number;
 }
 
+function formatLocalDate(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function getDateRange(period: PeriodType): { startDate: string; endDate: string } {
   const now = new Date();
-  const endDate = now.toISOString().split("T")[0];
+  const endDate = formatLocalDate(now);
 
   switch (period) {
     case "day":
@@ -47,16 +54,16 @@ function getDateRange(period: PeriodType): { startDate: string; endDate: string 
     case "week": {
       const weekStart = new Date(now);
       weekStart.setDate(now.getDate() - now.getDay() + 1);
-      return { startDate: weekStart.toISOString().split("T")[0], endDate };
+      return { startDate: formatLocalDate(weekStart), endDate };
     }
     case "month": {
       const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-      return { startDate: monthStart.toISOString().split("T")[0], endDate };
+      return { startDate: formatLocalDate(monthStart), endDate };
     }
     case "year":
     default: {
       const yearStart = new Date(now.getFullYear(), 0, 1);
-      return { startDate: yearStart.toISOString().split("T")[0], endDate };
+      return { startDate: formatLocalDate(yearStart), endDate };
     }
   }
 }
