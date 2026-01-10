@@ -570,9 +570,8 @@ function handleMenuSelection() {
   }
 }
 
-// Try both select event and enter key
+// Use only select event (Enter key triggers select automatically)
 mainMenu.on('select', handleMenuSelection);
-mainMenu.key(['enter', 'return'], handleMenuSelection);
 
 // Show customers
 function showCustomers() {
@@ -1062,24 +1061,6 @@ invoiceTable.key(['escape', 'q'], () => {
 });
 
 economyMenu.on('select', async (item, index) => {
-  const text = item.getText().trim().toUpperCase();
-
-  if (text.includes('FAKTURAER')) {
-    economyMenu.hide();
-    showInvoices();
-  } else if (text.includes('KONTOER')) {
-    await showAccounts();
-  } else if (text.includes('PURRING')) {
-    economyMenu.hide();
-    showOverdueInvoices();
-  }
-});
-
-economyMenu.key(['enter', 'return'], async () => {
-  const selected = economyMenu.selected;
-  const item = economyMenu.items[selected];
-  if (!item) return;
-
   const text = item.getText().trim().toUpperCase();
 
   if (text.includes('FAKTURAER')) {
