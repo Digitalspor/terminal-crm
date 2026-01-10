@@ -8,6 +8,8 @@
     "sync": "node scripts/auto-sync.js",
     "build": "next build",
     "start": "next start",
+    "agent:bilag": "bun run agents/bilagshenter/index.ts",
+    "agent:bilag:demo": "bun run agents/bilagshenter/index.ts --demo",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
