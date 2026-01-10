@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { Box, Text } from 'ink';
-import { useCustomers, useInvoices, useProjects, useCRMStore } from '../../store/index.js';
+import React, { useEffect, useRef } from 'react';
+import { Box, Text, useInput } from 'ink';
+import { useCRMStore } from '../../store/index.js';
 import { Card, CardRow, CardSection } from '../design-system/Card.js';
 import { StatusBadge } from '../design-system/Badge.js';
 import { HelpText } from '../design-system/HelpText.js';
@@ -10,17 +10,28 @@ import { RenderIfWindowSize } from '../design-system/RenderIfWindowSize.js';
  * CustomerDetail - Detailed view of a single customer
  */
 export function CustomerDetail() {
-  const { selectedCustomer } = useCustomers();
-  const { invoices, loadByCustomer: loadInvoices } = useInvoices();
-  const { projects, loadByCustomer: loadProjects } = useProjects();
+  const selectedCustomer = useCRMStore((state) => state.selectedCustomer);
+  const invoices = useCRMStore((state) => state.invoices);
+  const projects = useCRMStore((state) => state.projects);
+  const loadInvoicesByCustomer = useCRMStore((state) => state.loadInvoicesByCustomer);
+  const loadProjectsByCustomer = useCRMStore((state) => state.loadProjectsByCustomer);
   const goBack = useCRMStore((state) => state.goBack);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
-    if (selectedCustomer) {
-      loadInvoices(selectedCustomer.id);
-      loadProjects(selectedCustomer.id);
+    if (selectedCustomer && !hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadInvoicesByCustomer(selectedCustomer.id);
+      loadProjectsByCustomer(selectedCustomer.id);
     }
-  }, [selectedCustomer]);
+  }, [selectedCustomer, loadInvoicesByCustomer, loadProjectsByCustomer]);
+
+  // Handle keyboard input
+  useInput((input, key) => {
+    if (key.escape) {
+      goBack();
+    }
+  });
 
   if (!selectedCustomer) {
     return (

@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+.next/
+dist/
+out/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Supabase
+supabase/.branches/
+supabase/.temp/
+
+# Flowbite generated
+.flowbite-react/
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.vercel/
+.turbo/
+.vercel
+.env*.local

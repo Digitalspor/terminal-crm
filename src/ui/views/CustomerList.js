@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Text, useInput } from 'ink';
-import { useCustomers, useCRMStore } from '../../store/index.js';
+import TextInput from 'ink-text-input';
+import { useCRMStore } from '../../store/index.js';
 import { useScrollWithKeyboard } from '../hooks/useScroll.js';
 import { useWindowSize } from '../hooks/useWindowSize.js';
-import SearchBar from '../components/SearchBar.js';
 import { ScrollBox } from '../design-system/ScrollBox.js';
 import { HelpText } from '../design-system/HelpText.js';
 import { RenderIfWindowSize } from '../design-system/RenderIfWindowSize.js';
@@ -12,22 +12,29 @@ import { RenderIfWindowSize } from '../design-system/RenderIfWindowSize.js';
  * CustomerList - List all customers with search and navigation
  */
 export function CustomerList() {
-  const { customers, load, search: searchCustomers } = useCustomers();
+  const customers = useCRMStore((state) => state.customers);
+  const loadCustomers = useCRMStore((state) => state.loadCustomers);
+  const searchCustomers = useCRMStore((state) => state.searchCustomers);
   const setView = useCRMStore((state) => state.setView);
   const selectCustomer = useCRMStore((state) => state.selectCustomer);
   const goBack = useCRMStore((state) => state.goBack);
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
   const { height } = useWindowSize();
+  const hasLoadedRef = useRef(false);
 
   // Calculate page size based on terminal height
   const pageSize = Math.max(5, height - 15);
 
   useEffect(() => {
-    load();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadCustomers();
+    }
+  }, [loadCustomers]);
 
-  // Scroll with keyboard
+  // Scroll with keyboard - disabled when searching
   const {
     selectedIndex,
     visibleItems,
@@ -40,17 +47,35 @@ export function CustomerList() {
       setView('customer-detail');
     },
     onEscape: () => {
-      goBack();
-    }
+      if (isSearching) {
+        setIsSearching(false);
+        setSearchQuery('');
+        loadCustomers();
+      } else {
+        goBack();
+      }
+    },
+    disabled: isSearching
   });
 
-  const handleSearch = (query) => {
+  // Handle '/' key to activate search
+  useInput((input, key) => {
+    if (!isSearching && input === '/') {
+      setIsSearching(true);
+    }
+  }, { isActive: !isSearching });
+
+  const handleSearchChange = (query) => {
     setSearchQuery(query);
     if (query.trim().length > 0) {
       searchCustomers(query);
     } else {
-      load();
+      loadCustomers();
     }
+  };
+
+  const handleSearchSubmit = () => {
+    setIsSearching(false);
   };
 
   return (
@@ -63,13 +88,27 @@ export function CustomerList() {
         <Text dimColor> ({customers.length} kunder)</Text>
       </Box>
 
-      {/* Search */}
-      <SearchBar
-        onSearch={handleSearch}
-        placeholder="Søk kunder..."
-        showResultCount={searchQuery.length > 0}
-        resultCount={customers.length}
-      />
+      {/* Search bar - only shown when searching */}
+      {isSearching ? (
+        <Box marginBottom={1}>
+          <Text color="cyan">/</Text>
+          <TextInput
+            value={searchQuery}
+            onChange={handleSearchChange}
+            onSubmit={handleSearchSubmit}
+            placeholder="Søk kunder..."
+          />
+          {searchQuery.length > 0 && (
+            <Text dimColor> ({customers.length} treff)</Text>
+          )}
+        </Box>
+      ) : (
+        searchQuery.length > 0 && (
+          <Box marginBottom={1}>
+            <Text dimColor>Søk: "{searchQuery}" ({customers.length} treff)</Text>
+          </Box>
+        )
+      )}
 
       {/* Customer List */}
       {customers.length === 0 ? (

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { useShallow } from 'zustand/react/shallow';
 import { db } from '../db/database.js';
 import { search } from '../lib/search.js';
 
@@ -211,63 +212,75 @@ export const useCRMStore = create((set, get) => ({
   }
 }));
 
-// Convenience hooks for specific slices
-export const useCustomers = () => useCRMStore((state) => ({
-  customers: state.customers,
-  selectedCustomer: state.selectedCustomer,
-  loading: state.customersLoading,
-  load: state.loadCustomers,
-  select: state.selectCustomer,
-  search: state.searchCustomers,
-  clear: state.clearCustomerSelection
-}));
+// Convenience hooks for specific slices - using useShallow to prevent infinite loops
+export const useCustomers = () => useCRMStore(
+  useShallow((state) => ({
+    customers: state.customers,
+    selectedCustomer: state.selectedCustomer,
+    loading: state.customersLoading,
+    load: state.loadCustomers,
+    select: state.selectCustomer,
+    search: state.searchCustomers,
+    clear: state.clearCustomerSelection
+  }))
+);
 
-export const useInvoices = () => useCRMStore((state) => ({
-  invoices: state.invoices,
-  selectedInvoice: state.selectedInvoice,
-  loading: state.invoicesLoading,
-  load: state.loadInvoices,
-  loadByCustomer: state.loadInvoicesByCustomer,
-  select: state.selectInvoice,
-  search: state.searchInvoices,
-  clear: state.clearInvoiceSelection,
-  getOverdue: state.getOverdueInvoices
-}));
+export const useInvoices = () => useCRMStore(
+  useShallow((state) => ({
+    invoices: state.invoices,
+    selectedInvoice: state.selectedInvoice,
+    loading: state.invoicesLoading,
+    load: state.loadInvoices,
+    loadByCustomer: state.loadInvoicesByCustomer,
+    select: state.selectInvoice,
+    search: state.searchInvoices,
+    clear: state.clearInvoiceSelection,
+    getOverdue: state.getOverdueInvoices
+  }))
+);
 
-export const useProjects = () => useCRMStore((state) => ({
-  projects: state.projects,
-  selectedProject: state.selectedProject,
-  loading: state.projectsLoading,
-  load: state.loadProjects,
-  loadByCustomer: state.loadProjectsByCustomer,
-  select: state.selectProject,
-  search: state.searchProjects,
-  clear: state.clearProjectSelection
-}));
+export const useProjects = () => useCRMStore(
+  useShallow((state) => ({
+    projects: state.projects,
+    selectedProject: state.selectedProject,
+    loading: state.projectsLoading,
+    load: state.loadProjects,
+    loadByCustomer: state.loadProjectsByCustomer,
+    select: state.selectProject,
+    search: state.searchProjects,
+    clear: state.clearProjectSelection
+  }))
+);
 
-export const useExpenses = () => useCRMStore((state) => ({
-  expenses: state.expenses,
-  selectedExpense: state.selectedExpense,
-  loading: state.expensesLoading,
-  load: state.loadExpenses,
-  select: state.selectExpense,
-  search: state.searchExpenses,
-  clear: state.clearExpenseSelection
-}));
+export const useExpenses = () => useCRMStore(
+  useShallow((state) => ({
+    expenses: state.expenses,
+    selectedExpense: state.selectedExpense,
+    loading: state.expensesLoading,
+    load: state.loadExpenses,
+    select: state.selectExpense,
+    search: state.searchExpenses,
+    clear: state.clearExpenseSelection
+  }))
+);
 
-export const useUI = () => useCRMStore((state) => ({
-  currentView: state.currentView,
-  previousView: state.previousView,
-  searchQuery: state.searchQuery,
-  isSearching: state.isSearching,
-  setView: state.setView,
-  goBack: state.goBack,
-  setSearchQuery: state.setSearchQuery,
-  clearSearch: state.clearSearch
-}));
+export const useUI = () => useCRMStore(
+  useShallow((state) => ({
+    currentView: state.currentView,
+    previousView: state.previousView,
+    searchQuery: state.searchQuery,
+    isSearching: state.isSearching,
+    setView: state.setView,
+    goBack: state.goBack,
+    setSearchQuery: state.setSearchQuery,
+    clearSearch: state.clearSearch
+  }))
+);
 
-export const useStats = () => useCRMStore((state) => ({
-  stats: state.stats,
-  loading: state.statsLoading,
-  load: state.loadStats
-}));
+export const useStats = () => useCRMStore(
+  useShallow((state) => ({
+    stats: state.stats,
+    loading: state.statsLoading,
+    load: state.loadStats
+  }))
+);

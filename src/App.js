@@ -14,13 +14,7 @@ import EconomyMenu from './ui/views/EconomyMenu.js';
  */
 export function App() {
   const currentView = useCRMStore((state) => state.currentView);
-  const refreshAll = useCRMStore((state) => state.refreshAll);
   const { exit } = useApp();
-
-  // Load initial data on mount
-  useEffect(() => {
-    refreshAll();
-  }, []);
 
   // Handle Ctrl+C gracefully
   useEffect(() => {

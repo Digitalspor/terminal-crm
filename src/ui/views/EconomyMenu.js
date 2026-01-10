@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { Box, Text } from 'ink';
+import React, { useEffect, useRef } from 'react';
+import { Box, Text, useInput } from 'ink';
 import SelectInput from 'ink-select-input';
-import { useStats, useCRMStore } from '../../store/index.js';
+import { useCRMStore } from '../../store/index.js';
 import { Card, CardRow } from '../design-system/Card.js';
 import { HelpText } from '../design-system/HelpText.js';
 
@@ -9,23 +9,37 @@ import { HelpText } from '../design-system/HelpText.js';
  * EconomyMenu - Economy reports and statistics
  */
 export function EconomyMenu() {
-  const { stats, load: loadStats } = useStats();
+  const stats = useCRMStore((state) => state.stats);
+  const loadStats = useCRMStore((state) => state.loadStats);
   const goBack = useCRMStore((state) => state.goBack);
+  const setView = useCRMStore((state) => state.setView);
+  const getOverdueInvoices = useCRMStore((state) => state.getOverdueInvoices);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
-    loadStats();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadStats();
+    }
+  }, [loadStats]);
+
+  // Handle ESC key
+  useInput((input, key) => {
+    if (key.escape) {
+      goBack();
+    }
+  });
 
   const menuItems = [
     {
-      label: 'INNTEKTER',
-      value: 'revenue',
-      description: 'Inntektsrapport'
+      label: 'FORFALTE FAKTURAER',
+      value: 'overdue',
+      description: 'Se forfalte fakturaer'
     },
     {
-      label: 'FORFALTE',
-      value: 'overdue',
-      description: 'Forfalte fakturaer'
+      label: 'ALLE FAKTURAER',
+      value: 'invoices',
+      description: 'Se alle fakturaer'
     },
     {
       label: 'TILBAKE',
@@ -38,11 +52,10 @@ export function EconomyMenu() {
     if (item.value === 'back') {
       goBack();
     } else if (item.value === 'overdue') {
-      // TODO: Navigate to overdue invoices
-      console.log('Show overdue invoices');
-    } else if (item.value === 'revenue') {
-      // TODO: Navigate to revenue report
-      console.log('Show revenue report');
+      getOverdueInvoices();
+      setView('invoice-list');
+    } else if (item.value === 'invoices') {
+      setView('invoice-list');
     }
   };
 

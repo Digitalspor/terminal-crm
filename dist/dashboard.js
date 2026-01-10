@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
 // src/dashboard-ink.js
-import React13 from "react";
+import React12 from "react";
 import { render } from "ink";
 
 // src/App.js
-import React12, { useEffect as useEffect8 } from "react";
-import { Box as Box11, Text as Text11, useApp } from "ink";
+import React11, { useEffect as useEffect8 } from "react";
+import { Box as Box10, Text as Text10, useApp } from "ink";
 
 // src/store/index.js
 import { create } from "zustand";
+import { useShallow } from "zustand/react/shallow";
 
 // src/db/database.js
 import Database from "better-sqlite3";
@@ -920,44 +921,9 @@ var useCRMStore = create((set, get) => ({
     });
   }
 }));
-var useCustomers = () => useCRMStore((state) => ({
-  customers: state.customers,
-  selectedCustomer: state.selectedCustomer,
-  loading: state.customersLoading,
-  load: state.loadCustomers,
-  select: state.selectCustomer,
-  search: state.searchCustomers,
-  clear: state.clearCustomerSelection
-}));
-var useInvoices = () => useCRMStore((state) => ({
-  invoices: state.invoices,
-  selectedInvoice: state.selectedInvoice,
-  loading: state.invoicesLoading,
-  load: state.loadInvoices,
-  loadByCustomer: state.loadInvoicesByCustomer,
-  select: state.selectInvoice,
-  search: state.searchInvoices,
-  clear: state.clearInvoiceSelection,
-  getOverdue: state.getOverdueInvoices
-}));
-var useProjects = () => useCRMStore((state) => ({
-  projects: state.projects,
-  selectedProject: state.selectedProject,
-  loading: state.projectsLoading,
-  load: state.loadProjects,
-  loadByCustomer: state.loadProjectsByCustomer,
-  select: state.selectProject,
-  search: state.searchProjects,
-  clear: state.clearProjectSelection
-}));
-var useStats = () => useCRMStore((state) => ({
-  stats: state.stats,
-  loading: state.statsLoading,
-  load: state.loadStats
-}));
 
 // src/ui/views/MainMenu.js
-import React3, { useEffect } from "react";
+import React3, { useEffect, useRef } from "react";
 import { Box as Box3, Text as Text3 } from "ink";
 import SelectInput from "ink-select-input";
 
@@ -1012,10 +978,15 @@ function HelpText({ children, marginTop = 1, marginBottom = 0 }) {
 // src/ui/views/MainMenu.js
 function MainMenu() {
   const setView = useCRMStore((state) => state.setView);
-  const { stats, load: loadStats } = useStats();
+  const loadStats = useCRMStore((state) => state.loadStats);
+  const stats = useCRMStore((state) => state.stats);
+  const hasLoadedRef = useRef(false);
   useEffect(() => {
-    loadStats();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadStats();
+    }
+  }, [loadStats]);
   const menuItems = [
     {
       label: "KUNDER",
@@ -1078,8 +1049,9 @@ function MainMenu() {
 var MainMenu_default = MainMenu;
 
 // src/ui/views/CustomerList.js
-import React7, { useState as useState4, useEffect as useEffect4 } from "react";
-import { Box as Box6, Text as Text6, useInput as useInput2 } from "ink";
+import React6, { useState as useState3, useEffect as useEffect4, useRef as useRef2 } from "react";
+import { Box as Box5, Text as Text5, useInput as useInput2 } from "ink";
+import TextInput from "ink-text-input";
 
 // src/ui/hooks/useScroll.js
 import { useState, useEffect as useEffect2 } from "react";
@@ -1212,42 +1184,9 @@ function useWindowSize() {
   };
 }
 
-// src/ui/components/SearchBar.js
-import React4, { useState as useState3 } from "react";
-import { Box as Box4, Text as Text4 } from "ink";
-import TextInput from "ink-text-input";
-function SearchBar({
-  onSearch,
-  placeholder = "Search...",
-  initialValue = "",
-  onChange,
-  showResultCount = false,
-  resultCount = 0
-}) {
-  const [query, setQuery] = useState3(initialValue);
-  const handleChange = (value) => {
-    setQuery(value);
-    if (onChange) {
-      onChange(value);
-    }
-    if (onSearch) {
-      onSearch(value);
-    }
-  };
-  return /* @__PURE__ */ React4.createElement(Box4, { flexDirection: "column", marginBottom: 1 }, /* @__PURE__ */ React4.createElement(Box4, null, /* @__PURE__ */ React4.createElement(Text4, { color: "cyan", bold: true }, "\u{1F50D}", " "), /* @__PURE__ */ React4.createElement(Box4, { flexGrow: 1 }, /* @__PURE__ */ React4.createElement(
-    TextInput,
-    {
-      value: query,
-      onChange: handleChange,
-      placeholder
-    }
-  ))), showResultCount && /* @__PURE__ */ React4.createElement(Box4, { marginTop: 0 }, /* @__PURE__ */ React4.createElement(Text4, { dimColor: true }, resultCount === 0 && query.length > 0 && "No results found", resultCount > 0 && `${resultCount} result${resultCount === 1 ? "" : "s"}`, resultCount === 0 && query.length === 0 && "Type to search...")));
-}
-var SearchBar_default = SearchBar;
-
 // src/ui/design-system/ScrollBox.js
-import React5 from "react";
-import { Box as Box5, Text as Text5 } from "ink";
+import React4 from "react";
+import { Box as Box4, Text as Text4 } from "ink";
 function ScrollBox({
   children,
   height = 10,
@@ -1258,11 +1197,11 @@ function ScrollBox({
   showScrollbar = true,
   showHelp = true
 }) {
-  return /* @__PURE__ */ React5.createElement(Box5, { flexDirection: "column" }, showScrollbar && canScrollUp && /* @__PURE__ */ React5.createElement(Box5, { justifyContent: "center", marginBottom: 0 }, /* @__PURE__ */ React5.createElement(Text5, { color: "cyan", dimColor: true }, "\u25B2 More above")), /* @__PURE__ */ React5.createElement(Box5, { flexDirection: "column", minHeight: height }, children), showScrollbar && canScrollDown && /* @__PURE__ */ React5.createElement(Box5, { justifyContent: "center", marginTop: 0 }, /* @__PURE__ */ React5.createElement(Text5, { color: "cyan", dimColor: true }, "\u25BC More below")), (showScrollbar || showHelp) && totalItems > 0 && /* @__PURE__ */ React5.createElement(Box5, { marginTop: 1, justifyContent: "space-between" }, showScrollbar && /* @__PURE__ */ React5.createElement(Text5, { dimColor: true }, currentIndex + 1, "/", totalItems), showHelp && /* @__PURE__ */ React5.createElement(Text5, { dimColor: true }, "\u2191\u2193: Navigate \u2022 Enter: Select \u2022 Esc: Back")));
+  return /* @__PURE__ */ React4.createElement(Box4, { flexDirection: "column" }, showScrollbar && canScrollUp && /* @__PURE__ */ React4.createElement(Box4, { justifyContent: "center", marginBottom: 0 }, /* @__PURE__ */ React4.createElement(Text4, { color: "cyan", dimColor: true }, "\u25B2 More above")), /* @__PURE__ */ React4.createElement(Box4, { flexDirection: "column", minHeight: height }, children), showScrollbar && canScrollDown && /* @__PURE__ */ React4.createElement(Box4, { justifyContent: "center", marginTop: 0 }, /* @__PURE__ */ React4.createElement(Text4, { color: "cyan", dimColor: true }, "\u25BC More below")), (showScrollbar || showHelp) && totalItems > 0 && /* @__PURE__ */ React4.createElement(Box4, { marginTop: 1, justifyContent: "space-between" }, showScrollbar && /* @__PURE__ */ React4.createElement(Text4, { dimColor: true }, currentIndex + 1, "/", totalItems), showHelp && /* @__PURE__ */ React4.createElement(Text4, { dimColor: true }, "\u2191\u2193: Navigate \u2022 Enter: Select \u2022 Esc: Back")));
 }
 
 // src/ui/design-system/RenderIfWindowSize.js
-import React6 from "react";
+import React5 from "react";
 function RenderIfWindowSize({
   minWidth,
   maxWidth,
@@ -1289,16 +1228,23 @@ function RenderIfWindowSize({
 
 // src/ui/views/CustomerList.js
 function CustomerList() {
-  const { customers, load, search: searchCustomers } = useCustomers();
+  const customers = useCRMStore((state) => state.customers);
+  const loadCustomers = useCRMStore((state) => state.loadCustomers);
+  const searchCustomers = useCRMStore((state) => state.searchCustomers);
   const setView = useCRMStore((state) => state.setView);
   const selectCustomer = useCRMStore((state) => state.selectCustomer);
   const goBack = useCRMStore((state) => state.goBack);
-  const [searchQuery, setSearchQuery] = useState4("");
+  const [searchQuery, setSearchQuery] = useState3("");
+  const [isSearching, setIsSearching] = useState3(false);
   const { height } = useWindowSize();
+  const hasLoadedRef = useRef2(false);
   const pageSize = Math.max(5, height - 15);
   useEffect4(() => {
-    load();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadCustomers();
+    }
+  }, [loadCustomers]);
   const {
     selectedIndex,
     visibleItems,
@@ -1311,26 +1257,41 @@ function CustomerList() {
       setView("customer-detail");
     },
     onEscape: () => {
-      goBack();
-    }
+      if (isSearching) {
+        setIsSearching(false);
+        setSearchQuery("");
+        loadCustomers();
+      } else {
+        goBack();
+      }
+    },
+    disabled: isSearching
   });
-  const handleSearch = (query) => {
+  useInput2((input, key) => {
+    if (!isSearching && input === "/") {
+      setIsSearching(true);
+    }
+  }, { isActive: !isSearching });
+  const handleSearchChange = (query) => {
     setSearchQuery(query);
     if (query.trim().length > 0) {
       searchCustomers(query);
     } else {
-      load();
+      loadCustomers();
     }
   };
-  return /* @__PURE__ */ React7.createElement(Box6, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React7.createElement(Box6, { marginBottom: 1 }, /* @__PURE__ */ React7.createElement(Text6, { bold: true, color: "cyan" }, "KUNDER"), /* @__PURE__ */ React7.createElement(Text6, { dimColor: true }, " (", customers.length, " kunder)")), /* @__PURE__ */ React7.createElement(
-    SearchBar_default,
+  const handleSearchSubmit = () => {
+    setIsSearching(false);
+  };
+  return /* @__PURE__ */ React6.createElement(Box5, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React6.createElement(Box5, { marginBottom: 1 }, /* @__PURE__ */ React6.createElement(Text5, { bold: true, color: "cyan" }, "KUNDER"), /* @__PURE__ */ React6.createElement(Text5, { dimColor: true }, " (", customers.length, " kunder)")), isSearching ? /* @__PURE__ */ React6.createElement(Box5, { marginBottom: 1 }, /* @__PURE__ */ React6.createElement(Text5, { color: "cyan" }, "/"), /* @__PURE__ */ React6.createElement(
+    TextInput,
     {
-      onSearch: handleSearch,
-      placeholder: "S\xF8k kunder...",
-      showResultCount: searchQuery.length > 0,
-      resultCount: customers.length
+      value: searchQuery,
+      onChange: handleSearchChange,
+      onSubmit: handleSearchSubmit,
+      placeholder: "S\xF8k kunder..."
     }
-  ), customers.length === 0 ? /* @__PURE__ */ React7.createElement(Box6, { marginTop: 2 }, /* @__PURE__ */ React7.createElement(Text6, { dimColor: true }, searchQuery.length > 0 ? "Ingen kunder funnet" : "Laster kunder...")) : /* @__PURE__ */ React7.createElement(
+  ), searchQuery.length > 0 && /* @__PURE__ */ React6.createElement(Text5, { dimColor: true }, " (", customers.length, " treff)")) : searchQuery.length > 0 && /* @__PURE__ */ React6.createElement(Box5, { marginBottom: 1 }, /* @__PURE__ */ React6.createElement(Text5, { dimColor: true }, 'S\xF8k: "', searchQuery, '" (', customers.length, " treff)")), customers.length === 0 ? /* @__PURE__ */ React6.createElement(Box5, { marginTop: 2 }, /* @__PURE__ */ React6.createElement(Text5, { dimColor: true }, searchQuery.length > 0 ? "Ingen kunder funnet" : "Laster kunder...")) : /* @__PURE__ */ React6.createElement(
     ScrollBox,
     {
       height: pageSize,
@@ -1341,7 +1302,7 @@ function CustomerList() {
     },
     visibleItems.map((customer, idx) => {
       const isSelected = idx + (selectedIndex - selectedIndex % pageSize) === selectedIndex;
-      return /* @__PURE__ */ React7.createElement(
+      return /* @__PURE__ */ React6.createElement(
         CustomerListItem,
         {
           key: customer.id,
@@ -1350,31 +1311,31 @@ function CustomerList() {
         }
       );
     })
-  ), /* @__PURE__ */ React7.createElement(HelpText, null, "\u2191\u2193: Naviger \u2022 Enter: Se detaljer \u2022 /: S\xF8k \u2022 Esc: Tilbake"));
+  ), /* @__PURE__ */ React6.createElement(HelpText, null, "\u2191\u2193: Naviger \u2022 Enter: Se detaljer \u2022 /: S\xF8k \u2022 Esc: Tilbake"));
 }
 function CustomerListItem({ customer, isSelected }) {
   const { width } = useWindowSize();
   const showFullDetails = width >= 100;
   const showMediumDetails = width >= 80 && width < 100;
-  return /* @__PURE__ */ React7.createElement(Box6, { marginBottom: 0 }, /* @__PURE__ */ React7.createElement(Box6, { width: "100%" }, /* @__PURE__ */ React7.createElement(Box6, { width: 2 }, /* @__PURE__ */ React7.createElement(Text6, { color: isSelected ? "cyan" : "gray" }, isSelected ? "\u25B6" : " ")), /* @__PURE__ */ React7.createElement(Box6, { width: showFullDetails ? 30 : 25, flexShrink: 0 }, /* @__PURE__ */ React7.createElement(
-    Text6,
+  return /* @__PURE__ */ React6.createElement(Box5, { marginBottom: 0 }, /* @__PURE__ */ React6.createElement(Box5, { width: "100%" }, /* @__PURE__ */ React6.createElement(Box5, { width: 2 }, /* @__PURE__ */ React6.createElement(Text5, { color: isSelected ? "cyan" : "gray" }, isSelected ? "\u25B6" : " ")), /* @__PURE__ */ React6.createElement(Box5, { width: showFullDetails ? 30 : 25, flexShrink: 0 }, /* @__PURE__ */ React6.createElement(
+    Text5,
     {
       color: isSelected ? "cyan" : "white",
       bold: isSelected,
       wrap: "truncate"
     },
     customer.name
-  )), /* @__PURE__ */ React7.createElement(RenderIfWindowSize, { minWidth: 80 }, /* @__PURE__ */ React7.createElement(Box6, { width: showFullDetails ? 25 : 20, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React7.createElement(Text6, { dimColor: true, wrap: "truncate" }, customer.contact_name || customer.contact_email || "-"))), /* @__PURE__ */ React7.createElement(RenderIfWindowSize, { minWidth: 100 }, /* @__PURE__ */ React7.createElement(Box6, { width: 15, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React7.createElement(Text6, { dimColor: true, wrap: "truncate" }, customer.address_city || "-"))), /* @__PURE__ */ React7.createElement(RenderIfWindowSize, { minWidth: 120 }, /* @__PURE__ */ React7.createElement(Box6, { width: 12, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React7.createElement(Text6, { dimColor: true, wrap: "truncate" }, customer.org_nr || "-")))));
+  )), /* @__PURE__ */ React6.createElement(RenderIfWindowSize, { minWidth: 80 }, /* @__PURE__ */ React6.createElement(Box5, { width: showFullDetails ? 25 : 20, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React6.createElement(Text5, { dimColor: true, wrap: "truncate" }, customer.contact_name || customer.contact_email || "-"))), /* @__PURE__ */ React6.createElement(RenderIfWindowSize, { minWidth: 100 }, /* @__PURE__ */ React6.createElement(Box5, { width: 15, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React6.createElement(Text5, { dimColor: true, wrap: "truncate" }, customer.address_city || "-"))), /* @__PURE__ */ React6.createElement(RenderIfWindowSize, { minWidth: 120 }, /* @__PURE__ */ React6.createElement(Box5, { width: 12, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React6.createElement(Text5, { dimColor: true, wrap: "truncate" }, customer.org_nr || "-")))));
 }
 var CustomerList_default = CustomerList;
 
 // src/ui/views/CustomerDetail.js
-import React9, { useEffect as useEffect5 } from "react";
-import { Box as Box8, Text as Text8 } from "ink";
+import React8, { useEffect as useEffect5, useRef as useRef3 } from "react";
+import { Box as Box7, Text as Text7, useInput as useInput3 } from "ink";
 
 // src/ui/design-system/Badge.js
-import React8 from "react";
-import { Box as Box7, Text as Text7 } from "ink";
+import React7 from "react";
+import { Box as Box6, Text as Text6 } from "ink";
 function Badge({ children, color, variant = "default" }) {
   const variantColors = {
     default: "gray",
@@ -1385,7 +1346,7 @@ function Badge({ children, color, variant = "default" }) {
     primary: "blue"
   };
   const badgeColor = color || variantColors[variant] || "gray";
-  return /* @__PURE__ */ React8.createElement(Box7, null, /* @__PURE__ */ React8.createElement(Text7, { color: badgeColor, bold: true }, "[", children, "]"));
+  return /* @__PURE__ */ React7.createElement(Box6, null, /* @__PURE__ */ React7.createElement(Text6, { color: badgeColor, bold: true }, "[", children, "]"));
 }
 function StatusBadge({ status }) {
   const statusColors = {
@@ -1403,23 +1364,32 @@ function StatusBadge({ status }) {
     rejected: "red"
   };
   const color = statusColors[status.toLowerCase()] || "gray";
-  return /* @__PURE__ */ React8.createElement(Badge, { color }, status);
+  return /* @__PURE__ */ React7.createElement(Badge, { color }, status);
 }
 
 // src/ui/views/CustomerDetail.js
 function CustomerDetail() {
-  const { selectedCustomer } = useCustomers();
-  const { invoices, loadByCustomer: loadInvoices } = useInvoices();
-  const { projects, loadByCustomer: loadProjects } = useProjects();
+  const selectedCustomer = useCRMStore((state) => state.selectedCustomer);
+  const invoices = useCRMStore((state) => state.invoices);
+  const projects = useCRMStore((state) => state.projects);
+  const loadInvoicesByCustomer = useCRMStore((state) => state.loadInvoicesByCustomer);
+  const loadProjectsByCustomer = useCRMStore((state) => state.loadProjectsByCustomer);
   const goBack = useCRMStore((state) => state.goBack);
+  const hasLoadedRef = useRef3(false);
   useEffect5(() => {
-    if (selectedCustomer) {
-      loadInvoices(selectedCustomer.id);
-      loadProjects(selectedCustomer.id);
+    if (selectedCustomer && !hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadInvoicesByCustomer(selectedCustomer.id);
+      loadProjectsByCustomer(selectedCustomer.id);
     }
-  }, [selectedCustomer]);
+  }, [selectedCustomer, loadInvoicesByCustomer, loadProjectsByCustomer]);
+  useInput3((input, key) => {
+    if (key.escape) {
+      goBack();
+    }
+  });
   if (!selectedCustomer) {
-    return /* @__PURE__ */ React9.createElement(Box8, { padding: 1 }, /* @__PURE__ */ React9.createElement(Text8, null, "Ingen kunde valgt"));
+    return /* @__PURE__ */ React8.createElement(Box7, { padding: 1 }, /* @__PURE__ */ React8.createElement(Text7, null, "Ingen kunde valgt"));
   }
   const customer = selectedCustomer;
   const totalInvoices = invoices.length;
@@ -1428,13 +1398,13 @@ function CustomerDetail() {
   const overdueInvoices = invoices.filter(
     (inv) => inv.status !== "paid" && new Date(inv.due_date) < /* @__PURE__ */ new Date()
   ).length;
-  return /* @__PURE__ */ React9.createElement(Box8, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React9.createElement(Box8, { marginBottom: 2 }, /* @__PURE__ */ React9.createElement(Text8, { bold: true, color: "cyan" }, customer.name)), /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ React8.createElement(Box7, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React8.createElement(Box7, { marginBottom: 2 }, /* @__PURE__ */ React8.createElement(Text7, { bold: true, color: "cyan" }, customer.name)), /* @__PURE__ */ React8.createElement(
     RenderIfWindowSize,
     {
       minWidth: 100,
-      fallback: /* @__PURE__ */ React9.createElement(SingleColumnLayout, { customer, invoices, projects })
+      fallback: /* @__PURE__ */ React8.createElement(SingleColumnLayout, { customer, invoices, projects })
     },
-    /* @__PURE__ */ React9.createElement(Box8, null, /* @__PURE__ */ React9.createElement(Box8, { flexDirection: "column", width: "50%", marginRight: 2 }, /* @__PURE__ */ React9.createElement(CustomerInfoCard, { customer }), /* @__PURE__ */ React9.createElement(
+    /* @__PURE__ */ React8.createElement(Box7, null, /* @__PURE__ */ React8.createElement(Box7, { flexDirection: "column", width: "50%", marginRight: 2 }, /* @__PURE__ */ React8.createElement(CustomerInfoCard, { customer }), /* @__PURE__ */ React8.createElement(
       CustomerStatsCard,
       {
         totalInvoices,
@@ -1442,8 +1412,8 @@ function CustomerDetail() {
         paidInvoices,
         overdueInvoices
       }
-    )), /* @__PURE__ */ React9.createElement(Box8, { flexDirection: "column", width: "50%" }, /* @__PURE__ */ React9.createElement(RecentInvoicesCard, { invoices }), /* @__PURE__ */ React9.createElement(ActiveProjectsCard, { projects })))
-  ), /* @__PURE__ */ React9.createElement(HelpText, null, "Esc: Tilbake til kundeliste"));
+    )), /* @__PURE__ */ React8.createElement(Box7, { flexDirection: "column", width: "50%" }, /* @__PURE__ */ React8.createElement(RecentInvoicesCard, { invoices }), /* @__PURE__ */ React8.createElement(ActiveProjectsCard, { projects })))
+  ), /* @__PURE__ */ React8.createElement(HelpText, null, "Esc: Tilbake til kundeliste"));
 }
 function SingleColumnLayout({ customer, invoices, projects }) {
   const totalInvoices = invoices.length;
@@ -1452,7 +1422,7 @@ function SingleColumnLayout({ customer, invoices, projects }) {
   const overdueInvoices = invoices.filter(
     (inv) => inv.status !== "paid" && new Date(inv.due_date) < /* @__PURE__ */ new Date()
   ).length;
-  return /* @__PURE__ */ React9.createElement(Box8, { flexDirection: "column" }, /* @__PURE__ */ React9.createElement(CustomerInfoCard, { customer }), /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ React8.createElement(Box7, { flexDirection: "column" }, /* @__PURE__ */ React8.createElement(CustomerInfoCard, { customer }), /* @__PURE__ */ React8.createElement(
     CustomerStatsCard,
     {
       totalInvoices,
@@ -1460,44 +1430,53 @@ function SingleColumnLayout({ customer, invoices, projects }) {
       paidInvoices,
       overdueInvoices
     }
-  ), /* @__PURE__ */ React9.createElement(RecentInvoicesCard, { invoices }), /* @__PURE__ */ React9.createElement(ActiveProjectsCard, { projects }));
+  ), /* @__PURE__ */ React8.createElement(RecentInvoicesCard, { invoices }), /* @__PURE__ */ React8.createElement(ActiveProjectsCard, { projects }));
 }
 function CustomerInfoCard({ customer }) {
-  return /* @__PURE__ */ React9.createElement(Card, { title: "Kontaktinformasjon" }, customer.contact_name && /* @__PURE__ */ React9.createElement(CardRow, { label: "Kontakt", value: customer.contact_name }), customer.contact_email && /* @__PURE__ */ React9.createElement(CardRow, { label: "E-post", value: customer.contact_email }), customer.contact_phone && /* @__PURE__ */ React9.createElement(CardRow, { label: "Telefon", value: customer.contact_phone }), customer.org_nr && /* @__PURE__ */ React9.createElement(CardRow, { label: "Org.nr", value: customer.org_nr }), (customer.address_street || customer.address_city) && /* @__PURE__ */ React9.createElement(CardSection, { title: "Adresse", marginTop: 1 }, customer.address_street && /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, customer.address_street), customer.address_city && /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, customer.address_postal_code, " ", customer.address_city)), customer.notes && /* @__PURE__ */ React9.createElement(CardSection, { title: "Notater", marginTop: 1 }, /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, customer.notes)));
+  return /* @__PURE__ */ React8.createElement(Card, { title: "Kontaktinformasjon" }, customer.contact_name && /* @__PURE__ */ React8.createElement(CardRow, { label: "Kontakt", value: customer.contact_name }), customer.contact_email && /* @__PURE__ */ React8.createElement(CardRow, { label: "E-post", value: customer.contact_email }), customer.contact_phone && /* @__PURE__ */ React8.createElement(CardRow, { label: "Telefon", value: customer.contact_phone }), customer.org_nr && /* @__PURE__ */ React8.createElement(CardRow, { label: "Org.nr", value: customer.org_nr }), (customer.address_street || customer.address_city) && /* @__PURE__ */ React8.createElement(CardSection, { title: "Adresse", marginTop: 1 }, customer.address_street && /* @__PURE__ */ React8.createElement(Text7, { dimColor: true }, customer.address_street), customer.address_city && /* @__PURE__ */ React8.createElement(Text7, { dimColor: true }, customer.address_postal_code, " ", customer.address_city)), customer.notes && /* @__PURE__ */ React8.createElement(CardSection, { title: "Notater", marginTop: 1 }, /* @__PURE__ */ React8.createElement(Text7, { dimColor: true }, customer.notes)));
 }
 function CustomerStatsCard({ totalInvoices, totalRevenue, paidInvoices, overdueInvoices }) {
-  return /* @__PURE__ */ React9.createElement(Card, { title: "Statistikk" }, /* @__PURE__ */ React9.createElement(CardRow, { label: "Fakturaer", value: totalInvoices.toString() }), /* @__PURE__ */ React9.createElement(
+  return /* @__PURE__ */ React8.createElement(Card, { title: "Statistikk" }, /* @__PURE__ */ React8.createElement(CardRow, { label: "Fakturaer", value: totalInvoices.toString() }), /* @__PURE__ */ React8.createElement(
     CardRow,
     {
       label: "Omsetning",
       value: `${(totalRevenue / 100).toLocaleString("nb-NO")} kr`,
       valueColor: "green"
     }
-  ), /* @__PURE__ */ React9.createElement(CardRow, { label: "Betalte", value: paidInvoices.toString() }), overdueInvoices > 0 && /* @__PURE__ */ React9.createElement(CardRow, { label: "Forfalte", value: overdueInvoices.toString(), valueColor: "red" }));
+  ), /* @__PURE__ */ React8.createElement(CardRow, { label: "Betalte", value: paidInvoices.toString() }), overdueInvoices > 0 && /* @__PURE__ */ React8.createElement(CardRow, { label: "Forfalte", value: overdueInvoices.toString(), valueColor: "red" }));
 }
 function RecentInvoicesCard({ invoices }) {
   const recentInvoices = invoices.slice(0, 5);
-  return /* @__PURE__ */ React9.createElement(Card, { title: "Siste fakturaer" }, recentInvoices.length === 0 ? /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, "Ingen fakturaer") : /* @__PURE__ */ React9.createElement(Box8, { flexDirection: "column" }, recentInvoices.map((invoice) => /* @__PURE__ */ React9.createElement(Box8, { key: invoice.id, justifyContent: "space-between", marginBottom: 0 }, /* @__PURE__ */ React9.createElement(Box8, { marginRight: 2 }, /* @__PURE__ */ React9.createElement(Text8, null, "#", invoice.invoice_number)), /* @__PURE__ */ React9.createElement(Box8, { marginRight: 2 }, /* @__PURE__ */ React9.createElement(StatusBadge, { status: invoice.status })), /* @__PURE__ */ React9.createElement(Text8, null, (invoice.total / 100).toLocaleString("nb-NO"), " kr")))));
+  return /* @__PURE__ */ React8.createElement(Card, { title: "Siste fakturaer" }, recentInvoices.length === 0 ? /* @__PURE__ */ React8.createElement(Text7, { dimColor: true }, "Ingen fakturaer") : /* @__PURE__ */ React8.createElement(Box7, { flexDirection: "column" }, recentInvoices.map((invoice) => /* @__PURE__ */ React8.createElement(Box7, { key: invoice.id, justifyContent: "space-between", marginBottom: 0 }, /* @__PURE__ */ React8.createElement(Box7, { marginRight: 2 }, /* @__PURE__ */ React8.createElement(Text7, null, "#", invoice.invoice_number)), /* @__PURE__ */ React8.createElement(Box7, { marginRight: 2 }, /* @__PURE__ */ React8.createElement(StatusBadge, { status: invoice.status })), /* @__PURE__ */ React8.createElement(Text7, null, (invoice.total / 100).toLocaleString("nb-NO"), " kr")))));
 }
 function ActiveProjectsCard({ projects }) {
   const activeProjects = projects.filter((p) => p.status === "in-progress");
-  return /* @__PURE__ */ React9.createElement(Card, { title: "Aktive prosjekter" }, activeProjects.length === 0 ? /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, "Ingen aktive prosjekter") : /* @__PURE__ */ React9.createElement(Box8, { flexDirection: "column" }, activeProjects.map((project) => /* @__PURE__ */ React9.createElement(Box8, { key: project.id, flexDirection: "column", marginBottom: 1 }, /* @__PURE__ */ React9.createElement(Text8, { bold: true }, project.name), /* @__PURE__ */ React9.createElement(Box8, { justifyContent: "space-between" }, /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, project.spent_hours || 0, "h / ", project.estimated_hours || "?", "h"), project.budget && /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, (project.budget / 100).toLocaleString("nb-NO"), " kr"))))));
+  return /* @__PURE__ */ React8.createElement(Card, { title: "Aktive prosjekter" }, activeProjects.length === 0 ? /* @__PURE__ */ React8.createElement(Text7, { dimColor: true }, "Ingen aktive prosjekter") : /* @__PURE__ */ React8.createElement(Box7, { flexDirection: "column" }, activeProjects.map((project) => /* @__PURE__ */ React8.createElement(Box7, { key: project.id, flexDirection: "column", marginBottom: 1 }, /* @__PURE__ */ React8.createElement(Text7, { bold: true }, project.name), /* @__PURE__ */ React8.createElement(Box7, { justifyContent: "space-between" }, /* @__PURE__ */ React8.createElement(Text7, { dimColor: true }, project.spent_hours || 0, "h / ", project.estimated_hours || "?", "h"), project.budget && /* @__PURE__ */ React8.createElement(Text7, { dimColor: true }, (project.budget / 100).toLocaleString("nb-NO"), " kr"))))));
 }
 var CustomerDetail_default = CustomerDetail;
 
 // src/ui/views/InvoiceList.js
-import React10, { useState as useState5, useEffect as useEffect6 } from "react";
-import { Box as Box9, Text as Text9 } from "ink";
+import React9, { useState as useState4, useEffect as useEffect6, useRef as useRef4 } from "react";
+import { Box as Box8, Text as Text8, useInput as useInput4 } from "ink";
+import TextInput2 from "ink-text-input";
 function InvoiceList() {
-  const { invoices, load, search: searchInvoices, getOverdue } = useInvoices();
+  const invoices = useCRMStore((state) => state.invoices);
+  const loadInvoices = useCRMStore((state) => state.loadInvoices);
+  const searchInvoices = useCRMStore((state) => state.searchInvoices);
+  const getOverdueInvoices = useCRMStore((state) => state.getOverdueInvoices);
   const goBack = useCRMStore((state) => state.goBack);
-  const [searchQuery, setSearchQuery] = useState5("");
-  const [filterStatus, setFilterStatus] = useState5(null);
+  const [searchQuery, setSearchQuery] = useState4("");
+  const [isSearching, setIsSearching] = useState4(false);
+  const [filterStatus, setFilterStatus] = useState4(null);
   const { height } = useWindowSize();
+  const hasLoadedRef = useRef4(false);
   const pageSize = Math.max(5, height - 15);
   useEffect6(() => {
-    load();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadInvoices();
+    }
+  }, [loadInvoices]);
   const {
     selectedIndex,
     visibleItems,
@@ -1509,34 +1488,49 @@ function InvoiceList() {
       console.log("Selected invoice:", invoice);
     },
     onEscape: () => {
-      goBack();
-    }
+      if (isSearching) {
+        setIsSearching(false);
+        setSearchQuery("");
+        loadInvoices();
+      } else {
+        goBack();
+      }
+    },
+    disabled: isSearching
   });
-  const handleSearch = (query) => {
+  useInput4((input, key) => {
+    if (!isSearching && input === "/") {
+      setIsSearching(true);
+    }
+  }, { isActive: !isSearching });
+  const handleSearchChange = (query) => {
     setSearchQuery(query);
     if (query.trim().length > 0) {
       searchInvoices(query, { status: filterStatus });
     } else {
       if (filterStatus === "overdue") {
-        getOverdue();
+        getOverdueInvoices();
       } else {
-        load();
+        loadInvoices();
       }
     }
+  };
+  const handleSearchSubmit = () => {
+    setIsSearching(false);
   };
   const totalAmount = invoices.reduce((sum, inv) => sum + (inv.total || 0), 0);
   const overdueCount = invoices.filter(
     (inv) => inv.status !== "paid" && new Date(inv.due_date) < /* @__PURE__ */ new Date()
   ).length;
-  return /* @__PURE__ */ React10.createElement(Box9, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React10.createElement(Box9, { marginBottom: 1 }, /* @__PURE__ */ React10.createElement(Text9, { bold: true, color: "cyan" }, "FAKTURAER"), /* @__PURE__ */ React10.createElement(Text9, { dimColor: true }, " (", invoices.length, " fakturaer)")), /* @__PURE__ */ React10.createElement(Box9, { marginBottom: 1, justifyContent: "space-between" }, /* @__PURE__ */ React10.createElement(Box9, null, /* @__PURE__ */ React10.createElement(Text9, { dimColor: true }, "Totalt: "), /* @__PURE__ */ React10.createElement(Text9, { bold: true }, (totalAmount / 100).toLocaleString("nb-NO"), " kr")), overdueCount > 0 && /* @__PURE__ */ React10.createElement(Box9, null, /* @__PURE__ */ React10.createElement(Text9, { color: "red" }, "Forfalte: "), /* @__PURE__ */ React10.createElement(Text9, { color: "red", bold: true }, overdueCount))), /* @__PURE__ */ React10.createElement(
-    SearchBar_default,
+  return /* @__PURE__ */ React9.createElement(Box8, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React9.createElement(Box8, { marginBottom: 1 }, /* @__PURE__ */ React9.createElement(Text8, { bold: true, color: "cyan" }, "FAKTURAER"), /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, " (", invoices.length, " fakturaer)")), /* @__PURE__ */ React9.createElement(Box8, { marginBottom: 1, justifyContent: "space-between" }, /* @__PURE__ */ React9.createElement(Box8, null, /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, "Totalt: "), /* @__PURE__ */ React9.createElement(Text8, { bold: true }, (totalAmount / 100).toLocaleString("nb-NO"), " kr")), overdueCount > 0 && /* @__PURE__ */ React9.createElement(Box8, null, /* @__PURE__ */ React9.createElement(Text8, { color: "red" }, "Forfalte: "), /* @__PURE__ */ React9.createElement(Text8, { color: "red", bold: true }, overdueCount))), isSearching ? /* @__PURE__ */ React9.createElement(Box8, { marginBottom: 1 }, /* @__PURE__ */ React9.createElement(Text8, { color: "cyan" }, "/"), /* @__PURE__ */ React9.createElement(
+    TextInput2,
     {
-      onSearch: handleSearch,
-      placeholder: "S\xF8k fakturaer...",
-      showResultCount: searchQuery.length > 0,
-      resultCount: invoices.length
+      value: searchQuery,
+      onChange: handleSearchChange,
+      onSubmit: handleSearchSubmit,
+      placeholder: "S\xF8k fakturaer..."
     }
-  ), invoices.length === 0 ? /* @__PURE__ */ React10.createElement(Box9, { marginTop: 2 }, /* @__PURE__ */ React10.createElement(Text9, { dimColor: true }, searchQuery.length > 0 ? "Ingen fakturaer funnet" : "Laster fakturaer...")) : /* @__PURE__ */ React10.createElement(
+  ), searchQuery.length > 0 && /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, " (", invoices.length, " treff)")) : searchQuery.length > 0 && /* @__PURE__ */ React9.createElement(Box8, { marginBottom: 1 }, /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, 'S\xF8k: "', searchQuery, '" (', invoices.length, " treff)")), invoices.length === 0 ? /* @__PURE__ */ React9.createElement(Box8, { marginTop: 2 }, /* @__PURE__ */ React9.createElement(Text8, { dimColor: true }, searchQuery.length > 0 ? "Ingen fakturaer funnet" : "Laster fakturaer...")) : /* @__PURE__ */ React9.createElement(
     ScrollBox,
     {
       height: pageSize,
@@ -1547,17 +1541,17 @@ function InvoiceList() {
     },
     visibleItems.map((invoice, idx) => {
       const isSelected = idx + (selectedIndex - selectedIndex % pageSize) === selectedIndex;
-      return /* @__PURE__ */ React10.createElement(InvoiceListItem, { key: invoice.id, invoice, isSelected });
+      return /* @__PURE__ */ React9.createElement(InvoiceListItem, { key: invoice.id, invoice, isSelected });
     })
-  ), /* @__PURE__ */ React10.createElement(HelpText, null, "\u2191\u2193: Naviger \u2022 Enter: Se detaljer \u2022 /: S\xF8k \u2022 Esc: Tilbake"));
+  ), /* @__PURE__ */ React9.createElement(HelpText, null, "\u2191\u2193: Naviger \u2022 Enter: Se detaljer \u2022 /: S\xF8k \u2022 Esc: Tilbake"));
 }
 function InvoiceListItem({ invoice, isSelected }) {
   const { width } = useWindowSize();
   const showFullDetails = width >= 100;
   const showMediumDetails = width >= 80 && width < 100;
   const isOverdue = invoice.status !== "paid" && new Date(invoice.due_date) < /* @__PURE__ */ new Date();
-  return /* @__PURE__ */ React10.createElement(Box9, { marginBottom: 0 }, /* @__PURE__ */ React10.createElement(Box9, { width: "100%" }, /* @__PURE__ */ React10.createElement(Box9, { width: 2 }, /* @__PURE__ */ React10.createElement(Text9, { color: isSelected ? "cyan" : "gray" }, isSelected ? "\u25B6" : " ")), /* @__PURE__ */ React10.createElement(Box9, { width: 12, flexShrink: 0 }, /* @__PURE__ */ React10.createElement(
-    Text9,
+  return /* @__PURE__ */ React9.createElement(Box8, { marginBottom: 0 }, /* @__PURE__ */ React9.createElement(Box8, { width: "100%" }, /* @__PURE__ */ React9.createElement(Box8, { width: 2 }, /* @__PURE__ */ React9.createElement(Text8, { color: isSelected ? "cyan" : "gray" }, isSelected ? "\u25B6" : " ")), /* @__PURE__ */ React9.createElement(Box8, { width: 12, flexShrink: 0 }, /* @__PURE__ */ React9.createElement(
+    Text8,
     {
       color: isSelected ? "cyan" : isOverdue ? "red" : "white",
       bold: isSelected || isOverdue,
@@ -1565,15 +1559,15 @@ function InvoiceListItem({ invoice, isSelected }) {
     },
     "#",
     invoice.invoice_number
-  )), /* @__PURE__ */ React10.createElement(Box9, { width: showFullDetails ? 25 : 20, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React10.createElement(
-    Text9,
+  )), /* @__PURE__ */ React9.createElement(Box8, { width: showFullDetails ? 25 : 20, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React9.createElement(
+    Text8,
     {
       color: isSelected ? "cyan" : "white",
       wrap: "truncate"
     },
     invoice.customer_name
-  )), /* @__PURE__ */ React10.createElement(Box9, { width: 10, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React10.createElement(StatusBadge, { status: invoice.status })), /* @__PURE__ */ React10.createElement(RenderIfWindowSize, { minWidth: 80 }, /* @__PURE__ */ React10.createElement(Box9, { width: 12, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React10.createElement(Text9, { dimColor: true, wrap: "truncate" }, invoice.date))), /* @__PURE__ */ React10.createElement(RenderIfWindowSize, { minWidth: 100 }, /* @__PURE__ */ React10.createElement(Box9, { width: 12, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React10.createElement(Text9, { dimColor: !isOverdue, color: isOverdue ? "red" : void 0, wrap: "truncate" }, invoice.due_date))), /* @__PURE__ */ React10.createElement(Box9, { marginLeft: 2, justifyContent: "flex-end", flexGrow: 1 }, /* @__PURE__ */ React10.createElement(
-    Text9,
+  )), /* @__PURE__ */ React9.createElement(Box8, { width: 10, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React9.createElement(StatusBadge, { status: invoice.status })), /* @__PURE__ */ React9.createElement(RenderIfWindowSize, { minWidth: 80 }, /* @__PURE__ */ React9.createElement(Box8, { width: 12, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React9.createElement(Text8, { dimColor: true, wrap: "truncate" }, invoice.date))), /* @__PURE__ */ React9.createElement(RenderIfWindowSize, { minWidth: 100 }, /* @__PURE__ */ React9.createElement(Box8, { width: 12, flexShrink: 0, marginLeft: 2 }, /* @__PURE__ */ React9.createElement(Text8, { dimColor: !isOverdue, color: isOverdue ? "red" : void 0, wrap: "truncate" }, invoice.due_date))), /* @__PURE__ */ React9.createElement(Box8, { marginLeft: 2, justifyContent: "flex-end", flexGrow: 1 }, /* @__PURE__ */ React9.createElement(
+    Text8,
     {
       color: isSelected ? "cyan" : "white",
       bold: isSelected
@@ -1585,25 +1579,37 @@ function InvoiceListItem({ invoice, isSelected }) {
 var InvoiceList_default = InvoiceList;
 
 // src/ui/views/EconomyMenu.js
-import React11, { useEffect as useEffect7 } from "react";
-import { Box as Box10, Text as Text10 } from "ink";
+import React10, { useEffect as useEffect7, useRef as useRef5 } from "react";
+import { Box as Box9, Text as Text9, useInput as useInput5 } from "ink";
 import SelectInput2 from "ink-select-input";
 function EconomyMenu() {
-  const { stats, load: loadStats } = useStats();
+  const stats = useCRMStore((state) => state.stats);
+  const loadStats = useCRMStore((state) => state.loadStats);
   const goBack = useCRMStore((state) => state.goBack);
+  const setView = useCRMStore((state) => state.setView);
+  const getOverdueInvoices = useCRMStore((state) => state.getOverdueInvoices);
+  const hasLoadedRef = useRef5(false);
   useEffect7(() => {
-    loadStats();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadStats();
+    }
+  }, [loadStats]);
+  useInput5((input, key) => {
+    if (key.escape) {
+      goBack();
+    }
+  });
   const menuItems = [
     {
-      label: "INNTEKTER",
-      value: "revenue",
-      description: "Inntektsrapport"
+      label: "FORFALTE FAKTURAER",
+      value: "overdue",
+      description: "Se forfalte fakturaer"
     },
     {
-      label: "FORFALTE",
-      value: "overdue",
-      description: "Forfalte fakturaer"
+      label: "ALLE FAKTURAER",
+      value: "invoices",
+      description: "Se alle fakturaer"
     },
     {
       label: "TILBAKE",
@@ -1615,35 +1621,36 @@ function EconomyMenu() {
     if (item.value === "back") {
       goBack();
     } else if (item.value === "overdue") {
-      console.log("Show overdue invoices");
-    } else if (item.value === "revenue") {
-      console.log("Show revenue report");
+      getOverdueInvoices();
+      setView("invoice-list");
+    } else if (item.value === "invoices") {
+      setView("invoice-list");
     }
   };
-  const itemComponent = ({ label, isSelected }) => /* @__PURE__ */ React11.createElement(Box10, null, /* @__PURE__ */ React11.createElement(Text10, { color: isSelected ? "cyan" : "white", bold: isSelected }, isSelected ? "\u25B6 " : "  ", label));
+  const itemComponent = ({ label, isSelected }) => /* @__PURE__ */ React10.createElement(Box9, null, /* @__PURE__ */ React10.createElement(Text9, { color: isSelected ? "cyan" : "white", bold: isSelected }, isSelected ? "\u25B6 " : "  ", label));
   const indicatorComponent = () => null;
-  return /* @__PURE__ */ React11.createElement(Box10, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React11.createElement(Box10, { marginBottom: 2 }, /* @__PURE__ */ React11.createElement(Text10, { bold: true, color: "cyan" }, "\xD8KONOMI")), stats && /* @__PURE__ */ React11.createElement(Box10, { flexDirection: "column", marginBottom: 2 }, /* @__PURE__ */ React11.createElement(Card, { title: "Oversikt", marginBottom: 1 }, /* @__PURE__ */ React11.createElement(
+  return /* @__PURE__ */ React10.createElement(Box9, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React10.createElement(Box9, { marginBottom: 2 }, /* @__PURE__ */ React10.createElement(Text9, { bold: true, color: "cyan" }, "\xD8KONOMI")), stats && /* @__PURE__ */ React10.createElement(Box9, { flexDirection: "column", marginBottom: 2 }, /* @__PURE__ */ React10.createElement(Card, { title: "Oversikt", marginBottom: 1 }, /* @__PURE__ */ React10.createElement(
     CardRow,
     {
       label: "Totalt fakturert",
       value: stats.total_revenue ? `${(stats.total_revenue / 100).toLocaleString("nb-NO")} kr` : "-",
       valueColor: "green"
     }
-  ), /* @__PURE__ */ React11.createElement(
+  ), /* @__PURE__ */ React10.createElement(
     CardRow,
     {
       label: "Utest\xE5ende",
       value: stats.outstanding_invoices ? `${(stats.outstanding_invoices / 100).toLocaleString("nb-NO")} kr` : "-",
       valueColor: "yellow"
     }
-  ), /* @__PURE__ */ React11.createElement(
+  ), /* @__PURE__ */ React10.createElement(
     CardRow,
     {
       label: "Forfalte fakturaer",
       value: stats.overdue_count ? stats.overdue_count.toString() : "0",
       valueColor: stats.overdue_count > 0 ? "red" : "green"
     }
-  )), /* @__PURE__ */ React11.createElement(Card, { title: "Aktivitet" }, /* @__PURE__ */ React11.createElement(CardRow, { label: "Antall kunder", value: stats.total_customers.toString() }), /* @__PURE__ */ React11.createElement(CardRow, { label: "Antall fakturaer", value: stats.total_invoices.toString() }), /* @__PURE__ */ React11.createElement(CardRow, { label: "Antall prosjekter", value: stats.total_projects.toString() }))), /* @__PURE__ */ React11.createElement(
+  )), /* @__PURE__ */ React10.createElement(Card, { title: "Aktivitet" }, /* @__PURE__ */ React10.createElement(CardRow, { label: "Antall kunder", value: stats.total_customers.toString() }), /* @__PURE__ */ React10.createElement(CardRow, { label: "Antall fakturaer", value: stats.total_invoices.toString() }), /* @__PURE__ */ React10.createElement(CardRow, { label: "Antall prosjekter", value: stats.total_projects.toString() }))), /* @__PURE__ */ React10.createElement(
     SelectInput2,
     {
       items: menuItems,
@@ -1651,18 +1658,14 @@ function EconomyMenu() {
       itemComponent,
       indicatorComponent
     }
-  ), /* @__PURE__ */ React11.createElement(HelpText, null, "\u2191\u2193: Naviger \u2022 Enter: Velg \u2022 Esc: Tilbake"));
+  ), /* @__PURE__ */ React10.createElement(HelpText, null, "\u2191\u2193: Naviger \u2022 Enter: Velg \u2022 Esc: Tilbake"));
 }
 var EconomyMenu_default = EconomyMenu;
 
 // src/App.js
 function App() {
   const currentView = useCRMStore((state) => state.currentView);
-  const refreshAll = useCRMStore((state) => state.refreshAll);
   const { exit } = useApp();
-  useEffect8(() => {
-    refreshAll();
-  }, []);
   useEffect8(() => {
     const handleExit = () => {
       exit();
@@ -1675,37 +1678,37 @@ function App() {
   const renderView = () => {
     switch (currentView) {
       case "main-menu":
-        return /* @__PURE__ */ React12.createElement(MainMenu_default, null);
+        return /* @__PURE__ */ React11.createElement(MainMenu_default, null);
       case "customer-list":
-        return /* @__PURE__ */ React12.createElement(CustomerList_default, null);
+        return /* @__PURE__ */ React11.createElement(CustomerList_default, null);
       case "customer-detail":
-        return /* @__PURE__ */ React12.createElement(CustomerDetail_default, null);
+        return /* @__PURE__ */ React11.createElement(CustomerDetail_default, null);
       case "invoice-list":
-        return /* @__PURE__ */ React12.createElement(InvoiceList_default, null);
+        return /* @__PURE__ */ React11.createElement(InvoiceList_default, null);
       case "economy-menu":
-        return /* @__PURE__ */ React12.createElement(EconomyMenu_default, null);
+        return /* @__PURE__ */ React11.createElement(EconomyMenu_default, null);
       case "project-list":
-        return /* @__PURE__ */ React12.createElement(ProjectListPlaceholder, null);
+        return /* @__PURE__ */ React11.createElement(ProjectListPlaceholder, null);
       case "global-search":
-        return /* @__PURE__ */ React12.createElement(GlobalSearchPlaceholder, null);
+        return /* @__PURE__ */ React11.createElement(GlobalSearchPlaceholder, null);
       default:
-        return /* @__PURE__ */ React12.createElement(Box11, { padding: 1 }, /* @__PURE__ */ React12.createElement(Text11, { color: "red" }, "Unknown view: ", currentView));
+        return /* @__PURE__ */ React11.createElement(Box10, { padding: 1 }, /* @__PURE__ */ React11.createElement(Text10, { color: "red" }, "Unknown view: ", currentView));
     }
   };
-  return /* @__PURE__ */ React12.createElement(Box11, { flexDirection: "column" }, renderView());
+  return /* @__PURE__ */ React11.createElement(Box10, { flexDirection: "column" }, renderView());
 }
 function ProjectListPlaceholder() {
   const goBack = useCRMStore((state) => state.goBack);
-  return /* @__PURE__ */ React12.createElement(Box11, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React12.createElement(Box11, { marginBottom: 2 }, /* @__PURE__ */ React12.createElement(Text11, { bold: true, color: "cyan" }, "PROSJEKTER")), /* @__PURE__ */ React12.createElement(Text11, { dimColor: true }, "Prosjektoversikt kommer snart..."), /* @__PURE__ */ React12.createElement(Box11, { marginTop: 2 }, /* @__PURE__ */ React12.createElement(Text11, { dimColor: true }, "Trykk Esc for \xE5 g\xE5 tilbake")));
+  return /* @__PURE__ */ React11.createElement(Box10, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React11.createElement(Box10, { marginBottom: 2 }, /* @__PURE__ */ React11.createElement(Text10, { bold: true, color: "cyan" }, "PROSJEKTER")), /* @__PURE__ */ React11.createElement(Text10, { dimColor: true }, "Prosjektoversikt kommer snart..."), /* @__PURE__ */ React11.createElement(Box10, { marginTop: 2 }, /* @__PURE__ */ React11.createElement(Text10, { dimColor: true }, "Trykk Esc for \xE5 g\xE5 tilbake")));
 }
 function GlobalSearchPlaceholder() {
   const goBack = useCRMStore((state) => state.goBack);
-  return /* @__PURE__ */ React12.createElement(Box11, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React12.createElement(Box11, { marginBottom: 2 }, /* @__PURE__ */ React12.createElement(Text11, { bold: true, color: "cyan" }, "GLOBAL S\xD8K")), /* @__PURE__ */ React12.createElement(Text11, { dimColor: true }, "Global s\xF8k kommer snart..."), /* @__PURE__ */ React12.createElement(Box11, { marginTop: 2 }, /* @__PURE__ */ React12.createElement(Text11, { dimColor: true }, "Trykk Esc for \xE5 g\xE5 tilbake")));
+  return /* @__PURE__ */ React11.createElement(Box10, { flexDirection: "column", padding: 1 }, /* @__PURE__ */ React11.createElement(Box10, { marginBottom: 2 }, /* @__PURE__ */ React11.createElement(Text10, { bold: true, color: "cyan" }, "GLOBAL S\xD8K")), /* @__PURE__ */ React11.createElement(Text10, { dimColor: true }, "Global s\xF8k kommer snart..."), /* @__PURE__ */ React11.createElement(Box10, { marginTop: 2 }, /* @__PURE__ */ React11.createElement(Text10, { dimColor: true }, "Trykk Esc for \xE5 g\xE5 tilbake")));
 }
 var App_default = App;
 
 // src/dashboard-ink.js
-var { waitUntilExit } = render(/* @__PURE__ */ React13.createElement(App_default, null));
+var { waitUntilExit } = render(/* @__PURE__ */ React12.createElement(App_default, null));
 waitUntilExit().then(() => {
   console.log("\u{1F44B} Takk for n\xE5!");
   process.exit(0);

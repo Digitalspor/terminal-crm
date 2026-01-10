@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Text } from 'ink';
-import { useInvoices, useCRMStore } from '../../store/index.js';
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Text, useInput } from 'ink';
+import TextInput from 'ink-text-input';
+import { useCRMStore } from '../../store/index.js';
 import { useScrollWithKeyboard } from '../hooks/useScroll.js';
 import { useWindowSize } from '../hooks/useWindowSize.js';
-import SearchBar from '../components/SearchBar.js';
 import { ScrollBox } from '../design-system/ScrollBox.js';
 import { StatusBadge } from '../design-system/Badge.js';
 import { HelpText } from '../design-system/HelpText.js';
@@ -13,18 +13,26 @@ import { RenderIfWindowSize } from '../design-system/RenderIfWindowSize.js';
  * InvoiceList - List all invoices with search and filtering
  */
 export function InvoiceList() {
-  const { invoices, load, search: searchInvoices, getOverdue } = useInvoices();
+  const invoices = useCRMStore((state) => state.invoices);
+  const loadInvoices = useCRMStore((state) => state.loadInvoices);
+  const searchInvoices = useCRMStore((state) => state.searchInvoices);
+  const getOverdueInvoices = useCRMStore((state) => state.getOverdueInvoices);
   const goBack = useCRMStore((state) => state.goBack);
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [filterStatus, setFilterStatus] = useState(null); // 'draft', 'sent', 'paid', 'overdue'
+  const [isSearching, setIsSearching] = useState(false);
+  const [filterStatus, setFilterStatus] = useState(null);
   const { height } = useWindowSize();
+  const hasLoadedRef = useRef(false);
 
   const pageSize = Math.max(5, height - 15);
 
   useEffect(() => {
-    load();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadInvoices();
+    }
+  }, [loadInvoices]);
 
   const {
     selectedIndex,
@@ -38,21 +46,39 @@ export function InvoiceList() {
       console.log('Selected invoice:', invoice);
     },
     onEscape: () => {
-      goBack();
-    }
+      if (isSearching) {
+        setIsSearching(false);
+        setSearchQuery('');
+        loadInvoices();
+      } else {
+        goBack();
+      }
+    },
+    disabled: isSearching
   });
 
-  const handleSearch = (query) => {
+  // Handle '/' key to activate search
+  useInput((input, key) => {
+    if (!isSearching && input === '/') {
+      setIsSearching(true);
+    }
+  }, { isActive: !isSearching });
+
+  const handleSearchChange = (query) => {
     setSearchQuery(query);
     if (query.trim().length > 0) {
       searchInvoices(query, { status: filterStatus });
     } else {
       if (filterStatus === 'overdue') {
-        getOverdue();
+        getOverdueInvoices();
       } else {
-        load();
+        loadInvoices();
       }
     }
+  };
+
+  const handleSearchSubmit = () => {
+    setIsSearching(false);
   };
 
   // Calculate totals
@@ -87,13 +113,27 @@ export function InvoiceList() {
         )}
       </Box>
 
-      {/* Search */}
-      <SearchBar
-        onSearch={handleSearch}
-        placeholder="Søk fakturaer..."
-        showResultCount={searchQuery.length > 0}
-        resultCount={invoices.length}
-      />
+      {/* Search bar - only shown when searching */}
+      {isSearching ? (
+        <Box marginBottom={1}>
+          <Text color="cyan">/</Text>
+          <TextInput
+            value={searchQuery}
+            onChange={handleSearchChange}
+            onSubmit={handleSearchSubmit}
+            placeholder="Søk fakturaer..."
+          />
+          {searchQuery.length > 0 && (
+            <Text dimColor> ({invoices.length} treff)</Text>
+          )}
+        </Box>
+      ) : (
+        searchQuery.length > 0 && (
+          <Box marginBottom={1}>
+            <Text dimColor>Søk: "{searchQuery}" ({invoices.length} treff)</Text>
+          </Box>
+        )
+      )}
 
       {/* Invoice List */}
       {invoices.length === 0 ? (

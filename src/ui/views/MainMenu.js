@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Box, Text } from 'ink';
 import SelectInput from 'ink-select-input';
-import { useCRMStore, useStats } from '../../store/index.js';
+import { useCRMStore } from '../../store/index.js';
 import { Card } from '../design-system/Card.js';
 import { HelpText } from '../design-system/HelpText.js';
 
@@ -10,11 +10,16 @@ import { HelpText } from '../design-system/HelpText.js';
  */
 export function MainMenu() {
   const setView = useCRMStore((state) => state.setView);
-  const { stats, load: loadStats } = useStats();
+  const loadStats = useCRMStore((state) => state.loadStats);
+  const stats = useCRMStore((state) => state.stats);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
-    loadStats();
-  }, []);
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      loadStats();
+    }
+  }, [loadStats]);
 
   const menuItems = [
     {
