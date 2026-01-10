@@ -244,14 +244,22 @@ CREATE TABLE agent_memory (
 
 ## 8. Gmail OAuth (uferdig)
 
+**E-postkonto:** `post@digitalspor.no`
+
 For å fullføre Gmail-integrasjon:
 
 1. Gå til [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
-2. Velg prosjekt "planforme-472313"
-3. Legg til redirect URI: `http://localhost:3000/api/auth/google/callback`
-4. Start dev server: `bun run dev`
-5. Gå til: `http://localhost:3000/api/auth/google`
-6. Godkjenn og kopier tokens til `.env.local`
+2. Velg/opprett prosjekt for DigitalSpor
+3. Opprett OAuth 2.0 Client ID (Web application)
+4. Legg til redirect URI: `http://localhost:3000/api/auth/google/callback`
+5. Aktiver Gmail API i prosjektet
+6. Oppdater `.env.local` med ny CLIENT_ID og CLIENT_SECRET
+7. Start dev server: `bun run dev`
+8. Gå til: `http://localhost:3000/api/auth/google`
+9. Logg inn med **post@digitalspor.no**
+10. Kopier tokens til `.env.local`
+
+**NB:** Hvis digitalspor.no bruker Google Workspace, må OAuth consent screen konfigureres som "Internal" eller appen må verifiseres av Google.
 
 ---
 
