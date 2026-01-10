@@ -74,8 +74,21 @@ async function gitCommitAndPush(files) {
   isCommitting = true;
 
   try {
-    // Add files
-    await execPromise(`git add ${Array.from(files).map(f => `"${f}"`).join(" ")}`);
+    // Filter out temp files and non-existent files
+    const validFiles = Array.from(files).filter(f => {
+      if (f.includes(".tmp.") || f.endsWith(".tmp")) return false;
+      const fullPath = path.join(__dirname, "..", f);
+      return fs.existsSync(fullPath);
+    });
+
+    if (validFiles.length === 0) {
+      log("Ingen gyldige filer å committe", "gray");
+      isCommitting = false;
+      return;
+    }
+
+    // Add all changes (safer than specifying files)
+    await execPromise("git add -A");
 
     // Check if there's anything to commit
     const status = await gitStatus();
