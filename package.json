@@ -7,10 +7,11 @@
   "scripts": {
     "start": "node src/index.js",
     "crm": "node src/index.js",
-    "dashboard": "babel-node src/dashboard-ink.js",
+    "dashboard": "npm run build:dashboard && node dist/dashboard.js",
     "dashboard:blessed": "node src/dashboard-blessed.js",
-    "dashboard:dev": "nodemon --exec babel-node src/dashboard-ink.js",
-    "dashboard:watch": "node --watch src/index.js dashboard",
+    "dashboard:dev": "npm run build:dashboard && node --watch dist/dashboard.js",
+    "build": "node build.js",
+    "build:dashboard": "node build.js",
     "dev": "node --watch src/index.js",
     "fiken:auto-sync": "node src/fiken-auto-sync.js",
     "db:init": "node --experimental-modules -e \"import('./src/db/database.js').then(m => m.db.connect())\"",
@@ -50,10 +51,13 @@
     "zustand": "^5.0.9"
   },
   "devDependencies": {
+    "@babel/cli": "^7.28.3",
     "@babel/core": "^7.28.5",
     "@babel/node": "^7.28.0",
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
-    "nodemon": "^3.1.11"
+    "esbuild": "^0.27.2",
+    "nodemon": "^3.1.11",
+    "tsx": "^4.21.0"
   }
 }
