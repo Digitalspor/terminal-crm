@@ -279,12 +279,52 @@ For å fullføre Gmail-integrasjon:
 
 ---
 
-## 10. Referanser
+## 10. Monday.com Integrasjon
+
+**Status:** Ikke startet - MCP server tilgjengelig!
+
+### Monday.com MCP Server
+Monday.com har offisiell MCP-støtte (lansert mai 2025):
+- Hosted MCP server - ingen lokal setup
+- OAuth-basert autentisering
+- Tilgjengelig for alle Monday-planer
+
+### Muligheter
+- **Hente data:** Boards, items, kolonner, oppdateringer
+- **Migrere:** Kunder, prosjekter, oppgaver til CRM
+- **Synkronisere:** To-veis sync mellom Monday og CRM
+- **AI-spørringer:** "Hvilke oppgaver er forfalt?", "Hva blokkerer teamet?"
+
+### Setup
+1. Gå til [monday.com/w/mcp](https://monday.com/w/mcp)
+2. Autoriser via OAuth
+3. Koble til Claude Code eller dashboard
+
+### NPM-pakke
+```bash
+npm install @mondaydotcomorg/monday-api-mcp
+```
+
+### Ressurser
+- [Monday MCP Docs](https://support.monday.com/hc/en-us/articles/28588158981266-Get-started-with-monday-MCP)
+- [GitHub: mondaycom/mcp](https://github.com/mondaycom/mcp)
+- [Developer Changelog](https://developer.monday.com/apps/changelog/introducing-the-mondaycom-mcp-integration)
+
+### Bruksområder for DigitalSpor
+- [ ] Hente kundeliste fra Monday → CRM
+- [ ] Hente prosjekter/timer → Faktureringsgrunnlag
+- [ ] Hente oppgaver → Oppfølgingsliste
+- [ ] Synkronisere status mellom systemer
+
+---
+
+## 11. Referanser
 
 - Fiken API: https://api.fiken.no/api/v2/docs/
 - Supabase: https://supabase.com/docs
 - Flowbite React: https://flowbite-react.com/
 - Claude API: https://docs.anthropic.com/
+- Monday MCP: https://monday.com/w/mcp
 
 ---
 
