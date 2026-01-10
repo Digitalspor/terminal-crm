@@ -7,9 +7,9 @@
   "scripts": {
     "start": "node src/index.js",
     "crm": "node src/index.js",
-    "dashboard": "babel-node src/dashboard.jsx",
+    "dashboard": "babel-node src/dashboard-ink.js",
     "dashboard:blessed": "node src/dashboard-blessed.js",
-    "dashboard:dev": "nodemon --exec babel-node src/dashboard.jsx",
+    "dashboard:dev": "nodemon --exec babel-node src/dashboard-ink.js",
     "dashboard:watch": "node --watch src/index.js dashboard",
     "dev": "node --watch src/index.js",
     "fiken:auto-sync": "node src/fiken-auto-sync.js",
