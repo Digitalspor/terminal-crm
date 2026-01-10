@@ -8,6 +8,15 @@ node_modules/
 credentials/google-*.json
 credentials/*token*.json
 
+# Next.js build output
+.next/
+dashboard-old/
+out/
+
+# Temp files
+*.tmp
+*.tmp.*
+
 # SQLite database files
 data/crm.db*
 *.db
