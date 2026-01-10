@@ -243,7 +243,11 @@ async function runDemoMode(): Promise<ProcessingResult[]> {
 }
 
 // Kjør hvis startet direkte
-if (require.main === module) {
+const isMainModule = typeof Bun !== "undefined"
+  ? Bun.main === Bun.argv[1] || import.meta.url.endsWith(Bun.argv[1].split("/").pop() || "")
+  : typeof require !== "undefined" && require.main === module;
+
+if (isMainModule || process.argv[1]?.includes("bilagshenter/index")) {
   runBilagshenterAgent({ dryRun: true })
     .then((results) => {
       console.log("Resultater:", results);
